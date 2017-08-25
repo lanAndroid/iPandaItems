@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/livechina_linear"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DDDDDD"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/live_china_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E6EBF0">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/livechina_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/live_china_add_channel"
+            android:layout_toStartOf="@+id/live_china_add_channel"></android.support.design.widget.TabLayout>
+
+        <ImageView
+            android:id="@+id/live_china_add_channel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/white"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/live_china_add" />
+
+
+    </RelativeLayout>
+
+    <com.example.ipandaitems.view.livechina.customview.NoInteruViewPager
+        android:id="@+id/live_china_viewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/live_china_tab_layout" />
+</LinearLayout>

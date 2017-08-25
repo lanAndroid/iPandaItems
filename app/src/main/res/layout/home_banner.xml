@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.youth.banner.Banner
+       android:layout_marginTop="10px"
+        android:id="@+id/home_banner_banner"
+        android:layout_width="match_parent"
+        android:layout_height="600px">
+
+
+    </com.youth.banner.Banner>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_margin="15px"
+        android:layout_width="match_parent"
+        android:layout_height="600px"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_marginLeft="30px"
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:text="熊猫播报"
+            android:gravity="center_vertical"
+            android:textSize="60px"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3px"
+            android:background="#000000"
+            />
+        <LinearLayout
+            android:weightSum="3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher"
+                />
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="220px"
+                        android:layout_height="80px"
+                        android:text="Live"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/home_text_shep"
+                        android:textColor="@color/colorAccent"
+
+                        android:textSize="60px"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="asdasdasdasd"
+                        android:textSize="60px"
+                        android:layout_marginLeft="10px"
+                        android:layout_marginTop="50px"
+                        android:id="@+id/home_banner_live_tv"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="220px"
+                        android:layout_height="80px"
+                        android:text="发现"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/home_text_shep"
+                        android:textColor="@color/colorAccent"
+
+                        android:textSize="60px"
+                        />
+                    <TextView
+                        android:id="@+id/home_banner_find_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="asdasdasdasd"
+                        android:textSize="60px"
+                        android:layout_marginLeft="10px"
+                        android:layout_marginTop="50px"
+
+
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoLinearLayout>
