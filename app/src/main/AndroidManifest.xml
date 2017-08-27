@@ -3,6 +3,15 @@
     package="com.example.ipandaitems">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    //vitamio权限
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    作者：jxnk25
+    链接：http://www.jianshu.com/p/d50a67ba253c
+    來源：简书
+    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,8 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".iPandaActivity">
-
         </activity>
+        <activity android:name=".view.announce.PanadaTop"/>
+        <activity android:name=".view.announce.PanadaVideo"/>
         <activity android:name=".view.HelloActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +31,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.ShellActivity">
-
         </activity>
 
         <meta-data
