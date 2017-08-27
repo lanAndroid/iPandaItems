@@ -23,18 +23,22 @@
         android:layout_width="400px"
         android:layout_height="250px"
         android:id="@+id/list_Image"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/_row1_3"
         android:scaleType="fitXY"
         />
             <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="93px"
                 android:drawableLeft="@drawable/play"
                 android:layout_alignBottom="@+id/list_Image"
-                android:layout_marginLeft="20px"
                 android:layout_marginBottom="20px"
                 android:id="@+id/video_Length"
                 android:textColor="@color/white"
+                android:background="@drawable/lpanda_bottom_gra"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:padding="20px"
                 />
         </RelativeLayout>
     <TextView

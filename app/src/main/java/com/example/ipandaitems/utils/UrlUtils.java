@@ -30,7 +30,7 @@ public class UrlUtils {
     //滚滚视频
     public static final String ROLLVIDEO = "http://www.ipanda.com/kehuduan/video/index.json";
     //熊猫播报2                              //http://www.ipanda.com/kehuduan/news/index.json
-    public static final String PANDAREPORTTWO = "http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1422435191506336&serviceId=panda";
+    public static final String PANDAREPORTTWO = "http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1422h435191506336&serviceId=panda";
     //熊猫top榜
     public static final String PANDATOPNOTIVE = "http://115.182.35.91/api/getVideoInfoForCBox.do?pid=3d92fae34dc14b2492de15d5dd122ac8";
     //熊猫top榜条目1
