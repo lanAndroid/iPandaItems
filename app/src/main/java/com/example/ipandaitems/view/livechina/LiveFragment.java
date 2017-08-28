@@ -1,6 +1,7 @@
 package com.example.ipandaitems.view.livechina;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -60,6 +61,7 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
     boolean sss = false;
     private List<livechinaBean.AlllistBean> chinaBeanList = new ArrayList<>();
     CFragmentPagerAdapter adapter;
+    private Button bianji;
 
     @Override
     protected int layoutID() {
@@ -80,6 +82,7 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
         pop_btn = view.findViewById(R.id.live_chinnal_select_channel_cancel);
         grid1 = view.findViewById(R.id.userGridView);
         grid2 = view.findViewById(R.id.otherGridView);
+        bianji = view.findViewById(R.id.live_china_select_channel_bianji);
     }
 
     @Override
@@ -105,6 +108,7 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
     public void onViewClicked() {
         popupWindow.showAtLocation(livechinaLinear, Gravity.NO_GRAVITY, 0, 0);
         initpop();
+
     }
 
     private void initpop() {
@@ -124,40 +128,72 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
         }
         grid2.addItems(list2);
 
-        grid1.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
-            @Override
-            public void onItemSelect(String indexString) {
-                list.remove(indexString);
-                if (!list2.contains(indexString)) {
-                    list2.add(indexString);
-                    grid2.addTvItem(indexString);
-                }
-            }
-        });
-        grid2.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
-            @Override
-            public void onItemSelect(String indexString) {
+                    grid1.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
+                        @Override
+                        public void onItemSelect(String indexString) {
+                            list.remove(indexString);
+                            if (!list2.contains(indexString)) {
+                                list2.add(indexString);
+                                grid2.addTvItem(indexString);
+                            }
+                        }
+                    });
+                    grid2.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
+                        @Override
+                        public void onItemSelect(String indexString) {
 
-                list2.remove(indexString);
-                if (!list.contains(indexString)) {
-                    list.add(indexString);
+                            list2.remove(indexString);
+                            if (!list.contains(indexString)) {
+                                list.add(indexString);
 //                    grid1.addItems(list);
-                    grid1.addTvItem(indexString);
+                                grid1.addTvItem(indexString);
 
-                }
-
-
-            }
+                            }
 
 
-        });
+                        }
+
+
+                    });
+
+
+
+
 
         pop_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 popupWindow.dismiss();
+                initss();
             }
         });
+    }
+
+    private void initss() {
+        SharedPreferences sp = getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("asd", "2");
+        Set<String> set = new ArraySet<String>();
+        set.addAll(list);
+        editor.putStringSet("slist", set);
+        editor.commit();
+
+
+        if (sss) {
+            if (!getContext().getSharedPreferences("data", Context.MODE_PRIVATE).getString("asd", "").equals("")) {
+
+                initload();
+
+                adapter.notifyDataSetChanged();
+
+            }
+        }
+        if (list.size() > 0) {
+            list.clear();
+            list2.clear();
+            grid1.removeAllViews();
+            grid2.removeAllViews();
+        }
     }
 
 
@@ -182,9 +218,9 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
         }
 
         adapter = new CFragmentPagerAdapter(getChildFragmentManager(), fragmentList, titleList);
-//        liveChinaViewPager.setAdapter(adapter);
-//        livechinaTab.setupWithViewPager(liveChinaViewPager);
-//        livechinaTab.setTabMode(TabLayout.MODE_SCROLLABLE);
+        liveChinaViewPager.setAdapter(adapter);
+        livechinaTab.setupWithViewPager(liveChinaViewPager);
+        livechinaTab.setTabMode(TabLayout.MODE_SCROLLABLE);
         sss = true;
     }
 
