@@ -24,8 +24,7 @@ public class LogActivity extends BaseActivity {
     ImageView personal_back_img;
     @BindView(R.id.person_no_login_layout)
     RelativeLayout personNoLoginLayout;
-    @BindView(R.id.person_have_login_layout)
-    RelativeLayout personHaveLoginLayout;
+
     @BindView(R.id.personal_history_layout)
     RelativeLayout personalHistoryLayout;
     @BindView(R.id.personal_shoucang_layout)
@@ -60,7 +59,7 @@ public class LogActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.personal_back_img, R.id.person_no_login_layout, R.id.person_have_login_layout, R.id.personal_history_layout, R.id.personal_shoucang_layout, R.id.personal_set_layout})
+    @OnClick({R.id.personal_back_img, R.id.person_no_login_layout, R.id.personal_history_layout, R.id.personal_shoucang_layout, R.id.personal_set_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.personal_back_img:
@@ -68,8 +67,6 @@ public class LogActivity extends BaseActivity {
                 break;
             case R.id.person_no_login_layout:
                 startActivity(new Intent(LogActivity.this, loginActivity.class));
-                break;
-            case R.id.person_have_login_layout:
                 break;
             case R.id.personal_history_layout:
                 break;
