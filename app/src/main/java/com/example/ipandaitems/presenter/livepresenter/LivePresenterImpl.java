@@ -28,7 +28,7 @@ public class LivePresenterImpl implements LiveIPresenter, Observer<livechinaBean
     public void onSubscribe(@NonNull Disposable d) {
 
     }
-
+//aa
     @Override
     public void onNext(@NonNull livechinaBean livechinaBean) {
         ilivechinaview.succeed(livechinaBean);
