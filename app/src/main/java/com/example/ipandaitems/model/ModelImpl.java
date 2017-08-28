@@ -57,9 +57,5 @@ public class ModelImpl implements IModel {
         RetrofitUtils.getmRetrofitUtils_Demo().getPLAmaPhotoes(observer);
     }
 
-    @Override
-    public void RequestChinaGet(Observer<livechinaBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().chinaGetNetWork(observer);
-    }
 
 }

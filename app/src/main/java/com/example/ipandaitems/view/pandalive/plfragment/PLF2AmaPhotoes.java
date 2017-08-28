@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
@@ -44,33 +46,59 @@ public class PLF2AmaPhotoes extends BaseFragment implements PLF2AmaPhotoesView {
     protected void initView(View view) {
         pl2Recycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         pl2Recycler.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        pl2Recycler.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         PPLAmaPhotoe ppa = new PPLAmaPhotoe(this);
         ppa.initData();
     }
 
     @Override
-    public void initData(PLAmaPhotoes plAmaPhotoes) {
+    public void initData(final PLAmaPhotoes plAmaPhotoes) {
         Log.e("tina", plAmaPhotoes.getVideo().size() + "");
         list = plAmaPhotoes.getVideo();
-        adapter = new PL2AdapterAmaPhotoes(list, getActivity());
-        pl2Recycler.setAdapter(adapter);
-    }
-
-    @Override
-    protected void loadData() {
+        list.addAll(plAmaPhotoes.getVideo());
+        if (adapter == null) {
+            adapter = new PL2AdapterAmaPhotoes(list, getActivity());
+            pl2Recycler.setAdapter(adapter);
+        } else {
+            adapter.notifyDataSetChanged();
+        }
         pl2Recycler.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override//下拉刷新
             public void onRefresh() {
-
+                pl2Recycler.refreshComplete();//下拉刷新完成
             }
 
             @Override //加载更多
             public void onLoadMore() {
-
+                Toast.makeText(getContext(), "jlsdk;af", Toast.LENGTH_SHORT).show();
+                list.addAll(plAmaPhotoes.getVideo());
+                pl2Recycler.loadMoreComplete();//加载更多完成
             }
         });
-        pl2Recycler.refreshComplete();//下拉刷新完成
-        pl2Recycler.loadMoreComplete();//加载更多完成
+
+        View footview = LayoutInflater.from(getContext()).inflate(R.layout.pl_recycler_foot, null);
+        Button but = footview.findViewById(R.id.pl_recycler_foot_but);
+        pl2Recycler.setFootView(footview);
+        but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "jlsdk;af", Toast.LENGTH_SHORT).show();
+                list.addAll(plAmaPhotoes.getVideo());
+            }
+        });
+
+        adapter.setOnItemClickList(new PL2AdapterAmaPhotoes.onItemClickListener() {
+            @Override
+            public void onClicks(List lists, int pos) {
+                Log.e("tian", lists.toString() + "-------" + pos);
+                Toast.makeText(getContext(), "跳转至播放页,暂时未完成", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    protected void loadData() {
+
     }
 
     @Override
@@ -91,4 +119,5 @@ public class PLF2AmaPhotoes extends BaseFragment implements PLF2AmaPhotoesView {
         super.onDestroyView();
         unbinder.unbind();
     }
+
 }

@@ -68,8 +68,8 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
 
     @Override
     protected void initView(View view) {
-        LivePresenterImpl livePresenter = new LivePresenterImpl(this);
-        livePresenter.chinaget();
+//        LivePresenterImpl livePresenter = new LivePresenterImpl(this);
+//        livePresenter.chinaget();
     }
 
     @Override

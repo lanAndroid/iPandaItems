@@ -22,12 +22,14 @@ public interface IModel {
     void AnnRequsetGet(Observer<AnnBean> observer);
 
     void RequestHomeGet(Observer<HomeBean> observer);
-
+    //    熊猫直播 第一次网络获取
     void doGet(Observer<PLHome> observer);
 
+    //    熊猫直播 第二次网络获取
     void doGets(Observer<PLLive> observer);
 
+    //    熊猫直播 精彩一刻
     void doAmaPhotoes(Observer<PLAmaPhotoes> observer);
 
-    void RequestChinaGet(Observer<livechinaBean> observer);
+
 }

@@ -50,7 +50,7 @@ public class UrlUtils {
     public static final String HOME_WONDERFUL = "http://www.ipanda.com/kehuduan/shipinliebieye/jingcaiyike/index.json";
 
     //精彩一刻
-    public static final String ORIGINALNEWS = "http://api.cntv.cn/video/videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1";
+    public static final String ORIGINALNEWS = "http://api.cntv.cn/video/videolistById?vsid=VSET100167216881&n=9&serviceId=panda&o=desc&of=time&p=1";
 
     // 首页  滚滚视频
     public static final String HOME_ROLL = "http://www.ipanda.com/kehuduan/shipinliebieye/video/index.json";

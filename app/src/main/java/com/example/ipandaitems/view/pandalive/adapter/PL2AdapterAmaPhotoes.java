@@ -31,6 +31,16 @@ public class PL2AdapterAmaPhotoes extends RecyclerView.Adapter {
         this.context = activity;
     }
 
+    private onItemClickListener onItemClickList;
+
+    public void setOnItemClickList(onItemClickListener onItemClickList) {
+        this.onItemClickList = onItemClickList;
+    }
+
+    public interface onItemClickListener {
+        void onClicks(List lists, int pos);
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.pl_recycler_item, null);
@@ -40,11 +50,17 @@ public class PL2AdapterAmaPhotoes extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         MyHolder mh = (MyHolder) holder;
         mh.name.setText(list.get(position).getT());
         mh.time.setText(list.get(position).getPtime());
         Glide.with(context).load(list.get(position).getImg()).into(mh.img);
+        mh.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickList.onClicks(list, position);
+            }
+        });
     }
 
     @Override
@@ -52,7 +68,7 @@ public class PL2AdapterAmaPhotoes extends RecyclerView.Adapter {
         return list.size();
     }
 
-   static class MyHolder extends RecyclerView.ViewHolder {
+    static class MyHolder extends RecyclerView.ViewHolder {
         TextView name;
         ImageView img;
         TextView time;

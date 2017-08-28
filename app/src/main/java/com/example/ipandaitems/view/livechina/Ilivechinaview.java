@@ -1,5 +1,7 @@
 package com.example.ipandaitems.view.livechina;
 
+//import com.example.ipandaitems.model.entry.livechina.livechinaBean;
+
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 
 /**
@@ -7,6 +9,8 @@ import com.example.ipandaitems.model.entry.livechina.livechinaBean;
  */
 //aaaaaaa
 public interface Ilivechinaview {
+//    void succeed(livechinaBean livechinaBean);
+
     void succeed(livechinaBean livechinaBean);
 
     void Failure();
