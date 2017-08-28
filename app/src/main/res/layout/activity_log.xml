@@ -10,7 +10,7 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#1F539E">
+        android:background="@color/colorPrimary">
 
         <ImageView
             android:id="@+id/personal_back_img"
@@ -50,52 +50,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="登录"
+                android:text="点击登录"
                 android:textColor="@color/black" />
 
 
         </RelativeLayout>
-
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/person_have_login_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10px"
-        android:background="@color/white"
-        android:padding="10dp">
-
-        <ImageView
-            android:id="@+id/nicknm_img"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:src="@drawable/personal_login_head" />
-
-        <TextView
-            android:id="@+id/person_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/nicknm_img"
-            android:drawablePadding="10dp"
-            android:gravity="center_vertical"
-            android:text="昵称"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/personal_enter_img" />
 
 
     </RelativeLayout>

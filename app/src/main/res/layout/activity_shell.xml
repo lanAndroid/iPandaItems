@@ -16,6 +16,37 @@
     </android.support.v7.widget.Toolbar>
 
     <TextView
+        android:id="@+id/title_left"
+        android:layout_width="105dp"
+        android:layout_height="35dp"
+        android:layout_above="@+id/overall_frame"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/panda_sign"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/shell_tv"
+        android:layout_toLeftOf="@+id/shell_log"
+        android:layout_toStartOf="@+id/shell_log"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/title_inter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/hudong_sign"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <TextView
         android:id="@+id/shell_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,6 +56,7 @@
         android:text=""
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
+
 
     <FrameLayout
         android:id="@+id/overall_frame"
@@ -37,9 +69,8 @@
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
-        android:layout_height="100px"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-
         android:orientation="horizontal">
 
         <RadioButton
@@ -52,7 +83,7 @@
             android:checked="true"
             android:drawableTop="@mipmap/tab_home_normal"
             android:gravity="center"
-            android:paddingTop="8px"
+            android:paddingTop="6dp"
             android:text="首页" />
 
         <RadioButton
@@ -64,7 +95,7 @@
             android:button="@null"
             android:drawableTop="@mipmap/tab_panda_live_normal"
             android:gravity="center"
-            android:paddingTop="8px"
+            android:paddingTop="6dp"
             android:text="熊猫直播" />
 
         <RadioButton
@@ -76,7 +107,7 @@
             android:button="@null"
             android:drawableTop="@mipmap/tab_panda_culture_normals"
             android:gravity="center"
-            android:paddingTop="8px"
+            android:paddingTop="6dp"
             android:text="滚滚视频" />
 
         <RadioButton
@@ -88,7 +119,7 @@
             android:button="@null"
             android:drawableTop="@mipmap/tab_panda_eye_normal"
             android:gravity="center"
-            android:paddingTop="8px"
+            android:paddingTop="6dp"
             android:text="熊猫播报" />
 
         <RadioButton
@@ -100,7 +131,7 @@
             android:button="@null"
             android:drawableTop="@mipmap/tab_live_china_normal"
             android:gravity="center"
-            android:paddingTop="8px"
+            android:paddingTop="6dp"
             android:text="直播中国" />
     </RadioGroup>
 
@@ -109,8 +140,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/overall_frame"
-        android:layout_alignParentEnd="true"
+
         android:layout_alignParentRight="true"
+
         android:layout_alignParentTop="true"
         android:layout_marginRight="10dp"
         app:srcCompat="@mipmap/person_sign" />

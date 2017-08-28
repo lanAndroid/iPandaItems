@@ -44,6 +44,10 @@ public class ShellActivity extends BaseActivity {
     RadioGroup radioGroup;
     @BindView(R.id.shell_log)
     ImageView shellLog;
+    @BindView(R.id.title_left)
+    TextView titleLeft;
+    @BindView(R.id.title_inter)
+    TextView titleInter;
 
 
     @Override
@@ -71,26 +75,36 @@ public class ShellActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.home_btn:
+                titleLeft.setVisibility(View.VISIBLE);
+                titleInter.setVisibility(View.VISIBLE);
                 FragmentBuilder.getInstance().start(HomeFragment.class, R.id.overall_frame).builder();
                 shellTv.setText("");
                 break;
             case R.id.streaming_btn:
+                titleLeft.setVisibility(View.GONE);
+                titleInter.setVisibility(View.GONE);
                 FragmentBuilder.getInstance().start(PandaLiveFragment.class, R.id.overall_frame).builder();
                 shellTv.setText("熊猫直播");
                 //   FragmentBuilder.getInstance().builder();
                 break;
             case R.id.video_btn:
+                titleLeft.setVisibility(View.GONE);
+                titleInter.setVisibility(View.GONE);
                 FragmentBuilder.getInstance().start(VideoFragment.class, R.id.overall_frame).builder();
                 shellTv.setText("滚滚视频");
                 //    FragmentBuilder.getInstance().builder();
                 break;
             case R.id.announce_btn:
+                titleLeft.setVisibility(View.GONE);
+                titleInter.setVisibility(View.GONE);
                 FragmentBuilder.getInstance().start(AnnounceFragment.class, R.id.overall_frame).builder();
 
                 shellTv.setText("熊猫播报");
                 //     FragmentBuilder.getInstance().builder();
                 break;
             case R.id.live_btn:
+                titleLeft.setVisibility(View.GONE);
+                titleInter.setVisibility(View.GONE);
                 FragmentBuilder.getInstance().start(LiveFragment.class, R.id.overall_frame).builder();
                 shellTv.setText("直播中国");
                 //    FragmentBuilder.getInstance().builder();
@@ -117,7 +131,7 @@ public class ShellActivity extends BaseActivity {
             manager.popBackStackImmediate();
             String fragmentName = manager.getBackStackEntryAt(manager.getBackStackEntryCount() - 1).getName();
             BaseFragment fragment = (BaseFragment) manager.findFragmentByTag(fragmentName);
-           FragmentBuilder.getInstance().setLastFragment(fragment);
+            FragmentBuilder.getInstance().setLastFragment(fragment);
         }
 
     }
