@@ -1,7 +1,12 @@
 package com.example.ipandaitems.view.livechina;
 
+import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.util.ArraySet;
+import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +15,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
+import com.example.ipandaitems.model.entry.livechina.livechinaBean;
+import com.example.ipandaitems.presenter.livepresenter.LivePresenterImpl;
+import com.example.ipandaitems.view.livechina.adapter.CFragmentPagerAdapter;
+import com.example.ipandaitems.view.livechina.assist.MyGridLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,18 +34,32 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
-
 /**
  * Created by 张豫耀 on 2017/8/23.
  */
 
-public class LiveFragment extends BaseFragment {
+public class LiveFragment extends BaseFragment implements Ilivechinaview {
     @BindView(R.id.live_china_add_channel)
     ImageView liveChinaAddChannel;
     Unbinder unbinder;
     @BindView(R.id.livechina_linear)
     LinearLayout livechinaLinear;
-
+    @BindView(R.id.livechina_tab)
+    TabLayout livechinaTab;
+    @BindView(R.id.live_china_viewPager)
+    ViewPager liveChinaViewPager;
+    private PopupWindow popupWindow;
+    private Button pop_btn;
+    private MyGridLayout grid1;
+    private MyGridLayout grid2;
+    private List<String> list3 = new ArrayList<>();
+    private ArrayList<String> list = new ArrayList<>();
+    private List<String> list2 = new ArrayList<>();
+    List<Fragment> fragmentList = new ArrayList<>();
+    List<String> titleList = new ArrayList<>();
+    boolean sss = false;
+    private List<livechinaBean.AlllistBean> chinaBeanList = new ArrayList<>();
+    CFragmentPagerAdapter adapter;
 
     @Override
     protected int layoutID() {
@@ -40,12 +68,18 @@ public class LiveFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-
+        LivePresenterImpl livePresenter = new LivePresenterImpl(this);
+        livePresenter.chinaget();
     }
 
     @Override
     protected void loadData() {
-
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.livechina_element, null);
+        popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0xffffff));
+        pop_btn = view.findViewById(R.id.live_chinnal_select_channel_cancel);
+        grid1 = view.findViewById(R.id.userGridView);
+        grid2 = view.findViewById(R.id.otherGridView);
     }
 
     @Override
@@ -69,12 +103,56 @@ public class LiveFragment extends BaseFragment {
 
     @OnClick(R.id.live_china_add_channel)
     public void onViewClicked() {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.livechina_element, null);
-        final PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        popupWindow.setBackgroundDrawable(new ColorDrawable(0xffffff));
         popupWindow.showAtLocation(livechinaLinear, Gravity.NO_GRAVITY, 0, 0);
-        Button button = view.findViewById(R.id.live_chinnal_select_channel_cancel);
-        button.setOnClickListener(new View.OnClickListener() {
+        initpop();
+    }
+
+    private void initpop() {
+
+        grid1.setGridLayoutItemDrageAble(true);
+
+        list.addAll(titleList);
+        grid1.addItems(list);
+
+        //下Gridview 添加item
+        grid2.setGridLayoutItemDrageAble(false);
+        for (String str1 : list3) {
+            if (!list.contains(str1)) {
+                // 打印出list2没有b,d
+                list2.add(str1);
+            }
+        }
+        grid2.addItems(list2);
+
+        grid1.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
+            @Override
+            public void onItemSelect(String indexString) {
+                list.remove(indexString);
+                if (!list2.contains(indexString)) {
+                    list2.add(indexString);
+                    grid2.addTvItem(indexString);
+                }
+            }
+        });
+        grid2.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
+            @Override
+            public void onItemSelect(String indexString) {
+
+                list2.remove(indexString);
+                if (!list.contains(indexString)) {
+                    list.add(indexString);
+//                    grid1.addItems(list);
+                    grid1.addTvItem(indexString);
+
+                }
+
+
+            }
+
+
+        });
+
+        pop_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 popupWindow.dismiss();
@@ -83,4 +161,53 @@ public class LiveFragment extends BaseFragment {
     }
 
 
+    @Override
+    public void succeed(livechinaBean livechinaBean) {
+
+        chinaBeanList.addAll(livechinaBean.getAlllist());
+        for (int i = 0; i < livechinaBean.getAlllist().size(); i++) {
+            list3.add(livechinaBean.getAlllist().get(i).getTitle());
+        }
+
+        if (getContext().getSharedPreferences("data", Context.MODE_PRIVATE).getString("asd", "").equals("")) {
+            for (int i = 0; i < livechinaBean.getTablist().size(); i++) {
+
+                fragmentList.add(new LiveChinaFragment(livechinaBean.getTablist().get(i).getUrl()));
+                titleList.add(livechinaBean.getTablist().get(i).getTitle());
+            }
+
+        } else {
+
+            initload();
+        }
+
+        adapter = new CFragmentPagerAdapter(getChildFragmentManager(), fragmentList, titleList);
+//        liveChinaViewPager.setAdapter(adapter);
+//        livechinaTab.setupWithViewPager(liveChinaViewPager);
+//        livechinaTab.setTabMode(TabLayout.MODE_SCROLLABLE);
+        sss = true;
+    }
+
+    private void initload() {
+        Set<String> setlist = new ArraySet<>();
+        setlist.addAll(list3);
+        titleList.clear();
+        fragmentList.clear();
+
+        Set<String> titleSet = getContext().getSharedPreferences("data", Context.MODE_PRIVATE).getStringSet("slist", setlist);
+        titleList.addAll(titleSet);
+        for (int i = 0; i < titleList.size(); i++) {
+            for (int j = 0; j < chinaBeanList.size(); j++) {
+                if (titleList.get(i).equals(chinaBeanList.get(j).getTitle())) {
+                    fragmentList.add(new LiveChinaFragment(chinaBeanList.get(j).getUrl()));
+                }
+            }
+
+        }
+    }
+
+    @Override
+    public void Failure() {
+        Toast.makeText(getActivity(), "网络请求失败", Toast.LENGTH_SHORT).show();
+    }
 }

@@ -4,6 +4,7 @@ package com.example.ipandaitems.model.retrofit;
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
 import com.example.ipandaitems.model.entry.HomeBean;
+import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -54,20 +55,27 @@ public class RetrofitUtils {
         Observable<Bean> services = apiServices.getServicesGET();
         services.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
 
-        Observable<HomeBean> homeBeanObservable=apiServices.getHomeGET();
+        Observable<HomeBean> homeBeanObservable = apiServices.getHomeGET();
 
         services.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
     //首页 网络请求
     public void GetHomeNetwork(Observer<HomeBean> observer) {
 
-        Observable<HomeBean> homeBeanObservable=apiServices.getHomeGET();
+        Observable<HomeBean> homeBeanObservable = apiServices.getHomeGET();
 
         homeBeanObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    public void annGetNetWork(Observer<AnnBean> observer){
+    public void annGetNetWork(Observer<AnnBean> observer) {
         Observable<AnnBean> annBeanObservable = apiServices.annServicesGET();
+        annBeanObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    // 直播中国
+    public void chinaGetNetWork(Observer<livechinaBean> observer) {
+        Observable<livechinaBean> annBeanObservable = apiServices.getLiveChinaGET();
         annBeanObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 

@@ -4,6 +4,8 @@ package com.example.ipandaitems.model.retrofit;
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
 import com.example.ipandaitems.model.entry.HomeBean;
+import com.example.ipandaitems.model.entry.livechina.livechinaBean;
+import com.example.ipandaitems.utils.UrlUtils;
 
 import java.util.Map;
 
@@ -31,4 +33,10 @@ public interface RetrofitAPIServices {
 
     @GET("http://www.ipanda.com/kehuduan/video/index.json")
     Observable<HomeBean> getHomeGET();
+
+
+    // 直播中国
+    @GET(UrlUtils.LIVECHINAURL)
+    Observable<livechinaBean> getLiveChinaGET();
+
 }
