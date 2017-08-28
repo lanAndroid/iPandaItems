@@ -1,4 +1,4 @@
-package com.example.ipandaitems.view.pandalive.plfragment;
+package com.example.ipandaitems.view.pandalive.adapter;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
@@ -34,7 +34,8 @@ public class PL2AdapterAmaPhotoes extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.pl_recycler_item, null);
-
+        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
+        view.setLayoutParams(params);
         return new MyHolder(view);
     }
 
@@ -48,10 +49,10 @@ public class PL2AdapterAmaPhotoes extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
-    class MyHolder extends RecyclerView.ViewHolder {
+   static class MyHolder extends RecyclerView.ViewHolder {
         TextView name;
         ImageView img;
         TextView time;

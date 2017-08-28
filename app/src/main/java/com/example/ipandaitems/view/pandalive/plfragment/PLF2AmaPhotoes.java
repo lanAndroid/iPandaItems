@@ -11,6 +11,8 @@ import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.presenter.pandalivepresenter.plfragment.PPLAmaPhotoe;
+import com.example.ipandaitems.view.pandalive.adapter.PL2AdapterAmaPhotoes;
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
@@ -40,23 +42,35 @@ public class PLF2AmaPhotoes extends BaseFragment implements PLF2AmaPhotoesView {
 
     @Override
     protected void initView(View view) {
+        pl2Recycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        pl2Recycler.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         PPLAmaPhotoe ppa = new PPLAmaPhotoe(this);
         ppa.initData();
-        pl2Recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new PL2AdapterAmaPhotoes(list, getActivity());
-        pl2Recycler.setAdapter(adapter);
     }
 
     @Override
     public void initData(PLAmaPhotoes plAmaPhotoes) {
         Log.e("tina", plAmaPhotoes.getVideo().size() + "");
         list = plAmaPhotoes.getVideo();
-        adapter.notifyDataSetChanged();
+        adapter = new PL2AdapterAmaPhotoes(list, getActivity());
+        pl2Recycler.setAdapter(adapter);
     }
 
     @Override
     protected void loadData() {
+        pl2Recycler.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override//下拉刷新
+            public void onRefresh() {
 
+            }
+
+            @Override //加载更多
+            public void onLoadMore() {
+
+            }
+        });
+        pl2Recycler.refreshComplete();//下拉刷新完成
+        pl2Recycler.loadMoreComplete();//加载更多完成
     }
 
     @Override
