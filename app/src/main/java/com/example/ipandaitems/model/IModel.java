@@ -13,7 +13,7 @@ import java.util.Map;
 
 import io.reactivex.Observer;
 
-
+//xx
 public interface IModel {
     void RequestGet(Observer<Bean> observer);
 
