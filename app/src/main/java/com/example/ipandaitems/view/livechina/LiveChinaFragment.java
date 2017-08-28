@@ -2,6 +2,7 @@ package com.example.ipandaitems.view.livechina;
 
 import android.view.View;
 
+import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -32,7 +33,7 @@ public class LiveChinaFragment extends BaseFragment implements Ilivechinaview {
 
     @Override
     protected int layoutID() {
-        return 0;
+        return R.layout.fragment_livechina_fragment;
     }
 
     @Override
