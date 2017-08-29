@@ -5,6 +5,8 @@ import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
 import com.example.ipandaitems.model.entry.HomeBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
+import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
+import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
@@ -61,6 +63,16 @@ public class ModelImpl implements IModel {
     @Override
     public void RequestChinaGet(Observer<livechinaBean> observer) {
         RetrofitUtils.getmRetrofitUtils_Demo().chinaGetNetWork(observer);
+    }
+
+    @Override
+    public void RequestChinaContentGet(String url, Observer<livechinacontentbean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getLiveChinaContent(url, observer);
+    }
+
+    @Override
+    public void RequestChinaVideoGet(Map<String, String> map, Observer<livechinavideobean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getLiveChinaVideo(map, observer);
     }
 
 }

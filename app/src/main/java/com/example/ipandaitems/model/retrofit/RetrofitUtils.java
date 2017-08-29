@@ -5,6 +5,8 @@ import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
 import com.example.ipandaitems.model.entry.HomeBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
+import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
+import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
@@ -98,6 +100,17 @@ public class RetrofitUtils {
     public void getPLAmaPhotoes(Observer<PLAmaPhotoes> observer) {
         Observable<PLAmaPhotoes> plAmaPhotoesGET = apiServices.getPLAmaPhotoesGET();
         plAmaPhotoesGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+
+    public void getLiveChinaContent(String url, Observer<livechinacontentbean> observer) {
+        Observable<livechinacontentbean> livechinacontent = apiServices.getLiveChinaContentGET(url);
+        livechinacontent.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void getLiveChinaVideo(Map<String, String> map, Observer<livechinavideobean> observer) {
+        Observable<livechinavideobean> LiveChinaVideoGrt = apiServices.getLiveChinaVideoGrt(map);
+        LiveChinaVideoGrt.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
 }

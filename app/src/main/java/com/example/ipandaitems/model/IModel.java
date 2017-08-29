@@ -5,6 +5,8 @@ import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
 import com.example.ipandaitems.model.entry.HomeBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
+import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
+import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
@@ -30,4 +32,8 @@ public interface IModel {
     void doAmaPhotoes(Observer<PLAmaPhotoes> observer);
 
     void RequestChinaGet(Observer<livechinaBean> observer);
+
+    void RequestChinaContentGet(String url, Observer<livechinacontentbean> observer);
+
+    void RequestChinaVideoGet(Map<String,String> map, Observer<livechinavideobean> observer);
 }
