@@ -21,7 +21,7 @@ public class LivePresenterImpl implements LiveIPresenter, Observer<livechinaBean
 
     @Override
     public void chinaget() {
-        model.RequestChinaGet(this);
+//        model.RequestChinaGet(this);
     }
 
     @Override

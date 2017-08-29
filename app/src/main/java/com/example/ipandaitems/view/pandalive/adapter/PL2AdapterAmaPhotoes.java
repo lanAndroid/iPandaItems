@@ -54,6 +54,7 @@ public class PL2AdapterAmaPhotoes extends RecyclerView.Adapter {
         MyHolder mh = (MyHolder) holder;
         mh.name.setText(list.get(position).getT());
         mh.time.setText(list.get(position).getPtime());
+        mh.imgtime.setText(list.get(position).getLen());
         Glide.with(context).load(list.get(position).getImg()).into(mh.img);
         mh.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,12 +73,14 @@ public class PL2AdapterAmaPhotoes extends RecyclerView.Adapter {
         TextView name;
         ImageView img;
         TextView time;
+        TextView imgtime;
 
         public MyHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.pl_recycler_item_name);
             img = itemView.findViewById(R.id.pl_recycler_item_img);
             time = itemView.findViewById(R.id.pl_recycler_item_time);
+            imgtime = itemView.findViewById(R.id.img_time);
         }
     }
 

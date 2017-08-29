@@ -1,22 +1,35 @@
 package com.example.ipandaitems.view.pandalive.plfragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
+import com.example.ipandaitems.model.entry.pandalive.PLHome;
+import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.presenter.pandalivepresenter.plfragment.PPLLives;
+import com.example.ipandaitems.view.pandalive.adapter.PL1AdapterLive;
+import com.example.ipandaitems.view.pandalive.view.MyGridView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.vov.vitamio.widget.VideoView;
+
+import static com.example.ipandaitems.R.id.pl_live_abstract;
 
 /**
  * @name yanantian
@@ -25,24 +38,41 @@ import butterknife.Unbinder;
  * @WX 15978622391
  */
 
-public class PLFLive extends BaseFragment {
+public class PLFLive extends BaseFragment implements PLFLiveView {
 
 
-//    @BindView(R.id.pl_live_video)
-//    io.vov.vitamio.widget.VideoView plLiveVideo;
+    @BindView(R.id.pl_live_video)
+    VideoView plLiveVideo;
     @BindView(R.id.pl_live_name)
     TextView plLiveName;
-    @BindView(R.id.pl_live_abstract)
+    @BindView(pl_live_abstract)
     ImageView plLiveAbstract;
     @BindView(R.id.pl_live_content)
     TextView plLiveContent;
-    @BindView(R.id.pl_live_tablayout)
-    TabLayout plLiveTablayout;
-    @BindView(R.id.pl_live_viewpager)
-    ViewPager plLiveViewpager;
+    @BindView(R.id.pl_live_duoshijiao)
+    TextView plLiveDuoshijiao;
+    @BindView(R.id.pl_live_kanliao)
+    TextView plLiveKanliao;
+    @BindView(R.id.pl_live_duoshijiao_biao)
+    TextView plLiveDuoshijiaoBiao;
+    @BindView(R.id.pl_live_kanliao_biao)
+    TextView plLiveKanliaoBiao;
+    @BindView(R.id.pl_live_chat_edit)
+    EditText plLiveChatEdit;
+    @BindView(R.id.pl_live_chat_but)
+    Button plLiveChatBut;
+    @BindView(R.id.pl_live_chat_listview)
+    ListView plLiveChatListview;
+    @BindView(R.id.pl_live_chat)
+    LinearLayout plLiveChat;
     @BindView(R.id.pl_live_scroll)
     ScrollView plLiveScroll;
     Unbinder unbinder;
+    @BindView(R.id.pl_live_multi_grid)
+    MyGridView plLiveMultiGrid;
+    private boolean boo = false;
+    private PL1AdapterLive live;
+    private List<PLLive.ListBean> list;
 
     @Override
     protected int layoutID() {
@@ -51,7 +81,9 @@ public class PLFLive extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-
+        PPLLives pp = new PPLLives(this);
+        pp.getViews();
+        pp.getLives();
     }
 
     @Override
@@ -62,6 +94,21 @@ public class PLFLive extends BaseFragment {
     @Override
     protected void initListener() {
 
+    }
+
+    @Override
+    public void getDatas(PLHome plHome) {
+        plLiveName.setText(plHome.getLive().get(0).getTitle());
+        plLiveContent.setText(plHome.getLive().get(0).getBrief());
+        plLiveDuoshijiao.setText(plHome.getBookmark().getMultiple().get(0).getTitle());
+        plLiveKanliao.setText(plHome.getBookmark().getWatchTalk().get(0).getTitle());
+    }
+
+    @Override
+    public void getDataLive(PLLive plLive) {
+        list = plLive.getList();
+        live = new PL1AdapterLive(getActivity(), list);
+        plLiveMultiGrid.setAdapter(live);
     }
 
     @Override
@@ -78,12 +125,38 @@ public class PLFLive extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.pl_live_abstract, R.id.pl_live_content})
+    @OnClick({pl_live_abstract, R.id.pl_live_duoshijiao, R.id.pl_live_kanliao, R.id.pl_live_chat_but})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.pl_live_abstract:
+            case pl_live_abstract:
+                if (boo == true) {
+         plLiveAbstract.setImageResource(R.drawable.live_china_detail_down);
+                    plLiveContent.setVisibility(View.GONE);
+                    boo = false;
+                } else {
+                    plLiveAbstract.setImageResource(R.drawable.live_china_detail_up);
+                    plLiveContent.setVisibility(View.VISIBLE);
+                    boo = true;
+                }
                 break;
-            case R.id.pl_live_content:
+            case R.id.pl_live_duoshijiao:
+                plLiveDuoshijiao.setTextColor(getActivity().getResources().getColor(R.color.tianse));
+                plLiveDuoshijiaoBiao.setBackgroundColor(getResources().getColor(R.color.tianse));
+                plLiveKanliao.setTextColor(Color.BLACK);
+                plLiveKanliaoBiao.setBackgroundColor(0x00000000);
+                plLiveMultiGrid.setVisibility(View.VISIBLE);
+                plLiveChat.setVisibility(View.GONE);
+                break;
+            case R.id.pl_live_kanliao:
+                plLiveKanliao.setTextColor(getActivity().getResources().getColor(R.color.tianse));
+                plLiveKanliaoBiao.setBackgroundColor(getResources().getColor(R.color.tianse));
+                plLiveDuoshijiao.setTextColor(Color.BLACK);
+                plLiveDuoshijiaoBiao.setBackgroundColor(0x00000000);
+                plLiveMultiGrid.setVisibility(View.GONE);
+                plLiveChat.setVisibility(View.VISIBLE);
+                break;
+            case R.id.pl_live_chat_but:
+
                 break;
         }
     }
