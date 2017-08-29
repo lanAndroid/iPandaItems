@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+  >
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+        <ImageView
+            android:id="@+id/register_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/personal_back_img"></ImageView>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="130px"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/tvphonereg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:background="@drawable/shell_btn"
+            android:button="@null"
+            android:checked="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="手机注册"
+            android:textColor="@color/black"
+            android:textSize="14sp"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/tvemailreg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:background="@drawable/shell_btn"
+            android:button="@null"
+            android:gravity="center"
+            android:text="邮箱注册"
+            android:textColor="@color/black"
+            android:textSize="14sp"></RadioButton>
+
+    </RadioGroup>
+
+
+    <FrameLayout
+        android:id="@+id/framelayout_register_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+</LinearLayout>

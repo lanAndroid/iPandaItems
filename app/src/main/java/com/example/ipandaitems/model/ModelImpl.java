@@ -20,23 +20,23 @@ public class ModelImpl implements IModel {
     @Override
     public void RequestGet(Observer<Bean> observer) {
 
-      RetrofitUtils.getmRetrofitUtils_Demo().GetNetwork(observer);
+        RetrofitUtils.getmRetrofitUtils_Demo().GetNetwork(observer);
 
     }
 
     @Override
     public void RequestPost(Map<String, String> map, Observer<Bean> observer) {
-   RetrofitUtils.getmRetrofitUtils_Demo().PostNetwork(map, observer);
+        RetrofitUtils.getmRetrofitUtils_Demo().PostNetwork(map, observer);
     }
 
     @Override
     public void AnnRequsetGet(Observer<AnnBean> observer) {
-      RetrofitUtils.getmRetrofitUtils_Demo().annGetNetWork(observer);
+        RetrofitUtils.getmRetrofitUtils_Demo().annGetNetWork(observer);
     }
 
     @Override
     public void RequestHomeGet(Observer<HomeBean> observer) {
-      RetrofitUtils.getmRetrofitUtils_Demo().GetHomeNetwork(observer);
+        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeNetwork(observer);
     }
 
     //    熊猫直播 第一次网络获取
@@ -57,5 +57,10 @@ public class ModelImpl implements IModel {
         RetrofitUtils.getmRetrofitUtils_Demo().getPLAmaPhotoes(observer);
     }
 
+    //    直播中国
+    @Override
+    public void RequestChinaGet(Observer<livechinaBean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().chinaGetNetWork(observer);
+    }
 
 }
