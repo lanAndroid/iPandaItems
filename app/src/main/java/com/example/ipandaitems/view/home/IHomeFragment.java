@@ -1,7 +1,9 @@
 package com.example.ipandaitems.view.home;
 
 
-import com.example.ipandaitems.model.entry.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomeRollingBean;
 
 /**
  * Created by xiaogang on 2017/8/25.
@@ -9,4 +11,6 @@ import com.example.ipandaitems.model.entry.HomeBean;
 
 public interface  IHomeFragment {
     void gethomebean(HomeBean homeBean);
+    void gethomeMarvellbean(HomeMarvellBean homeMarvellBean);
+    void gethomeRollingbean(HomeRollingBean homeRollingBean);
 }
