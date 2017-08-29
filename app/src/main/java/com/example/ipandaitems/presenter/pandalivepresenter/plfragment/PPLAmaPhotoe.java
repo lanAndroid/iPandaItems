@@ -1,12 +1,8 @@
 package com.example.ipandaitems.presenter.pandalivepresenter.plfragment;
 
-import android.support.v4.app.FragmentActivity;
-
 import com.example.ipandaitems.model.ModelImpl;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.view.pandalive.plfragment.PLF2AmaPhotoesView;
-
-import java.util.ArrayList;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
