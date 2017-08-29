@@ -3,7 +3,9 @@ package com.example.ipandaitems.model.retrofit;
 
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
-import com.example.ipandaitems.model.entry.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomeRollingBean;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -64,6 +66,20 @@ public class RetrofitUtils {
         Observable<HomeBean> homeBeanObservable=apiServices.getHomeGET();
 
         homeBeanObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+    //首页 精彩一刻网络请求
+    public void GetHomeMarvellwork(Observer<HomeMarvellBean> observer) {
+
+        Observable<HomeMarvellBean> MarvellObservable=apiServices.getHomeMarvellGET();
+
+        MarvellObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+    //首页 滚滚视频网络请求
+    public void GetHomeRollingwork(Observer<HomeRollingBean> observer) {
+
+        Observable<HomeRollingBean> RollingObservable=apiServices.getHomeRollingGET();
+
+        RollingObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
     public void annGetNetWork(Observer<AnnBean> observer){

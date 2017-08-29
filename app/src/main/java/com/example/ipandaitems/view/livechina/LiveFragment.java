@@ -73,7 +73,7 @@ public class LiveFragment extends BaseFragment {
         final PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         popupWindow.setBackgroundDrawable(new ColorDrawable(0xffffff));
         popupWindow.showAtLocation(livechinaLinear, Gravity.NO_GRAVITY, 0, 0);
-        Button button = view.findViewById(R.id.live_chinnal_select_channel_cancel);
+        Button button = (Button) view.findViewById(R.id.live_chinnal_select_channel_cancel);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -3,7 +3,10 @@ package com.example.ipandaitems.model.retrofit;
 
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
-import com.example.ipandaitems.model.entry.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomeRollingBean;
+import com.example.ipandaitems.utils.UrlUtils;
 
 import java.util.Map;
 
@@ -29,6 +32,13 @@ public interface RetrofitAPIServices {
     @GET("http://www.ipanda.com/kehuduan/video/index.json")
     Observable<AnnBean> annServicesGET();
 
-    @GET("http://www.ipanda.com/kehuduan/video/index.json")
+    @GET(UrlUtils.HOMEURLALL)
     Observable<HomeBean> getHomeGET();
+
+    @GET("http://www.ipanda.com/kehuduan/shipinliebieye/jingcaiyike/index.json")
+    Observable<HomeMarvellBean> getHomeMarvellGET();
+
+    @GET("http://www.ipanda.com/kehuduan/shipinliebieye/video/index.json")
+    Observable<HomeRollingBean> getHomeRollingGET();
 }
+

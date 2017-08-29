@@ -1,4 +1,4 @@
-package com.example.ipandaitems.model.entry;
+package com.example.ipandaitems.model.entry.home;
 
 import java.util.List;
 
