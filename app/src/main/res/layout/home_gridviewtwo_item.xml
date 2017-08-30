@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:background="#FFFFFF"
     android:layout_width="match_parent"
-    android:layout_height="980px">
+    android:layout_height="1080px">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="120px"
@@ -26,7 +26,7 @@
         android:layout_marginTop="15px"
         android:id="@+id/home_grid_Marvellous_rv"
         android:layout_width="match_parent"
-        android:layout_height="950px"
+        android:layout_height="1050px"
 
         ></android.support.v7.widget.RecyclerView>
 
