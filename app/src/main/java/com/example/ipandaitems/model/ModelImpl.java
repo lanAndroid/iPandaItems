@@ -69,4 +69,5 @@ public class ModelImpl implements IModel {
     public void doTopList(String url, Observer<TopListBean> observer) {
         RetrofitUtils.getmRetrofitUtils_Demo().getTopList(observer,url);
     }
+    //
 }
