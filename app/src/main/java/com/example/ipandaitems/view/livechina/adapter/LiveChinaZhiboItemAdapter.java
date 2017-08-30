@@ -19,7 +19,6 @@ import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 import com.example.ipandaitems.presenter.livepresenter.LivePresenterImpl;
 import com.example.ipandaitems.view.livechina.Ilivechinaview;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +33,7 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
     private Context context;
     List<livechinacontentbean.LiveBean> list;
     int s = 0;
-    private List<livechinavideobean> flv = new ArrayList<>();
+    private livechinavideobean flv;
     int a = 0;
     private Map<String, String> map;
 
@@ -51,7 +50,6 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
         return new ViewHolder(view);
     }
 
-    // http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hdfhgcdnhs&client=androidapp
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         map = new HashMap<>();
@@ -85,8 +83,8 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
             }
         });
         LivePresenterImpl presenter = new LivePresenterImpl(this);
-        presenter.chinavideo("http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd" + list.get(position).getId() + "&client=androidapp");
-//        Vitamio.isInitialized(context);
+        presenter.chinavideo(map);
+
 //        final MediaPlayer mediaPlayer = new MediaPlayer(context);
 //        holder.bo.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -94,6 +92,7 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
 //                holder.videoview_top.stopPlayback();
 //                notifyItemChanged(holder.getLayoutPosition() - 1);
 //                Log.d("LiveChinaZhiboItemAdapt", "a:" + a);
+//
 //                a = position;
 //                if (position == holder.getLayoutPosition() - 1) {
 //
@@ -102,7 +101,7 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
 //
 //                    Toast.makeText(context, "播放", Toast.LENGTH_SHORT).show();
 //
-//                    holder.videoview_top.setVideoURI(Uri.parse(flv.get(0).getFlv_url().getFlv2() + flv.get(0).getFlv_cdn_info().getCdn_code()));
+//                    holder.videoview_top.setVideoURI(Uri.parse(flv.getFlv_url().getFlv2()));
 //
 //                    holder.videoview_top.setVideoQuality(MediaPlayer.VIDEOQUALITY_LOW);
 //
@@ -132,7 +131,8 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
 
     @Override
     public void succeedvideo(livechinavideobean livechinavideobean) {
-        flv.add(livechinavideobean);
+        flv = new livechinavideobean();
+        flv = livechinavideobean;
 
     }
 

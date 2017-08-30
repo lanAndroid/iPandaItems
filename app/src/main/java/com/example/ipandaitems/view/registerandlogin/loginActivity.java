@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class loginActivity extends BaseActivity {
 
@@ -50,6 +51,7 @@ public class loginActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
+    @Optional
     @OnClick({R.id.login_finish, R.id.login_regis})
     public void onViewClicked(View view) {
         switch (view.getId()) {

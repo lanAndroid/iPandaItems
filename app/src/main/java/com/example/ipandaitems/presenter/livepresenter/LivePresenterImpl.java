@@ -7,6 +7,8 @@ import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 import com.example.ipandaitems.view.livechina.Ilivechinaview;
 
+import java.util.Map;
+
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -73,8 +75,8 @@ public class LivePresenterImpl implements LiveIPresenter {
     }
 
     @Override
-    public void chinavideo(String url) {
-        model.RequestChinaVideoGet(url, new Observer<livechinavideobean>() {
+    public void chinavideo(Map<String, String> map) {
+        model.RequestChinaVideoGet(map, new Observer<livechinavideobean>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
 

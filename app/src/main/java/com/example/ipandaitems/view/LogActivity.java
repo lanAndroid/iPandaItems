@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Optional;
 
 
 public class LogActivity extends BaseActivity {
@@ -39,7 +40,7 @@ public class LogActivity extends BaseActivity {
 
     @Override
     protected void initView() throws SQLException {
-
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -59,6 +60,7 @@ public class LogActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
+    @Optional
     @OnClick({R.id.personal_back_img, R.id.person_no_login_layout, R.id.personal_history_layout, R.id.personal_shoucang_layout, R.id.personal_set_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {

@@ -8,9 +8,6 @@ import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.HomeBean;
-import com.example.ipandaitems.model.entry.TopBean;
-import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -32,6 +29,8 @@ public interface IModel {
     void AnnRequsetGet(Observer<AnnBean> observer);
 
     void RequestHomeGet(Observer<HomeBean> observer);
+
+
     //    熊猫直播 第一次网络获取
     void doGet(Observer<PLHome> observer);
 
@@ -39,24 +38,23 @@ public interface IModel {
     void doGets(Observer<PLLive> observer);
 
     //    熊猫直播 精彩一刻
-    void doAmaPhotoes(Observer<PLAmaPhotoes> observer);
+    void doAmaPhotoes(PLAmaPhotoes observer);
 
     // 熊猫播报top
     void doTop(Observer<TopBean> observer);
+
     //topList
-    void doTopList(String url,Observer<TopListBean> observer);
+    void doTopList(String url, Observer<TopListBean> observer);
+
     void RequestChinaGet(Observer<livechinaBean> observer);
 
     void RequestChinaContentGet(String url, Observer<livechinacontentbean> observer);
 
-    void RequestChinaVideoGet(String url, Observer<livechinavideobean> observer);
+    void RequestChinaVideoGet(Map<String, String> map, Observer<livechinavideobean> observer);
 
     void RequestHomeMarvellGet(Observer<HomeMarvellBean> observer);
 
     void RequestHomeRollingGet(Observer<HomeRollingBean> observer);
 
     void RequestOriGinalGet(Observer<originalbean> observer);
-    void doTop(Observer<TopBean> observer);
-    //topList
-    void doTopList(String url,Observer<TopListBean> observer);
 }

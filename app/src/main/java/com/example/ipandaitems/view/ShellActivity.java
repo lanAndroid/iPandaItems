@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Process;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -22,33 +23,24 @@ import com.example.ipandaitems.view.video.VideoFragment;
 
 import java.sql.SQLException;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class ShellActivity extends BaseActivity {
 
-    @BindView(R.id.home_btn)
-    RadioButton homeBtn;
-    @BindView(R.id.streaming_btn)
-    RadioButton streamingBtn;
-    @BindView(R.id.video_btn)
-    RadioButton videoBtn;
-    @BindView(R.id.announce_btn)
-    RadioButton announceBtn;
-    @BindView(R.id.live_btn)
-    RadioButton liveBtn;
-    @BindView(R.id.shell_tv)
-    TextView shellTv;
-    @BindView(R.id.radioGroup)
-    RadioGroup radioGroup;
-    @BindView(R.id.shell_log)
-    ImageView shellLog;
-    @BindView(R.id.title_left)
-    TextView titleLeft;
-    @BindView(R.id.title_inter)
-    TextView titleInter;
 
+
+    private TextView title_left;
+    private TextView title_inter;
+    private TextView shell_tv;
+    private FrameLayout overall_frame;
+    private RadioButton home_btn;
+    private RadioButton streaming_btn;
+    private RadioButton video_btn;
+    private RadioButton announce_btn;
+    private RadioButton live_btn;
+    private RadioGroup radioGroup;
+    private ImageView shell_log;
 
     @Override
     protected int layoutID() {
@@ -57,12 +49,21 @@ public class ShellActivity extends BaseActivity {
 
     @Override
     protected void initView() throws SQLException {
+        title_left = (TextView) findViewById(R.id.title_left);
+        title_inter = (TextView) findViewById(R.id.title_inter);
+        shell_tv = (TextView) findViewById(R.id.shell_tv);
+        overall_frame = (FrameLayout) findViewById(R.id.overall_frame);
+        home_btn = (RadioButton) findViewById(R.id.home_btn);
+        streaming_btn = (RadioButton) findViewById(R.id.streaming_btn);
+        video_btn = (RadioButton) findViewById(R.id.video_btn);
+        announce_btn = (RadioButton) findViewById(R.id.announce_btn);
     }
 
     @Override
     protected void loadData() {
         FragmentBuilder.getInstance().start(HomeFragment.class, R.id.overall_frame).builder();
         //     FragmentBuilder.getInstance().builder();
+
     }
 
     @Override
@@ -70,43 +71,43 @@ public class ShellActivity extends BaseActivity {
 
     }
 
-
-    @OnClick({R.id.home_btn, R.id.streaming_btn, R.id.video_btn, R.id.announce_btn, R.id.live_btn, R.id.shell_log,R.id.title_inter})
+    @Optional
+    @OnClick({R.id.home_btn, R.id.streaming_btn, R.id.video_btn, R.id.announce_btn, R.id.live_btn, R.id.shell_log, R.id.title_inter})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.home_btn:
-                titleLeft.setVisibility(View.VISIBLE);
-                titleInter.setVisibility(View.VISIBLE);
+                title_left.setVisibility(View.VISIBLE);
+                title_inter.setVisibility(View.VISIBLE);
                 FragmentBuilder.getInstance().start(HomeFragment.class, R.id.overall_frame).builder();
-                shellTv.setText("");
+                shell_tv.setText("");
                 break;
             case R.id.streaming_btn:
-                titleLeft.setVisibility(View.GONE);
-                titleInter.setVisibility(View.GONE);
+                title_left.setVisibility(View.GONE);
+                title_inter.setVisibility(View.GONE);
                 FragmentBuilder.getInstance().start(PandaLiveFragment.class, R.id.overall_frame).builder();
-                shellTv.setText("熊猫直播");
+                shell_tv.setText("熊猫直播");
                 //   FragmentBuilder.getInstance().builder();
                 break;
             case R.id.video_btn:
-                titleLeft.setVisibility(View.GONE);
-                titleInter.setVisibility(View.GONE);
+                title_left.setVisibility(View.GONE);
+                title_inter.setVisibility(View.GONE);
                 FragmentBuilder.getInstance().start(VideoFragment.class, R.id.overall_frame).builder();
-                shellTv.setText("滚滚视频");
+                shell_tv.setText("滚滚视频");
                 //    FragmentBuilder.getInstance().builder();
                 break;
             case R.id.announce_btn:
-                titleLeft.setVisibility(View.GONE);
-                titleInter.setVisibility(View.GONE);
+                title_left.setVisibility(View.GONE);
+                title_inter.setVisibility(View.GONE);
                 FragmentBuilder.getInstance().start(AnnounceFragment.class, R.id.overall_frame).builder();
 
-                shellTv.setText("熊猫播报");
+                shell_tv.setText("熊猫播报");
                 //     FragmentBuilder.getInstance().builder();
                 break;
             case R.id.live_btn:
-                titleLeft.setVisibility(View.GONE);
-                titleInter.setVisibility(View.GONE);
+                title_left.setVisibility(View.GONE);
+                title_inter.setVisibility(View.GONE);
                 FragmentBuilder.getInstance().start(LiveFragment.class, R.id.overall_frame).builder();
-                shellTv.setText("直播中国");
+                shell_tv.setText("直播中国");
                 //    FragmentBuilder.getInstance().builder();
                 break;
             case R.id.shell_log:
@@ -115,7 +116,6 @@ public class ShellActivity extends BaseActivity {
             case R.id.title_inter:
                 startActivity(new Intent(ShellActivity.this, OrinGinalActivity.class));
                 break;
-
         }
         //    FragmentBuilder.getInstance().builder();
     }
@@ -139,15 +139,14 @@ public class ShellActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
     @OnClick()
     public void onViewClicked() {
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) and run LayoutCreator again
     }
 }

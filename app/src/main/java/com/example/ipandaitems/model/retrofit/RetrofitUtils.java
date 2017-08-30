@@ -3,14 +3,9 @@ package com.example.ipandaitems.model.retrofit;
 
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
-import com.example.ipandaitems.model.entry.TopBean;
-import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.HomeBean;
-import com.example.ipandaitems.model.entry.TopBean;
-import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -19,7 +14,6 @@ import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +22,6 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -127,16 +120,6 @@ public class RetrofitUtils {
         Observable<PLAmaPhotoes> plAmaPhotoesGET = apiServices.getPLAmaPhotoesGET();
         plAmaPhotoesGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
-    //TOP
-    public void getTOP(Observer<TopBean> observer){
-        Observable<TopBean> topGET = apiServices.getTopGET();
-        topGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
-    //TopList列表
-    public void getTopList(Observer<TopListBean> observer,String url){
-        Observable<TopListBean> topList = apiServices.getTopList(url);
-        topList.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
 
 
     public void getLiveChinaContent(String url, Observer<livechinacontentbean> observer) {
@@ -144,8 +127,8 @@ public class RetrofitUtils {
         livechinacontent.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    public void getLiveChinaVideo(String url, Observer<livechinavideobean> observer) {
-        Observable<livechinavideobean> LiveChinaVideoGrt = apiServices.getLiveChinaVideoGrt(url);
+    public void getLiveChinaVideo(Map<String, String> map, Observer<livechinavideobean> observer) {
+        Observable<livechinavideobean> LiveChinaVideoGrt = apiServices.getLiveChinaVideoGrt(map);
         LiveChinaVideoGrt.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
@@ -154,14 +137,4 @@ public class RetrofitUtils {
         LiveChinaVideoGrt.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    public void getTOP(Observer<TopBean> observer) {
-        Observable<TopBean> topGET = apiServices.getTopGET();
-        topGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
-
-    //TopList列表
-    public void getTopList(Observer<TopListBean> observer, String url) {
-        Observable<TopListBean> topList = apiServices.getTopList(url);
-        topList.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
 }

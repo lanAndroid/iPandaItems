@@ -7,7 +7,7 @@
     <RelativeLayout
         android:background="@drawable/_no_img"
         android:layout_width="match_parent"
-        android:layout_height="600px">
+        android:layout_height="300dp">
 
         <io.vov.vitamio.widget.VideoView
             android:id="@+id/pl_live_video"

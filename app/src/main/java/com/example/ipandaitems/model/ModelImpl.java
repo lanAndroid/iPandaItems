@@ -8,9 +8,6 @@ import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.HomeBean;
-import com.example.ipandaitems.model.entry.TopBean;
-import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -23,6 +20,8 @@ import com.example.ipandaitems.model.retrofit.RetrofitUtils;
 import java.util.Map;
 
 import io.reactivex.Observer;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
 
 
 public class ModelImpl implements IModel {
@@ -47,12 +46,14 @@ public class ModelImpl implements IModel {
     @Override
     public void RequestHomeGet(Observer<HomeBean> observer) {
         RetrofitUtils.getmRetrofitUtils_Demo().GetHomeNetwork(observer);
+
     }
 
     //    熊猫直播 第一次网络获取
     @Override
     public void doGet(Observer<PLHome> observer) {
         RetrofitUtils.getmRetrofitUtils_Demo().getPandaLive(observer);
+
     }
 
     //    熊猫直播 第二次网络获取
@@ -63,14 +64,46 @@ public class ModelImpl implements IModel {
 
     //    熊猫直播 精彩一刻
     @Override
-    public void doAmaPhotoes(Observer<PLAmaPhotoes> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getPLAmaPhotoes(observer);
+    public void doAmaPhotoes(final PLAmaPhotoes observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getPLAmaPhotoes(new Observer<PLAmaPhotoes>() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(@NonNull PLAmaPhotoes plAmaPhotoes) {
+              plAmaPhotoes=observer;
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+
+//        RetrofitUtils.getmRetrofitUtils_Demo().getPLAmaPhotoes(observer);
     }
 
-//  熊猫播报top
     @Override
     public void doTop(Observer<TopBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getTOP(observer);
+
+    }
+
+    @Override
+    public void doTopList(String url, Observer<TopListBean> observer) {
+
+    }
+
+    //    直播中国
+    @Override
+    public void RequestChinaGet(Observer<livechinaBean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().chinaGetNetWork(observer);
     }
 
     @Override
@@ -79,8 +112,8 @@ public class ModelImpl implements IModel {
     }
 
     @Override
-    public void RequestChinaVideoGet(String url, Observer<livechinavideobean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getLiveChinaVideo(url, observer);
+    public void RequestChinaVideoGet(Map<String, String> map, Observer<livechinavideobean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getLiveChinaVideo(map, observer);
     }
 
     @Override
@@ -98,18 +131,4 @@ public class ModelImpl implements IModel {
         RetrofitUtils.getmRetrofitUtils_Demo().getOriGinal(observer);
     }
 
-    @Override
-    public void doTop(Observer<TopBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getTOP(observer);
-    }
-
-    @Override
-    public void doTopList(String url, Observer<TopListBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getTopList(observer, url);
-    }
-    @Override
-    public void doTopList(String url, Observer<TopListBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getTopList(observer,url);
-    }
-    ///
 }
