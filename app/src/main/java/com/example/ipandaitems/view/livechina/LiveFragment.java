@@ -183,15 +183,10 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview, View.O
         set.addAll(list);
         editor.putStringSet("slist", set);
         editor.commit();
-
-
         if (sss) {
             if (!getContext().getSharedPreferences("data", Context.MODE_PRIVATE).getString("asd", "").equals("")) {
-
                 initload();
-
                 adapter.notifyDataSetChanged();
-
             }
         }
         if (list.size() > 0) {

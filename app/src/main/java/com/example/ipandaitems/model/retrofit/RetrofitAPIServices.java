@@ -8,9 +8,6 @@ import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.HomeBean;
-import com.example.ipandaitems.model.entry.TopBean;
-import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -23,11 +20,11 @@ import com.example.ipandaitems.utils.UrlUtils;
 import java.util.Map;
 
 import io.reactivex.Observable;
-import okhttp3.ResponseBody;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Url;
 
 /**
  * Created by 韩志军 on 2017/8/19.
@@ -64,12 +61,8 @@ public interface RetrofitAPIServices {
     //    熊猫直播 精彩一刻
     @GET(UrlUtils.ORIGINALNEWS)
     Observable<PLAmaPhotoes> getPLAmaPhotoesGET();
-    //Top
-   @GET(UrlUtils.TOP_MAP)
-    Observable<TopBean> getTopGET();
-    //TopList
-    @GET
-    Observable<TopListBean> getTopList(@Url String url);
+
+
 
     @GET()
     Observable<livechinacontentbean> getLiveChinaContentGET(@Url String url);

@@ -8,9 +8,6 @@ import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.HomeBean;
-import com.example.ipandaitems.model.entry.TopBean;
-import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -19,7 +16,6 @@ import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +24,6 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -50,7 +45,13 @@ public class RetrofitUtils {
                 .client(okhttp)
                 .baseUrl("https://www.baidu.com/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create()).build().create(RetrofitAPIServices.class);
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(RetrofitAPIServices.class);
+//        apiServices = new Retrofit.Builder()
+//                .client(okhttp)
+//                .baseUrl("https://www.baidu.com/")
+//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//                .addConverterFactory(GsonConverterFactory.create()).build().create(RetrofitAPIServices.class);
 
     }
 
@@ -127,16 +128,6 @@ public class RetrofitUtils {
         Observable<PLAmaPhotoes> plAmaPhotoesGET = apiServices.getPLAmaPhotoesGET();
         plAmaPhotoesGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
-    //TOP
-    public void getTOP(Observer<TopBean> observer){
-        Observable<TopBean> topGET = apiServices.getTopGET();
-        topGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
-    //TopList列表
-    public void getTopList(Observer<TopListBean> observer,String url){
-        Observable<TopListBean> topList = apiServices.getTopList(url);
-        topList.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
 
 
     public void getLiveChinaContent(String url, Observer<livechinacontentbean> observer) {
@@ -160,7 +151,7 @@ public class RetrofitUtils {
     }
 
     //TopList列表
-    public void getTopList(Observer<TopListBean> observer, String url) {
+    public void getTopList(String url, Observer<TopListBean> observer) {
         Observable<TopListBean> topList = apiServices.getTopList(url);
         topList.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }

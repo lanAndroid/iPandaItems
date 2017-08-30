@@ -3,7 +3,6 @@ package com.example.ipandaitems.view.video;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -33,7 +32,7 @@ public class VideoWebs extends AppCompatActivity {
         setContentView(R.layout.videoweb);
         ButterKnife.bind(this);
         Intent intent = getIntent();
-        web = intent.getStringExtra("web");
+        web = intent.getStringExtra(" web");
         WebSettings webSettings=videoWeb.getSettings();
         webSettings.setSupportZoom(true);
         webSettings.setUseWideViewPort(true);

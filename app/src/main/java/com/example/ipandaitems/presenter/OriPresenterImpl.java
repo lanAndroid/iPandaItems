@@ -1,6 +1,5 @@
 package com.example.ipandaitems.presenter;
 
-import com.example.ipandaitems.model.ModelImpl;
 import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.view.originalIView;
 
