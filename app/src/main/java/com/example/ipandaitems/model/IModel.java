@@ -19,9 +19,10 @@ import com.example.ipandaitems.model.entry.pandalive.PLLive;
 import java.util.Map;
 
 import io.reactivex.Observer;
+import retrofit2.Call;
 
 //xx
-public interface IModel {
+public interface IModel  {
     void RequestGet(Observer<Bean> observer);
 
     void RequestPost(Map<String, String> map, Observer<Bean> observer);

@@ -76,6 +76,7 @@ public class ModelImpl implements IModel {
               plAmaPhotoes=observer;
             }
 
+
             @Override
             public void onError(@NonNull Throwable e) {
 
