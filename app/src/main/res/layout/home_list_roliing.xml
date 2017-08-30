@@ -26,7 +26,7 @@
         android:layout_marginTop="15px"
         android:id="@+id/home_list_roling_rv"
         android:layout_width="match_parent"
-        android:layout_height="1500px">
+        android:layout_height="1550px">
 
     </android.support.v7.widget.RecyclerView>
 
