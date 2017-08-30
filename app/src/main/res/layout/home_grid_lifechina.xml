@@ -4,7 +4,7 @@
     android:background="#FFFFFF"
     android:layout_margin="15px"
     android:layout_width="match_parent"
-    android:layout_height="1050px">
+    android:layout_height="1370">
 
     <TextView
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
         android:layout_marginTop="15px"
         android:id="@+id/home_lifechina_rv"
         android:layout_width="match_parent"
-        android:layout_height="970px"
+        android:layout_height="1100px"
         >
 
     </android.support.v7.widget.RecyclerView>
