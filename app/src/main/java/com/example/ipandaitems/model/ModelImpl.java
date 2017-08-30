@@ -3,8 +3,15 @@ package com.example.ipandaitems.model;
 
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
-import com.example.ipandaitems.model.entry.HomeBean;
+import com.example.ipandaitems.model.entry.TopBean;
+import com.example.ipandaitems.model.entry.TopListBean;
+import com.example.ipandaitems.model.entry.home.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomeRollingBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
+import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
+import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
+import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
@@ -63,4 +70,38 @@ public class ModelImpl implements IModel {
         RetrofitUtils.getmRetrofitUtils_Demo().chinaGetNetWork(observer);
     }
 
+    @Override
+    public void RequestChinaContentGet(String url, Observer<livechinacontentbean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getLiveChinaContent(url, observer);
+    }
+
+    @Override
+    public void RequestChinaVideoGet(String url, Observer<livechinavideobean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getLiveChinaVideo(url, observer);
+    }
+
+    @Override
+    public void RequestHomeMarvellGet(Observer<HomeMarvellBean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeMarvellwork(observer);
+    }
+
+    @Override
+    public void RequestHomeRollingGet(Observer<HomeRollingBean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeRollingwork(observer);
+    }
+
+    @Override
+    public void RequestOriGinalGet(Observer<originalbean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getOriGinal(observer);
+    }
+
+    @Override
+    public void doTop(Observer<TopBean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getTOP(observer);
+    }
+
+    @Override
+    public void doTopList(String url, Observer<TopListBean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getTopList(observer, url);
+    }
 }

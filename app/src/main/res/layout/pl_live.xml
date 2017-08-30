@@ -4,10 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <io.vov.vitamio.widget.VideoView
-        android:id="@+id/pl_live_video"
-        android:layout_width="match_parent"
-        android:layout_height="500px" />
 
     <TextView
         android:id="@+id/pl_live_name"

@@ -71,7 +71,7 @@ public class ShellActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.home_btn, R.id.streaming_btn, R.id.video_btn, R.id.announce_btn, R.id.live_btn, R.id.shell_log})
+    @OnClick({R.id.home_btn, R.id.streaming_btn, R.id.video_btn, R.id.announce_btn, R.id.live_btn, R.id.shell_log,R.id.title_inter})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.home_btn:
@@ -111,6 +111,9 @@ public class ShellActivity extends BaseActivity {
                 break;
             case R.id.shell_log:
                 startActivity(new Intent(ShellActivity.this, LogActivity.class));
+                break;
+            case R.id.title_inter:
+                startActivity(new Intent(ShellActivity.this, OrinGinalActivity.class));
                 break;
 
         }

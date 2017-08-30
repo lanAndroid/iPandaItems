@@ -8,6 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.ArraySet;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ import android.widget.Toast;
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
+import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
+import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 import com.example.ipandaitems.presenter.livepresenter.LivePresenterImpl;
 import com.example.ipandaitems.view.livechina.adapter.CFragmentPagerAdapter;
 import com.example.ipandaitems.view.livechina.assist.MyGridLayout;
@@ -29,9 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
@@ -39,16 +40,14 @@ import butterknife.Unbinder;
  * Created by 张豫耀 on 2017/8/23.
  */
 
-public class LiveFragment extends BaseFragment implements Ilivechinaview {
-    @BindView(R.id.live_china_add_channel)
-    ImageView liveChinaAddChannel;
-    Unbinder unbinder;
-    @BindView(R.id.livechina_linear)
+public class LiveFragment extends BaseFragment implements Ilivechinaview, View.OnClickListener {
+
+
     LinearLayout livechinaLinear;
-    @BindView(R.id.livechina_tab)
     TabLayout livechinaTab;
-    @BindView(R.id.live_china_viewPager)
     ViewPager liveChinaViewPager;
+    private ImageView liveChinaAddChannel;
+    Unbinder unbinder;
     private PopupWindow popupWindow;
     private Button pop_btn;
     private MyGridLayout grid1;
@@ -70,8 +69,13 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
 
     @Override
     protected void initView(View view) {
-//        LivePresenterImpl livePresenter = new LivePresenterImpl(this);
-//        livePresenter.chinaget();
+        liveChinaAddChannel = view.findViewById(R.id.live_china_add_channel);
+        livechinaLinear = view.findViewById(R.id.livechina_linear);
+        livechinaTab = view.findViewById(R.id.livechina_tab);
+        liveChinaViewPager = view.findViewById(R.id.live_china_viewPager);
+        liveChinaAddChannel.setOnClickListener(this);
+        LivePresenterImpl livePresenter = new LivePresenterImpl(this);
+        livePresenter.chinaget();
     }
 
     @Override
@@ -83,6 +87,7 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
         grid1 = view.findViewById(R.id.userGridView);
         grid2 = view.findViewById(R.id.otherGridView);
         bianji = view.findViewById(R.id.live_china_select_channel_bianji);
+
     }
 
     @Override
@@ -104,17 +109,21 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
         unbinder.unbind();
     }
 
-    @OnClick(R.id.live_china_add_channel)
-    public void onViewClicked() {
-        popupWindow.showAtLocation(livechinaLinear, Gravity.NO_GRAVITY, 0, 0);
-        initpop();
-
-    }
 
     private void initpop() {
 
-        grid1.setGridLayoutItemDrageAble(true);
+        bianji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (bianji.getText().toString().equals("编辑")) {
+                    bianji.setText("完成");
+                } else if (bianji.getText().toString().equals("完成")) {
+                    bianji.setText("编辑");
+                }
 
+            }
+        });
+        grid1.setGridLayoutItemDrageAble(true);
         list.addAll(titleList);
         grid1.addItems(list);
 
@@ -128,36 +137,33 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
         }
         grid2.addItems(list2);
 
-                    grid1.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
-                        @Override
-                        public void onItemSelect(String indexString) {
-                            list.remove(indexString);
-                            if (!list2.contains(indexString)) {
-                                list2.add(indexString);
-                                grid2.addTvItem(indexString);
-                            }
-                        }
-                    });
-                    grid2.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
-                        @Override
-                        public void onItemSelect(String indexString) {
+        grid1.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
+            @Override
+            public void onItemSelect(String indexString) {
+                list.remove(indexString);
+                if (!list2.contains(indexString)) {
+                    list2.add(indexString);
+                    grid2.addTvItem(indexString);
+                }
+            }
+        });
+        grid2.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
+            @Override
+            public void onItemSelect(String indexString) {
 
-                            list2.remove(indexString);
-                            if (!list.contains(indexString)) {
-                                list.add(indexString);
+                list2.remove(indexString);
+                if (!list.contains(indexString)) {
+                    list.add(indexString);
 //                    grid1.addItems(list);
-                                grid1.addTvItem(indexString);
+                    grid1.addTvItem(indexString);
 
-                            }
-
-
-                        }
+                }
 
 
-                    });
+            }
 
 
-
+        });
 
 
         pop_btn.setOnClickListener(new View.OnClickListener() {
@@ -207,7 +213,7 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
 
         if (getContext().getSharedPreferences("data", Context.MODE_PRIVATE).getString("asd", "").equals("")) {
             for (int i = 0; i < livechinaBean.getTablist().size(); i++) {
-
+                Log.e("------------------->", livechinaBean.getTablist().get(i).getUrl());
                 fragmentList.add(new LiveChinaFragment(livechinaBean.getTablist().get(i).getUrl()));
                 titleList.add(livechinaBean.getTablist().get(i).getTitle());
             }
@@ -222,6 +228,16 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
         livechinaTab.setupWithViewPager(liveChinaViewPager);
         livechinaTab.setTabMode(TabLayout.MODE_SCROLLABLE);
         sss = true;
+    }
+
+    @Override
+    public void succeedcontent(livechinacontentbean livechinacontentbean) {
+
+    }
+
+    @Override
+    public void succeedvideo(livechinavideobean livechinavideobean) {
+
     }
 
     private void initload() {
@@ -245,5 +261,11 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview {
     @Override
     public void Failure() {
         Toast.makeText(getActivity(), "网络请求失败", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View view) {
+        popupWindow.showAtLocation(livechinaLinear, Gravity.NO_GRAVITY, 0, 0);
+        initpop();
     }
 }

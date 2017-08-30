@@ -3,8 +3,15 @@ package com.example.ipandaitems.model.retrofit;
 
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
-import com.example.ipandaitems.model.entry.HomeBean;
+import com.example.ipandaitems.model.entry.TopBean;
+import com.example.ipandaitems.model.entry.TopListBean;
+import com.example.ipandaitems.model.entry.home.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomeRollingBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
+import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
+import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
+import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
@@ -71,6 +78,22 @@ public class RetrofitUtils {
         homeBeanObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
+    //首页 精彩一刻网络请求
+    public void GetHomeMarvellwork(Observer<HomeMarvellBean> observer) {
+
+        Observable<HomeMarvellBean> MarvellObservable = apiServices.getHomeMarvellGET();
+
+        MarvellObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    //首页 滚滚视频网络请求
+    public void GetHomeRollingwork(Observer<HomeRollingBean> observer) {
+
+        Observable<HomeRollingBean> RollingObservable = apiServices.getHomeRollingGET();
+
+        RollingObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
     public void annGetNetWork(Observer<AnnBean> observer) {
         Observable<AnnBean> annBeanObservable = apiServices.annServicesGET();
         annBeanObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
@@ -100,4 +123,30 @@ public class RetrofitUtils {
         plAmaPhotoesGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
+
+    public void getLiveChinaContent(String url, Observer<livechinacontentbean> observer) {
+        Observable<livechinacontentbean> livechinacontent = apiServices.getLiveChinaContentGET(url);
+        livechinacontent.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void getLiveChinaVideo(String url, Observer<livechinavideobean> observer) {
+        Observable<livechinavideobean> LiveChinaVideoGrt = apiServices.getLiveChinaVideoGrt(url);
+        LiveChinaVideoGrt.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void getOriGinal(Observer<originalbean> observer) {
+        Observable<originalbean> LiveChinaVideoGrt = apiServices.getOriGinalbeanGET();
+        LiveChinaVideoGrt.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void getTOP(Observer<TopBean> observer) {
+        Observable<TopBean> topGET = apiServices.getTopGET();
+        topGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    //TopList列表
+    public void getTopList(Observer<TopListBean> observer, String url) {
+        Observable<TopListBean> topList = apiServices.getTopList(url);
+        topList.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
 }

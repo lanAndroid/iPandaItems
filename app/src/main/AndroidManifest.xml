@@ -29,6 +29,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.ShellActivity" />
+        <activity android:name=".view.OrinGinalActivity" />
+        <activity android:name=".view.WebViewActivity" />
 
         <meta-data
             android:name="design_width"

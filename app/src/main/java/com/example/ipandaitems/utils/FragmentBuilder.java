@@ -13,6 +13,7 @@ import com.example.ipandaitems.base.BaseFragment;
  */
 
 public class FragmentBuilder {
+
     private BaseFragment lastFragment;
     private FragmentManager fragmentManager;
     private BaseFragment fragment;

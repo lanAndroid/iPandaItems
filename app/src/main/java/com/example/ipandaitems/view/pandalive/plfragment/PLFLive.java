@@ -27,7 +27,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import io.vov.vitamio.widget.VideoView;
 
 import static com.example.ipandaitems.R.id.pl_live_abstract;
 
@@ -41,8 +40,6 @@ import static com.example.ipandaitems.R.id.pl_live_abstract;
 public class PLFLive extends BaseFragment implements PLFLiveView {
 
 
-    @BindView(R.id.pl_live_video)
-    VideoView plLiveVideo;
     @BindView(R.id.pl_live_name)
     TextView plLiveName;
     @BindView(pl_live_abstract)
