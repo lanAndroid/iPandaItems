@@ -2,6 +2,7 @@ package com.example.ipandaitems.view.pandalive.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.GridView;
 
 /**
@@ -29,7 +30,15 @@ public class MyGridView extends GridView {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // TODO 自动生成的方法存根
         int expandSpec = MeasureSpec.makeMeasureSpec(
-                Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
+                Integer.MAX_VALUE >>2, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, expandSpec);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if(ev.getAction()==MotionEvent.ACTION_MOVE){
+            return false;//true禁止滑动
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }

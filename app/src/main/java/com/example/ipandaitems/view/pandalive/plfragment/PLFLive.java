@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,6 +29,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.vov.vitamio.Vitamio;
+import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 
 import static com.example.ipandaitems.R.id.pl_live_abstract;
@@ -73,9 +77,13 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
     private boolean boo = false;
     private PL1AdapterLive live;
     private List<PLLive.ListBean> list;
+    private String path = "http://baobab.wdjcdn.com/145076769089714.mp4";
 
     @Override
     protected int layoutID() {
+        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        Window window = getActivity().getWindow();
+        window.setFlags(flag, 600);
         return R.layout.pl_live;
     }
 
@@ -84,6 +92,12 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
         PPLLives pp = new PPLLives(this);
         pp.getViews();
         pp.getLives();
+        if (Vitamio.isInitialized(getContext())) {
+            plLiveVideo.setVideoPath(path);
+            MediaController controller = new MediaController(getContext());
+            plLiveVideo.setMediaController(controller);
+            plLiveVideo.start();
+        }
     }
 
     @Override
@@ -130,7 +144,7 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
         switch (view.getId()) {
             case pl_live_abstract:
                 if (boo == true) {
-         plLiveAbstract.setImageResource(R.drawable.live_china_detail_down);
+                    plLiveAbstract.setImageResource(R.drawable.live_china_detail_down);
                     plLiveContent.setVisibility(View.GONE);
                     boo = false;
                 } else {

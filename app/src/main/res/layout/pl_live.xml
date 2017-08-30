@@ -4,10 +4,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <io.vov.vitamio.widget.VideoView
-        android:id="@+id/pl_live_video"
+    <RelativeLayout
+        android:background="@drawable/_no_img"
         android:layout_width="match_parent"
-        android:layout_height="500px" />
+        android:layout_height="600px">
+
+        <io.vov.vitamio.widget.VideoView
+            android:id="@+id/pl_live_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/pl_live_video_backimg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/_no_img" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/pl_live_video_kaishi"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/play" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/pl_live_name"
