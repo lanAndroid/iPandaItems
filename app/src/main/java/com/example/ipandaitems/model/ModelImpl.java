@@ -8,6 +8,9 @@ import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
+import com.example.ipandaitems.model.entry.HomeBean;
+import com.example.ipandaitems.model.entry.TopBean;
+import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -64,10 +67,10 @@ public class ModelImpl implements IModel {
         RetrofitUtils.getmRetrofitUtils_Demo().getPLAmaPhotoes(observer);
     }
 
-    //    直播中国
+//  熊猫播报top
     @Override
-    public void RequestChinaGet(Observer<livechinaBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().chinaGetNetWork(observer);
+    public void doTop(Observer<TopBean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getTOP(observer);
     }
 
     @Override
@@ -104,4 +107,9 @@ public class ModelImpl implements IModel {
     public void doTopList(String url, Observer<TopListBean> observer) {
         RetrofitUtils.getmRetrofitUtils_Demo().getTopList(observer, url);
     }
+    @Override
+    public void doTopList(String url, Observer<TopListBean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getTopList(observer,url);
+    }
+    ///
 }
