@@ -1,7 +1,6 @@
 package com.example.ipandaitems.view.livechina.adapter;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -25,7 +23,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.widget.VideoView;
 
 /**
@@ -60,6 +57,7 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
         map.put("client", "androidapp");
         holder.title.setText(list.get(position).getTitle());
         holder.brief.setText(list.get(position).getBrief());
+        Log.e("--------------->", list.get(position).getBrief());
         Glide.with(context).load(list.get(position).getImage()).asBitmap()
                 .thumbnail(0.01f)//降低分辨率
                 .placeholder(R.drawable._no_img)//未加载是背景图
@@ -72,12 +70,14 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
                 switch (s) {
                     case 1:
                         s = 0;
+                        holder.linview.setVisibility(View.VISIBLE);
                         holder.jiazai.setImageResource(R.drawable.live_china_detail_up);
                         break;
                     case 0:
                         s = 1;
-                        holder.jiazai.setImageResource(R.drawable.live_china_detail_down);
                         holder.linview.setVisibility(View.GONE);
+                        holder.jiazai.setImageResource(R.drawable.live_china_detail_down);
+
                         break;
                 }
             }
@@ -85,33 +85,33 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
         LivePresenterImpl presenter = new LivePresenterImpl(this);
         presenter.chinavideo(map);
 
-        final MediaPlayer mediaPlayer = new MediaPlayer(context);
-        holder.bo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.videoview_top.stopPlayback();
-                notifyItemChanged(holder.getLayoutPosition() - 1);
-                Log.d("LiveChinaZhiboItemAdapt", "a:" + a);
-
-                a = position;
-                if (position == holder.getLayoutPosition() - 1) {
-
-                    holder.bo.setVisibility(View.GONE);
-                    holder.imageView.setVisibility(View.GONE);
-
-                    Toast.makeText(context, "播放", Toast.LENGTH_SHORT).show();
-
-                    holder.videoview_top.setVideoURI(Uri.parse(flv.getFlv_url().getFlv2()));
-
-                    holder.videoview_top.setVideoQuality(MediaPlayer.VIDEOQUALITY_LOW);
-
-
-                    holder.videoview_top.requestFocus();
-
-                    holder.videoview_top.start();
-                }
-            }
-        });
+//        final MediaPlayer mediaPlayer = new MediaPlayer(context);
+//        holder.bo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                holder.videoview_top.stopPlayback();
+//                notifyItemChanged(holder.getLayoutPosition() - 1);
+//                Log.d("LiveChinaZhiboItemAdapt", "a:" + a);
+//
+//                a = position;
+//                if (position == holder.getLayoutPosition() - 1) {
+//
+//                    holder.bo.setVisibility(View.GONE);
+//                    holder.imageView.setVisibility(View.GONE);
+//
+//                    Toast.makeText(context, "播放", Toast.LENGTH_SHORT).show();
+//
+//                    holder.videoview_top.setVideoURI(Uri.parse(flv.getFlv_url().getFlv2()));
+//
+//                    holder.videoview_top.setVideoQuality(MediaPlayer.VIDEOQUALITY_LOW);
+//
+//
+//                    holder.videoview_top.requestFocus();
+//
+//                    holder.videoview_top.start();
+//                }
+//            }
+//        });
     }
 
     @Override

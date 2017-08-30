@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_margin="15px"
+    android:layout_width="match_parent"
+    android:layout_height="1050px">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:text="直播中国"
+        android:textSize="50px"
+        android:textColor="@color/myblue"
+        android:layout_marginLeft="40px"
+        android:gravity="center_vertical"
+
+        />
+    <View
+        android:layout_marginTop="15px"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/myback"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="15px"
+        android:id="@+id/home_lifechina_rv"
+        android:layout_width="match_parent"
+        android:layout_height="920px"
+        >
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

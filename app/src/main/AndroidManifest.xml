@@ -19,7 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".iPandaActivity" />
-        <activity android:name=".view.announce.PanadaTop" />
         <activity android:name=".view.announce.PanadaVideo" />
         <activity android:name=".view.HelloActivity">
             <intent-filter>
@@ -45,7 +44,9 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".view.registerandlogin.loginActivity" />
-        <activity android:name=".view.registerandlogin.RegisterActivity"></activity>
+        <activity android:name=".view.registerandlogin.RegisterActivity" />
+        <activity android:name=".view.OrinGinalActivity" />
+        <activity android:name=".view.WebViewActivity"></activity>
     </application>
 
 </manifest>

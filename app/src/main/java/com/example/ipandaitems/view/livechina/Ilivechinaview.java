@@ -7,7 +7,7 @@ import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 /**
  * Created by 张豫耀 on 2017/8/25.
  */
-//aaaaaaa
+
 public interface Ilivechinaview {
     void succeed(livechinaBean livechinaBean);
 

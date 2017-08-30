@@ -3,10 +3,13 @@ package com.example.ipandaitems.model;
 
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
-import com.example.ipandaitems.model.entry.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomeRollingBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
+import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
@@ -25,6 +28,7 @@ public interface IModel {
 
     void RequestHomeGet(Observer<HomeBean> observer);
 
+
     void doGet(Observer<PLHome> observer);
 
     void doGets(Observer<PLLive> observer);
@@ -35,5 +39,11 @@ public interface IModel {
 
     void RequestChinaContentGet(String url, Observer<livechinacontentbean> observer);
 
-    void RequestChinaVideoGet(Map<String,String> map, Observer<livechinavideobean> observer);
+    void RequestChinaVideoGet(Map<String, String> map, Observer<livechinavideobean> observer);
+
+    void RequestHomeMarvellGet(Observer<HomeMarvellBean> observer);
+
+    void RequestHomeRollingGet(Observer<HomeRollingBean> observer);
+
+    void RequestOriGinalGet(Observer<originalbean> observer);
 }

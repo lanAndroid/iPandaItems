@@ -3,10 +3,13 @@ package com.example.ipandaitems.model.retrofit;
 
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
-import com.example.ipandaitems.model.entry.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomeRollingBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
+import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
@@ -37,7 +40,7 @@ public interface RetrofitAPIServices {
     @GET("http://www.ipanda.com/kehuduan/video/index.json")
     Observable<AnnBean> annServicesGET();
 
-    @GET("http://www.ipanda.com/kehuduan/video/index.json")
+    @GET(UrlUtils.HOMEURLALL)
     Observable<HomeBean> getHomeGET();
 
 
@@ -63,4 +66,15 @@ public interface RetrofitAPIServices {
     @FormUrlEncoded
     @POST("http://vdn.live.cntv.cn/api2/live.do")
     Observable<livechinavideobean> getLiveChinaVideoGrt(@FieldMap Map<String, String> map);
+
+    @GET("http://www.ipanda.com/kehuduan/shipinliebieye/jingcaiyike/index.json")
+    Observable<HomeMarvellBean> getHomeMarvellGET();
+
+    @GET("http://www.ipanda.com/kehuduan/shipinliebieye/video/index.json")
+    Observable<HomeRollingBean> getHomeRollingGET();
+
+
+    @GET("http://www.ipanda.com/kehuduan/PAGE14501767715521482/index.json")
+    Observable<originalbean> getOriGinalbeanGET();
 }
+
