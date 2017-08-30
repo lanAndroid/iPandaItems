@@ -4,6 +4,8 @@ package com.example.ipandaitems.model;
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
 import com.example.ipandaitems.model.entry.HomeBean;
+import com.example.ipandaitems.model.entry.TopBean;
+import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
@@ -57,10 +59,14 @@ public class ModelImpl implements IModel {
         RetrofitUtils.getmRetrofitUtils_Demo().getPLAmaPhotoes(observer);
     }
 
-    //    直播中国
+//  熊猫播报top
     @Override
-    public void RequestChinaGet(Observer<livechinaBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().chinaGetNetWork(observer);
+    public void doTop(Observer<TopBean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getTOP(observer);
     }
 
+    @Override
+    public void doTopList(String url, Observer<TopListBean> observer) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getTopList(observer,url);
+    }
 }
