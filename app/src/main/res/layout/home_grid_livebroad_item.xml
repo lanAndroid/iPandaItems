@@ -2,11 +2,11 @@
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_margin="10px"
         android:layout_width="340px"
-        android:layout_height="250px">
+        android:layout_height="200px">
         <ImageView
             android:background="#000000"
             android:scaleType="fitXY"
@@ -16,17 +16,18 @@
             android:id="@+id/home_grid_livebroad_iv"/>
 
         <LinearLayout
-
+            android:background="@drawable/lpanda_bottom_gra"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_width="180px"
-            android:layout_height="80px">
+            android:layout_height="70px">
             <ImageView
                 android:layout_marginLeft="20px"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40px"
+                android:layout_height="40px"
                 android:layout_gravity="center_vertical"
+
                 android:layout_alignParentBottom="true"
                 android:src="@drawable/home_hot_live_icon"
                 />
@@ -37,8 +38,8 @@
                 android:text="Live"
                 android:layout_marginLeft="10px"
                 android:layout_gravity="center_vertical"
-                android:id="@+id/home_grid_livebroad_tv"
-                android:textSize="40px"
+                android:id="@+id/home_grid_livebroad_live"
+                android:textSize="35px"
                 android:textColor="@color/white"
 
                 />
@@ -50,6 +51,14 @@
 
 
     </RelativeLayout>
+    <TextView
+        android:id="@+id/home_grid_livebroad_tv"
+        android:layout_marginLeft="10px"
+        android:layout_width="340px"
+        android:layout_height="100px"
+        android:text="成都基地高清精切线路"
+        android:textSize="40px"
+        />
 
 
 </com.zhy.autolayout.AutoLinearLayout>

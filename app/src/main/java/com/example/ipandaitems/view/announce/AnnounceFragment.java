@@ -1,6 +1,5 @@
 package com.example.ipandaitems.view.announce;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -101,27 +100,27 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
             String image = bigImg.get(i).getImage();
             Glide.with(getActivity()).load(image).into(Imagev);
             final String url = bigImg.get(i).getUrl();
-            Imagev.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), PanadaVideo.class);
-                    intent.putExtra("path", url);
-                    startActivity(intent);
-                }
-            });
+//            Imagev.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent = new Intent(getActivity(), PanadaVideo.class);
+//                    intent.putExtra("path", url);
+//                    startActivity(intent);
+//                }
+//            });
         }
         recy.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         AnnMyadapter adapter = new AnnMyadapter(getActivity(), list);
         RecyclerAdapterWithHF myadapter = new RecyclerAdapterWithHF((RecyclerView.Adapter) adapter);
         recy.setAdapter(myadapter);
         //Recycle点击事件
-        myadapter.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
-            @Override
-            public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
-                list.get(position).getUrl();
-                Intent intent = new Intent(getActivity(), PanadaTop.class);
-            }
-        });
+//        myadapter.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
+//                list.get(position).getUrl();
+//                Intent intent = new Intent(getActivity(), PanadaTop.class);
+//            }
+//        });
     }
 
     @Override

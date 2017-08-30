@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_margin="10px"
         android:layout_width="500px"
-        android:layout_height="400px">
+        android:layout_height="300px">
         <ImageView
-            android:background="#000000"
+
             android:scaleType="fitXY"
             android:layout_width="500px"
             android:layout_height="400px"
@@ -15,17 +15,18 @@
             android:id="@+id/home_grid_marvellous_iv"/>
 
         <LinearLayout
-            android:background="#000000"
 
+            android:background="@drawable/lpanda_bottom_gra"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_width="210px"
-            android:layout_height="80px">
+            android:layout_width="220px"
+            android:layout_height="60px">
             <ImageView
+
                 android:layout_marginLeft="20px"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40px"
+                android:layout_height="40px"
                 android:layout_gravity="center_vertical"
                 android:layout_alignParentBottom="true"
                 android:src="@drawable/play"
@@ -37,8 +38,8 @@
                 android:text="Live"
                 android:layout_marginLeft="10px"
                 android:layout_gravity="center_vertical"
-                android:id="@+id/home_grid_marvellous_tv"
-                android:textSize="40px"
+                android:id="@+id/home_grid_marvellous_second"
+                android:textSize="35px"
                 android:textColor="@color/white"
 
                 />
@@ -50,6 +51,24 @@
 
 
     </RelativeLayout>
+    <TextView
+        android:layout_marginTop="10px"
+        android:id="@+id/home_grid_marvellous_title"
+        android:layout_marginLeft="10px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="45px"
+        android:text="胸牌脚垫 至尊享受"
+        />
+    <TextView
+        android:layout_marginLeft="10px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="35px"
+        android:layout_marginTop="10px"
+        android:id="@+id/home_grid_marvellous_time"
+        android:text="2017-08-25"
+        />
 
 
 

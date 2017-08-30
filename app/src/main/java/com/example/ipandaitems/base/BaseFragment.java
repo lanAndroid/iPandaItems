@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
+import io.vov.vitamio.Vitamio;
 
 /**
  * Created by xiaogang on 2017/6/20.
@@ -17,6 +18,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Vitamio.isInitialized(getActivity());
         return inflater.inflate(layoutID(), null);
     }
 

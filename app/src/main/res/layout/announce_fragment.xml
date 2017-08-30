@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:id="@+id/ptr"
     >
-    <ScrollView
+    <com.example.ipandaitems.view.ui.MyScrollview
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
@@ -41,12 +41,12 @@
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="1520dp"
         android:id="@+id/recy"
         android:layout_margin="20px"
         ></android.support.v7.widget.RecyclerView>
     </LinearLayout>
-    </ScrollView>
+    </com.example.ipandaitems.view.ui.MyScrollview>
 </android.support.v4.widget.SwipeRefreshLayout>
 
 </com.zhy.autolayout.AutoRelativeLayout>

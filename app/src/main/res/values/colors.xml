@@ -2,6 +2,10 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="myblue">#3331d4</color>
+    <color name="myback">#E6EBEF</color>
+
+
     <color name="colorAccent">#FF4081</color>
     <color name="shell_brn1">#DDDDDD</color>
     <color name="shell_brn2">#FFFFFF</color>
