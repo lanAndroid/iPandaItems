@@ -52,6 +52,10 @@ public class UrlUtils {
     //精彩一刻
     public static final String ORIGINALNEWS = "http://api.cntv.cn/video/videolistById?vsid=VSET100167216881&n=9&serviceId=panda&o=desc&of=time&p=1";
 
+    //熊猫播报top图片
+    public static final String TOP_MAP = "http://www.ipanda.com/kehuduan/news/index.json";
+    //public static  final String TOP_MAP="http://www.ipanda.com/kehuduan/PAGE14503485387528442/index.json";
+
     // 首页  滚滚视频
     public static final String HOME_ROLL = "http://www.ipanda.com/kehuduan/shipinliebieye/video/index.json";
 
@@ -63,5 +67,7 @@ public class UrlUtils {
     public static final String LOGIN = "https://reg.cntv.cn/login/login.action";
     //个人中心
     public static final String PHONE_URL_FROM = "http://cbox_mobile.regclientuser.cntv.cn";
+    //视频拼接地址
+    public static  final String VIDEO_URL=" http://115.182.9.189/api/getVideoInfoForCBox.do?pid=";
 
 }
