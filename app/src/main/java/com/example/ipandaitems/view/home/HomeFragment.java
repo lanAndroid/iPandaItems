@@ -1,5 +1,6 @@
 package com.example.ipandaitems.view.home;
 
+import android.os.Handler;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.ipandaitems.R;
@@ -19,6 +19,7 @@ import com.example.ipandaitems.model.entry.home.HomeRollingBean;
 import com.example.ipandaitems.presenter.homepresenter.HomePresenterImpl;
 import com.example.ipandaitems.presenter.homepresenter.homeadapter.HomeAdapter;
 import com.example.ipandaitems.utils.GlideImageLoader;
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -62,7 +63,7 @@ public class HomeFragment extends BaseFragment implements IHomeFragment {
 
     }
 
-    //asd
+
     @Override
     protected void initView(View view) {
         homefragmentXrv = (XRecyclerView) view.findViewById(R.id.homefragment_xrv);
@@ -174,15 +175,48 @@ public class HomeFragment extends BaseFragment implements IHomeFragment {
             homefragmentXrv.addHeaderView(view_banner);
 
 
-                   homefragmentXrv.setAdapter(homeAdapter);
-            Toast.makeText(getContext(), "来数据了", Toast.LENGTH_SHORT).show();
 
-            Log.e("TAG", "aaaa有值");
+            homefragmentXrv.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+            homefragmentXrv.setLoadingMoreProgressStyle(ProgressStyle.Pacman);
+            homefragmentXrv.setLoadingListener(new XRecyclerView.LoadingListener() {
+                @Override
+                public void onRefresh() {
+                    new Handler().postDelayed(new Runnable(){
+                        public void run() {
+
+
+                            homeAdapter.notifyDataSetChanged();
+                            homefragmentXrv.refreshComplete();
+                        }
+
+                    }, 500);
+                }
+
+                @Override
+                public void onLoadMore() {
+                    new Handler().postDelayed(new Runnable(){
+                        public void run() {
+
+                            homeAdapter.notifyDataSetChanged();
+                            homefragmentXrv.refreshComplete();
+                        }
+
+                    }, 500);
+
+                }
+            });
+
+
+            homefragmentXrv.setAdapter(homeAdapter);
+
+
+//            Toast.makeText(getContext(), "来数据了", Toast.LENGTH_SHORT).show();
+//            Log.e("TAG", "aaaa有值");
 
 
         } else {
-            Toast.makeText(getContext(), "没数据", Toast.LENGTH_SHORT).show();
-            Log.e("TAG", "aaaa没有值");
+//            Toast.makeText(getContext(), "没数据", Toast.LENGTH_SHORT).show();
+//            Log.e("TAG", "aaaa没有值");
         }
 
 
