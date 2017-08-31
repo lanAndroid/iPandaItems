@@ -3,10 +3,13 @@ package com.example.ipandaitems.presenter.homepresenter;
 
 import android.util.Log;
 
-import com.example.ipandaitems.model.ModelImpl;
+
+import com.example.ipandaitems.model.Callback;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
+import com.example.ipandaitems.model.home.HomeModel;
+import com.example.ipandaitems.model.home.HomeModelImpl;
 import com.example.ipandaitems.view.home.HomeFragment;
 import com.example.ipandaitems.view.home.IHomeFragment;
 
@@ -17,64 +20,45 @@ import io.reactivex.disposables.Disposable;
 public class HomePresenterImpl implements HomeIPresenter {
    IHomeFragment mIhomeFragment;
 
-    HomeModel model;
+    HomeModelImpl model;
 
 
 
     public HomePresenterImpl(HomeFragment mIhomeFragment) {
         this.mIhomeFragment = mIhomeFragment;
-        model = new ModelImpl();
+        model = new HomeModelImpl();
     }
 
     @Override
     public void getHomeBean() {
 
-        model.RequestHomeGet(new Observer<HomeBean>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
+        model.RequestHomeGet(new Callback<HomeBean>() {
+                                 @Override
+                                 public void succeed(HomeBean homeBean) {
+                                     mIhomeFragment.gethomebean(homeBean);
+                                 }
 
-            }
+                                 @Override
+                                 public void nothing(String str) {
 
-            @Override
-            public void onNext(@NonNull HomeBean homeBean) {
-                Log.e("TAG", "传值了");
-                mIhomeFragment.gethomebean(homeBean);
-            }
+                                 }
+                             }
 
-            @Override
-            public void onError(@NonNull Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
+        );
 
     }
 
     @Override
     public void getHomeMarvellBean() {
 
-        model.RequestHomeMarvellGet(new Observer<HomeMarvellBean>() {
+        model.RequestHomeMarvellGet(new Callback<HomeMarvellBean>() {
             @Override
-            public void onSubscribe(@NonNull Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(@NonNull HomeMarvellBean homeMarvellBean) {
+            public void succeed(HomeMarvellBean homeMarvellBean) {
                 mIhomeFragment.gethomeMarvellbean(homeMarvellBean);
             }
 
             @Override
-            public void onError(@NonNull Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
+            public void nothing(String str) {
 
             }
         });
@@ -83,25 +67,14 @@ public class HomePresenterImpl implements HomeIPresenter {
     @Override
     public void getHomeRollingBean() {
 
-        model.RequestHomeRollingGet(new Observer<HomeRollingBean>() {
+        model.RequestHomeRollingGet(new Callback<HomeRollingBean>() {
             @Override
-            public void onSubscribe(@NonNull Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(@NonNull HomeRollingBean homeRollingBean) {
+            public void succeed(HomeRollingBean homeRollingBean) {
                 mIhomeFragment.gethomeRollingbean(homeRollingBean);
-                Log.e("TAG", homeRollingBean.toString());
             }
 
             @Override
-            public void onError(@NonNull Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
+            public void nothing(String str) {
 
             }
         });
