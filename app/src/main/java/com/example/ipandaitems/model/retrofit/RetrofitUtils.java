@@ -6,13 +6,6 @@ import com.example.ipandaitems.model.entry.Bean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.livechina.livechinaBean;
-import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
-import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
-import com.example.ipandaitems.model.entry.originalbean;
-import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
-import com.example.ipandaitems.model.entry.pandalive.PLHome;
-import com.example.ipandaitems.model.entry.pandalive.PLLive;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -67,13 +60,26 @@ public class RetrofitUtils {
 
         services.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
-
     //首页 网络请求
     public void GetHomeNetwork(Observer<HomeBean> observer) {
 
         Observable<HomeBean> homeBeanObservable = apiServices.getHomeGET();
 
         homeBeanObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+    //首页 精彩一刻网络请求
+    public void GetHomeMarvellwork(Observer<HomeMarvellBean> observer) {
+
+        Observable<HomeMarvellBean> MarvellObservable=apiServices.getHomeMarvellGET();
+
+        MarvellObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+    //首页 滚滚视频网络请求
+    public void GetHomeRollingwork(Observer<HomeRollingBean> observer) {
+
+        Observable<HomeRollingBean> RollingObservable=apiServices.getHomeRollingGET();
+
+        RollingObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
     //首页 精彩一刻网络请求

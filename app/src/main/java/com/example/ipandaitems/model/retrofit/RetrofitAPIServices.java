@@ -3,17 +3,7 @@ package com.example.ipandaitems.model.retrofit;
 
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
-import com.example.ipandaitems.model.entry.home.HomeBean;
-import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
-import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.livechina.livechinaBean;
-import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
-import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
-import com.example.ipandaitems.model.entry.originalbean;
-import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
-import com.example.ipandaitems.model.entry.pandalive.PLHome;
-import com.example.ipandaitems.model.entry.pandalive.PLLive;
-import com.example.ipandaitems.utils.UrlUtils;
+import com.example.ipandaitems.model.entry.HomeBean;
 
 import java.util.Map;
 
@@ -22,7 +12,6 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Url;
 
 /**
  * Created by 韩志军 on 2017/8/19.
@@ -42,6 +31,12 @@ public interface RetrofitAPIServices {
 
     @GET(UrlUtils.HOMEURLALL)
     Observable<HomeBean> getHomeGET();
+
+    @GET("http://www.ipanda.com/kehuduan/shipinliebieye/jingcaiyike/index.json")
+    Observable<HomeMarvellBean> getHomeMarvellGET();
+
+    @GET("http://www.ipanda.com/kehuduan/shipinliebieye/video/index.json")
+    Observable<HomeRollingBean> getHomeRollingGET();
 
 
     // 直播中国

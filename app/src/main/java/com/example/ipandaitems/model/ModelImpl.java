@@ -20,8 +20,6 @@ import com.example.ipandaitems.model.retrofit.RetrofitUtils;
 import java.util.Map;
 
 import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
 
 
 public class ModelImpl implements IModel {
@@ -29,66 +27,53 @@ public class ModelImpl implements IModel {
     @Override
     public void RequestGet(Observer<Bean> observer) {
 
-        RetrofitUtils.getmRetrofitUtils_Demo().GetNetwork(observer);
+      RetrofitUtils.getmRetrofitUtils_Demo().GetNetwork(observer);
 
     }
 
     @Override
     public void RequestPost(Map<String, String> map, Observer<Bean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().PostNetwork(map, observer);
+   RetrofitUtils.getmRetrofitUtils_Demo().PostNetwork(map, observer);
     }
 
     @Override
     public void AnnRequsetGet(Observer<AnnBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().annGetNetWork(observer);
+      RetrofitUtils.getmRetrofitUtils_Demo().annGetNetWork(observer);
     }
 
     @Override
     public void RequestHomeGet(Observer<HomeBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeNetwork(observer);
+      RetrofitUtils.getmRetrofitUtils_Demo().GetHomeNetwork(observer);
+    }
+
+    @Override
+    public void RequestHomeMarvellGet(Observer<HomeMarvellBean> observer) {
+//        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeMarvellwork(observer);
+    }
+
+    @Override
+    public void RequestHomeRollingGet(Observer<HomeRollingBean> observer) {
+//        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeRollingwork(observer);
+    }
+
+    @Override
+    public void RequestOriGinalGet(Observer<originalbean> observer) {
 
     }
 
-    //    熊猫直播 第一次网络获取
     @Override
     public void doGet(Observer<PLHome> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getPandaLive(observer);
 
     }
 
-    //    熊猫直播 第二次网络获取
     @Override
     public void doGets(Observer<PLLive> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getPandaLives(observer);
+
     }
 
-    //    熊猫直播 精彩一刻
     @Override
-    public void doAmaPhotoes(final PLAmaPhotoes observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getPLAmaPhotoes(new Observer<PLAmaPhotoes>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
+    public void doAmaPhotoes(PLAmaPhotoes observer) {
 
-            }
-
-            @Override
-            public void onNext(@NonNull PLAmaPhotoes plAmaPhotoes) {
-              plAmaPhotoes=observer;
-            }
-
-
-            @Override
-            public void onError(@NonNull Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-
-//        RetrofitUtils.getmRetrofitUtils_Demo().getPLAmaPhotoes(observer);
     }
 
     @Override
@@ -101,35 +86,19 @@ public class ModelImpl implements IModel {
 
     }
 
-    //    直播中国
     @Override
     public void RequestChinaGet(Observer<livechinaBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().chinaGetNetWork(observer);
+
     }
 
     @Override
     public void RequestChinaContentGet(String url, Observer<livechinacontentbean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getLiveChinaContent(url, observer);
+
     }
 
     @Override
     public void RequestChinaVideoGet(Map<String, String> map, Observer<livechinavideobean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getLiveChinaVideo(map, observer);
-    }
 
-    @Override
-    public void RequestHomeMarvellGet(Observer<HomeMarvellBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeMarvellwork(observer);
-    }
-
-    @Override
-    public void RequestHomeRollingGet(Observer<HomeRollingBean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeRollingwork(observer);
-    }
-
-    @Override
-    public void RequestOriGinalGet(Observer<originalbean> observer) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getOriGinal(observer);
     }
 
 }

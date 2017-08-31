@@ -19,10 +19,9 @@ import com.example.ipandaitems.model.entry.pandalive.PLLive;
 import java.util.Map;
 
 import io.reactivex.Observer;
-import retrofit2.Call;
 
-//xx
-public interface IModel  {
+
+public interface IModel {
     void RequestGet(Observer<Bean> observer);
 
     void RequestPost(Map<String, String> map, Observer<Bean> observer);
@@ -30,6 +29,10 @@ public interface IModel  {
     void AnnRequsetGet(Observer<AnnBean> observer);
 
     void RequestHomeGet(Observer<HomeBean> observer);
+
+    void RequestHomeMarvellGet(Observer<HomeMarvellBean> observer);
+
+    void RequestHomeRollingGet(Observer<HomeRollingBean> observer);
 
 
     //    熊猫直播 第一次网络获取
@@ -52,10 +55,6 @@ public interface IModel  {
     void RequestChinaContentGet(String url, Observer<livechinacontentbean> observer);
 
     void RequestChinaVideoGet(Map<String, String> map, Observer<livechinavideobean> observer);
-
-    void RequestHomeMarvellGet(Observer<HomeMarvellBean> observer);
-
-    void RequestHomeRollingGet(Observer<HomeRollingBean> observer);
 
     void RequestOriGinalGet(Observer<originalbean> observer);
 }

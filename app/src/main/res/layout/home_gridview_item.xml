@@ -4,10 +4,9 @@
     android:background="#FFFFFF"
     android:layout_margin="20px"
     android:layout_width="match_parent"
-    android:layout_height="1350px"
+    android:layout_height="1200px"
 
     >
-    //.
 <TextView
     android:layout_width="match_parent"
     android:layout_height="120px"
@@ -27,7 +26,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/home_grid_livebroad_rv"
         android:layout_width="match_parent"
-        android:layout_height="1100px"
+        android:layout_height="1070px"
 
         android:layout_marginBottom="10px"
         ></android.support.v7.widget.RecyclerView>
