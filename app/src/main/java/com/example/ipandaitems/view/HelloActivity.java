@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.ButterKnife;
+
 public class HelloActivity extends BaseActivity {
 
 
@@ -19,7 +21,7 @@ public class HelloActivity extends BaseActivity {
 
     @Override
     protected void initView() throws SQLException {
-
+        ButterKnife.bind(this);
     }
 
     @Override

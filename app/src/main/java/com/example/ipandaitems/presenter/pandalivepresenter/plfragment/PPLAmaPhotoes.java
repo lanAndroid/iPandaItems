@@ -10,4 +10,5 @@ package com.example.ipandaitems.presenter.pandalivepresenter.plfragment;
 public interface PPLAmaPhotoes {
 
     void initData();
+
 }

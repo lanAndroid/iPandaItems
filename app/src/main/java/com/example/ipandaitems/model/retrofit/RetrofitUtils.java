@@ -45,13 +45,7 @@ public class RetrofitUtils {
                 .client(okhttp)
                 .baseUrl("https://www.baidu.com/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build().create(RetrofitAPIServices.class);
-//        apiServices = new Retrofit.Builder()
-//                .client(okhttp)
-//                .baseUrl("https://www.baidu.com/")
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//                .addConverterFactory(GsonConverterFactory.create()).build().create(RetrofitAPIServices.class);
+                .addConverterFactory(GsonConverterFactory.create()).build().create(RetrofitAPIServices.class);
 
     }
 

@@ -9,8 +9,6 @@ import android.widget.RadioButton;
 
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseActivity;
-import com.example.ipandaitems.view.registerandlogin.fragment.EmailRegFragment;
-import com.example.ipandaitems.view.registerandlogin.fragment.PhoneRegFragment;
 
 import java.sql.SQLException;
 
@@ -22,8 +20,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private ImageView register_finish;
     private RadioButton tvphonereg;
     private RadioButton tvemailreg;
-    private PhoneRegFragment phoneRegFragment;
-    private EmailRegFragment emailRegFragment;
 
     @Override
     protected int layoutID() {
@@ -46,10 +42,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         hide(transaction);
-        phoneRegFragment = new PhoneRegFragment();
-        transaction.add(R.id.framelayout_register_content, phoneRegFragment);
-        transaction.show(phoneRegFragment);
-        transaction.commit();
+
     }
 
     @Override
@@ -75,33 +68,33 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 finish();
                 break;
             case R.id.tvphonereg:
-                if (phoneRegFragment == null) {
-                    phoneRegFragment = new PhoneRegFragment();
-                    transaction.add(R.id.framelayout_register_content, phoneRegFragment);
-                    transaction.show(phoneRegFragment);
-                } else {
-                    transaction.show(phoneRegFragment);
-                }
+//                if (phoneRegFragment == null) {
+//                    phoneRegFragment = new PhoneRegFragment();
+//                    transaction.add(R.id.framelayout_register_content, phoneRegFragment);
+//                    transaction.show(phoneRegFragment);
+//                } else {
+//                    transaction.show(phoneRegFragment);
+//                }
                 break;
             case R.id.tvemailreg:
-                if (emailRegFragment == null) {
-                    emailRegFragment = new EmailRegFragment();
-                    transaction.add(R.id.framelayout_register_content, emailRegFragment);
-                    transaction.show(emailRegFragment);
-                } else {
-                    transaction.show(emailRegFragment);
-                }
+//                if (emailRegFragment == null) {
+//                    emailRegFragment = new EmailRegFragment();
+//                    transaction.add(R.id.framelayout_register_content, emailRegFragment);
+//                    transaction.show(emailRegFragment);
+//                } else {
+//                    transaction.show(emailRegFragment);
+//                }
                 break;
         }
         transaction.commit();
     }
 
     private void hide(FragmentTransaction transaction) {
-        if (phoneRegFragment != null) {
-            transaction.hide(phoneRegFragment);
-        }
-        if (emailRegFragment != null) {
-            transaction.hide(emailRegFragment);
-        }
+//        if (phoneRegFragment != null) {
+//            transaction.hide(phoneRegFragment);
+//        }
+//        if (emailRegFragment != null) {
+//            transaction.hide(emailRegFragment);
+//        }
     }
 }

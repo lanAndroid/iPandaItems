@@ -35,7 +35,6 @@ public class LiveChinaFragment extends BaseFragment implements Ilivechinaview {
         this.url = url;
     }
 
-
     @Override
     public void succeed(livechinaBean livechinaBean) {
 

@@ -63,7 +63,6 @@ public interface RetrofitAPIServices {
     Observable<PLAmaPhotoes> getPLAmaPhotoesGET();
 
 
-
     @GET()
     Observable<livechinacontentbean> getLiveChinaContentGET(@Url String url);
 
@@ -87,5 +86,6 @@ public interface RetrofitAPIServices {
     //TopList
     @GET
     Observable<TopListBean> getTopList(@Url String url);
+
 }
 
