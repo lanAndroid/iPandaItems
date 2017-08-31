@@ -8,8 +8,6 @@ import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 import com.example.ipandaitems.model.livechina.liveModelImpl;
 import com.example.ipandaitems.view.livechina.Ilivechinaview;
 
-import java.util.Map;
-
 public class LivePresenterImpl implements LiveIPresenter {
 
     private Ilivechinaview ilivechinaview;
@@ -52,7 +50,17 @@ public class LivePresenterImpl implements LiveIPresenter {
     }
 
     @Override
-    public void chinavideo(Map<String, String> map) {
+    public void chinavideo(String url) {
+        model.RequestChinaVideoGet(url, new Callback<livechinavideobean>() {
+            @Override
+            public void succeed(livechinavideobean livechinavideobean) {
+                ilivechinaview.succeedvideo(livechinavideobean);
+            }
 
+            @Override
+            public void nothing(String str) {
+                ilivechinaview.Failure();
+            }
+        });
     }
 }

@@ -62,4 +62,5 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         content = itemView.findViewById(R.id.toplistContent);
     }
 }
+
 }
