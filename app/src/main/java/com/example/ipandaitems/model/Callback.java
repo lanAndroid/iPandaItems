@@ -6,5 +6,6 @@ package com.example.ipandaitems.model;
 
 public interface Callback<T> {
     void succeed(T t);
+
     void nothing(String str);
 }
