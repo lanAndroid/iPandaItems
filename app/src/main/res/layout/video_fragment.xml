@@ -40,8 +40,9 @@
                 android:padding="20px"
                 android:paddingBottom="0px"
                 >
-
+                //
             </android.support.v7.widget.RecyclerView>
         </LinearLayout>
     </com.zhy.autolayout.AutoLinearLayout>
+
 </ScrollView>

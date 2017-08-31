@@ -1,49 +1,36 @@
 package com.example.ipandaitems.presenter.livepresenter;
 
 
-import com.example.ipandaitems.model.ModelImpl;
+import com.example.ipandaitems.model.Callback;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
+import com.example.ipandaitems.model.livechina.liveModelImpl;
 import com.example.ipandaitems.view.livechina.Ilivechinaview;
 
 import java.util.Map;
 
-import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-
 public class LivePresenterImpl implements LiveIPresenter {
 
     private Ilivechinaview ilivechinaview;
-    private ModelImpl model;
+    private liveModelImpl model;
 
     public LivePresenterImpl(Ilivechinaview ilivechinaview) {
         this.ilivechinaview = ilivechinaview;
-        model = new ModelImpl();
+        model = new liveModelImpl();
     }
 
 
     @Override
     public void chinaget() {
-        model.RequestChinaGet(new Observer<livechinaBean>() {
+        model.RequestChinaGet(new Callback<livechinaBean>() {
             @Override
-            public void onSubscribe(@NonNull Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(@NonNull livechinaBean livechinaBean) {
+            public void succeed(livechinaBean livechinaBean) {
                 ilivechinaview.succeed(livechinaBean);
             }
 
             @Override
-            public void onError(@NonNull Throwable e) {
-                ilivechinaview.Failure();
-            }
-
-            @Override
-            public void onComplete() {
+            public void nothing(String str) {
 
             }
         });
@@ -51,53 +38,21 @@ public class LivePresenterImpl implements LiveIPresenter {
 
     @Override
     public void chinacontent(String url) {
-        model.RequestChinaContentGet(url, new Observer<livechinacontentbean>() {
+        model.RequestChinaContentGet(url, new Callback<livechinacontentbean>() {
             @Override
-            public void onSubscribe(@NonNull Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(@NonNull livechinacontentbean livechinacontentbean) {
+            public void succeed(livechinacontentbean livechinacontentbean) {
                 ilivechinaview.succeedcontent(livechinacontentbean);
             }
 
             @Override
-            public void onError(@NonNull Throwable e) {
+            public void nothing(String str) {
                 ilivechinaview.Failure();
-            }
-
-            @Override
-            public void onComplete() {
-
             }
         });
     }
 
     @Override
     public void chinavideo(Map<String, String> map) {
-        model.RequestChinaVideoGet(map, new Observer<livechinavideobean>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
 
-            }
-
-            @Override
-            public void onNext(@NonNull livechinavideobean livechinavideobean) {
-                ilivechinaview.succeedvideo(livechinavideobean);
-            }
-
-            @Override
-            public void onError(@NonNull Throwable e) {
-                ilivechinaview.Failure();
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
     }
-
-
 }

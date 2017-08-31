@@ -1,46 +1,35 @@
 package com.example.ipandaitems.presenter.annpresenter;
 
 
-import com.example.ipandaitems.model.ModelImpl;
+import com.example.ipandaitems.model.Callback;
+import com.example.ipandaitems.model.announce.AnnModelImpl;
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.view.announce.AnnView;
 import com.example.ipandaitems.view.announce.AnnounceFragment;
 
-import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-
-public class AnnIPresenterImpl implements AnnIPresenter, Observer<AnnBean> {
+public class AnnIPresenterImpl implements AnnIPresenter {
     private AnnView annView;
-    private final ModelImpl model;
+    private final AnnModelImpl model;
 
     public AnnIPresenterImpl(AnnounceFragment annView) {
-        this.annView=annView;
-        model = new ModelImpl();
+        this.annView = annView;
+        model = new AnnModelImpl();
     }
 
     @Override
     public void annGet() {
-        model.AnnRequsetGet(this);
+        model.AnnRequsetGet(new Callback<AnnBean>() {
+            @Override
+            public void succeed(AnnBean annBean) {
+                annView.onSuccess(annBean);
+            }
+
+            @Override
+            public void nothing(String str) {
+                annView.onError(str);
+            }
+        });
     }
 
-    @Override
-    public void onSubscribe(@NonNull Disposable d) {
 
-    }
-
-    @Override
-    public void onNext(@NonNull AnnBean annBean) {
-        annView.onSuccess(annBean);
-    }
-
-    @Override
-    public void onError(@NonNull Throwable e) {
-        annView.onError(e.toString());
-    }
-
-    @Override
-    public void onComplete() {
-
-    }
 }
