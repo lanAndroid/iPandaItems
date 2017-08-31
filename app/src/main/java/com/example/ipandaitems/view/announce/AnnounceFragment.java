@@ -1,5 +1,6 @@
 package com.example.ipandaitems.view.announce;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,6 +20,7 @@ import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.presenter.annpresenter.AnnIPresenter;
 import com.example.ipandaitems.presenter.annpresenter.AnnIPresenterImpl;
 import com.example.ipandaitems.view.announce.annadapter.AnnMyadapter;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
 
@@ -33,14 +35,9 @@ import butterknife.Unbinder;
 public class AnnounceFragment extends BaseFragment implements AnnView {
 
     Unbinder unbinder;
-    @BindView(R.id.Imagev)
-    ImageView Imagev;
     @BindView(R.id.recy)
-    RecyclerView recy;
-    @BindView(R.id.ptr)
-    SwipeRefreshLayout ptr;
-    @BindView(R.id.ImagevText)
-    TextView ImagevText;
+    XRecyclerView recy;
+
     private AnnIPresenter annIPresenter;
 
     @Override
@@ -63,18 +60,7 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
 
     @Override
     protected void initListener() {
-        ptr.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        annIPresenter.annGet();
-                        ptr.setRefreshing(false);
-                    }
-                }, 3000);
-            }
-        });
+
     }
 
     @Override
@@ -95,10 +81,13 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
     public void onSuccess(AnnBean annBean) {
         List<AnnBean.BigImgBean> bigImg = annBean.getBigImg();
         final List<AnnBean.ListBean> list = annBean.getList();
+        View view = View.inflate(getActivity(), R.layout.video_image, null);
+        ImageView image = view.findViewById(R.id.Imagev);
+        TextView tv = view.findViewById(R.id.ImagevText);
         for (int i = 0; i < bigImg.size(); i++) {
-            ImagevText.setText(bigImg.get(i).getTitle());
-            String image = bigImg.get(i).getImage();
-            Glide.with(getActivity()).load(image).into(Imagev);
+            tv.setText(bigImg.get(i).getTitle());
+            String imageurl = bigImg.get(i).getImage();
+            Glide.with(getActivity()).load(imageurl).into(image);
             final String url = bigImg.get(i).getUrl();
 //            Imagev.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -114,13 +103,15 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
         RecyclerAdapterWithHF myadapter = new RecyclerAdapterWithHF((RecyclerView.Adapter) adapter);
         recy.setAdapter(myadapter);
         //Recycle点击事件
-//        myadapter.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
-//                list.get(position).getUrl();
-//                Intent intent = new Intent(getActivity(), PanadaTop.class);
-//            }
-//        });
+        myadapter.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
+            @Override
+            public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
+                list.get(position).getUrl();
+                Intent intent = new Intent(getActivity(), PanadaTop.class);
+                startActivity(intent);
+            }
+        });
+        recy.addHeaderView(view);
     }
 
     @Override

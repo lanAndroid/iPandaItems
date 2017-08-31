@@ -1,13 +1,10 @@
 package com.example.ipandaitems.presenter.pandalivepresenter.plfragment;
 
-import com.example.ipandaitems.model.ModelImpl;
+import com.example.ipandaitems.model.Callback;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.model.panda.PandaModelImpl;
 import com.example.ipandaitems.view.pandalive.plfragment.PLFLiveView;
-
-import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
 
 /**
  * @name yanantian
@@ -19,33 +16,23 @@ import io.reactivex.disposables.Disposable;
 public class PPLLives implements PPLLive {
 
     private PLFLiveView pplLive;
-    ModelImpl ml;
+    PandaModelImpl ml;
 
     public PPLLives(PLFLiveView pplLive) {
         this.pplLive = pplLive;
-        ml = new ModelImpl();
+        ml = new PandaModelImpl();
     }
 
     @Override
     public void getViews() {
-        ml.doGet(new Observer<PLHome>() {
+        ml.doGet(new Callback<PLHome>() {
             @Override
-            public void onSubscribe(@NonNull Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(@NonNull PLHome plHome) {
+            public void succeed(PLHome plHome) {
                 pplLive.getDatas(plHome);
             }
 
             @Override
-            public void onError(@NonNull Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
+            public void nothing(String str) {
 
             }
         });
@@ -53,24 +40,14 @@ public class PPLLives implements PPLLive {
 
     @Override
     public void getLives() {
-        ml.doGets(new Observer<PLLive>() {
+        ml.doGets(new Callback<PLLive>() {
             @Override
-            public void onSubscribe(@NonNull Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(@NonNull PLLive plLive) {
+            public void succeed(PLLive plLive) {
                 pplLive.getDataLive(plLive);
             }
 
             @Override
-            public void onError(@NonNull Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
+            public void nothing(String str) {
 
             }
         });

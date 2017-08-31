@@ -45,7 +45,8 @@
         <activity android:name=".view.registerandlogin.loginActivity" />
         <activity android:name=".view.registerandlogin.RegisterActivity" />
         <activity android:name=".view.OrinGinalActivity" />
-        <activity android:name=".view.WebViewActivity"></activity>
+        <activity android:name=".view.WebViewActivity" />
+        <activity android:name=".view.WebView"></activity>
     </application>
 
 </manifest>

@@ -18,8 +18,10 @@ import com.example.ipandaitems.model.entry.TopBean;
 import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.presenter.videopresenter.VideoIPresenter;
 import com.example.ipandaitems.presenter.videopresenter.VideoPresenterImpl;
+import com.example.ipandaitems.view.WebView;
 import com.example.ipandaitems.view.WebViewActivity;
 import com.example.ipandaitems.view.video.adapter.TopListAdapter;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
 
@@ -36,15 +38,12 @@ import butterknife.Unbinder;
  */
 
 public class VideoFragment extends BaseFragment implements VideoInfo {
-    @BindView(R.id.Imagev)
-    ImageView Imagev;
-    @BindView(R.id.ImagevText)
-    TextView ImagevText;
+
     Unbinder unbinder;
     @BindView(R.id.xrecy)
-    RecyclerView xrecy;
+    XRecyclerView xrecy;
     private VideoIPresenter videoIPresenter;
-
+    private List<TopBean.DataBean.BigImgBean> bigImg;
 
     @Override
     protected int layoutID() {
@@ -53,7 +52,7 @@ public class VideoFragment extends BaseFragment implements VideoInfo {
 
     @Override
     protected void initView(View view) {
-     videoIPresenter = new VideoPresenterImpl(this);
+        videoIPresenter = new VideoPresenterImpl(this);
         videoIPresenter.top();
     }
 
@@ -85,23 +84,18 @@ public class VideoFragment extends BaseFragment implements VideoInfo {
     @Override
     public void onSuccess(TopBean dataBean) {
         TopBean.DataBean data = dataBean.getData();
-        List<TopBean.DataBean.BigImgBean> bigImg = data.getBigImg();
-        for (int i = 0; i < bigImg.size(); i++) {
+        bigImg = data.getBigImg();
+        /*for (int i = 0; i < bigImg.size(); i++) {
             String image = bigImg.get(i).getImage();
             String title = bigImg.get(i).getTitle();
             ImagevText.setText(title);
             Glide.with(getActivity()).load(image).into(Imagev);
-        }
+        }*/
         String listurl = data.getListurl();
         videoIPresenter.topList(listurl);
-//        Imagev.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(getActivity(), PanadaVideo.class);
-//                startActivity(intent);
-//            }
-//        });
+
     }
+
 
     @Override
     public void onError(String e) {
@@ -110,22 +104,43 @@ public class VideoFragment extends BaseFragment implements VideoInfo {
 
     @Override
     public void topListSuccess(TopListBean topListBean) {
-//        final List<TopListBean.ListBean> list = topListBean.getList();
-//        xrecy.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-//        TopListAdapter adapter = new TopListAdapter(getActivity(), list);
-//        RecyclerAdapterWithHF myadapter = new RecyclerAdapterWithHF((RecyclerView.Adapter) adapter);
-//        xrecy.setAdapter(myadapter);
-//        myadapter.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
-//                Intent intent = new Intent(getActivity(), WebViewActivity.class);
-//                String url = list.get(position).getUrl();
-//                intent.putExtra("url", url);
-//                startActivity(intent);
-//            }
-//        });
-//        //禁止recycleview滑动
-//        xrecy.setNestedScrollingEnabled(false);
+        final List<TopListBean.ListBean> list = topListBean.getList();
+        xrecy.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        TopListAdapter adapter = new TopListAdapter(getActivity(), list);
+        RecyclerAdapterWithHF myadapter = new RecyclerAdapterWithHF((RecyclerView.Adapter) adapter);
+        xrecy.setAdapter(myadapter);
+        myadapter.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
+            @Override
+            public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
+                Intent intent = new Intent(getActivity(), WebView.class);
+                String url = list.get(position).getUrl();
+                intent.putExtra("url", url);
+                startActivity(intent);
+            }
+        });
+        //禁止recycleview滑动
+        xrecy.setNestedScrollingEnabled(false);
+        final View view = View.inflate(getActivity(), R.layout.video_image, null);
+        ImageView image = view.findViewById(R.id.Imagev);
+        TextView tv = view.findViewById(R.id.ImagevText);
+        for (int i = 0; i < bigImg.size(); i++) {
+            String image1 = bigImg.get(i).getImage();
+            Glide.with(getActivity()).load(image1).into(image);
+            String title = bigImg.get(i).getTitle();
+            tv.setText(title);
+        }
+        xrecy.addHeaderView(view);
+        xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
     }
 
     @Override
@@ -133,3 +148,4 @@ public class VideoFragment extends BaseFragment implements VideoInfo {
 
     }
 }
+

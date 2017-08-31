@@ -19,7 +19,6 @@ import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 import com.example.ipandaitems.presenter.livepresenter.LivePresenterImpl;
 import com.example.ipandaitems.view.livechina.Ilivechinaview;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,9 +51,7 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        map = new HashMap<>();
-        map.put("channel", "pa://cctv_p2p_hd" + list.get(position).getId());
-        map.put("client", "androidapp");
+
         holder.title.setText(list.get(position).getTitle());
         holder.brief.setText(list.get(position).getBrief());
         Log.e("--------------->", list.get(position).getBrief());
@@ -83,7 +80,7 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
             }
         });
         LivePresenterImpl presenter = new LivePresenterImpl(this);
-        presenter.chinavideo(map);
+        presenter.chinavideo("http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd" + list.get(position).getId() + "&client=androidapp");
 
 //        final MediaPlayer mediaPlayer = new MediaPlayer(context);
 //        holder.bo.setOnClickListener(new View.OnClickListener() {

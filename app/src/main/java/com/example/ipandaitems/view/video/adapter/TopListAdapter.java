@@ -17,50 +17,50 @@ import java.util.List;
  * Created by 1 on 2017/8/29.
  */
 
-public class TopListAdapter extends RecyclerView.Adapter<TopListAdapter.ViewHolder> {
-    private FragmentActivity activity;
-    private List<TopListBean.ListBean> list;
+public class TopListAdapter extends RecyclerView.Adapter<TopListAdapter.ViewHolder>{
+private FragmentActivity activity;
+private List<TopListBean.ListBean> list;
+public TopListAdapter(FragmentActivity activity,List<TopListBean.ListBean>list){
+        this.activity=activity;
+        this.list=list;
+        }
 
-    public TopListAdapter(FragmentActivity activity, List<TopListBean.ListBean> list) {
-        this.activity = activity;
-        this.list = list;
-    }
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(activity, R.layout.toplist, null);
-        ViewHolder viewHolder = new ViewHolder(view);
+@Override
+public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        View view=View.inflate(activity,R.layout.toplist,null);
+        ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        if (holder.image != null) {
-            Glide.with(activity).load(list.get(position).getPicurl()).into(holder.image);
         }
-        if (holder.content != null) {
+
+@Override
+public void onBindViewHolder(ViewHolder holder,int position){
+        if(holder.image!=null){
+        Glide.with(activity).load(list.get(position).getPicurl()).into(holder.image);
+        }
+        if(holder.content!=null){
 
         }
-        if (holder.title != null) {
-            holder.title.setText(list.get(position).getTitle());
+        if(holder.title!=null){
+        holder.title.setText(list.get(position).getTitle());
         }
-    }
+        }
 
-    @Override
-    public int getItemCount() {
+@Override
+public int getItemCount(){
         return list.size();
-    }
-
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
-        TextView title, content;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            image = itemView.findViewById(R.id.toplistImg);
-            title = itemView.findViewById(R.id.toplistTitle);
-            content = itemView.findViewById(R.id.toplistContent);
         }
+
+
+public class ViewHolder extends RecyclerView.ViewHolder {
+    ImageView image;
+    TextView title, content;
+
+    public ViewHolder(View itemView) {
+        super(itemView);
+        image = itemView.findViewById(R.id.toplistImg);
+        title = itemView.findViewById(R.id.toplistTitle);
+        content = itemView.findViewById(R.id.toplistContent);
     }
+}
+
 }
