@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.ipandaitems.R;
@@ -24,6 +25,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
+import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +34,7 @@ import java.util.List;
  * Created by 张豫耀 on 2017/8/23.
  */
 
-public class HomeFragment extends BaseFragment implements IHomeFragment {
+public class HomeFragment extends BaseFragment implements IHomeFragment, View.OnClickListener {
 
     XRecyclerView homefragmentXrv;
 
@@ -66,7 +68,7 @@ public class HomeFragment extends BaseFragment implements IHomeFragment {
 
     @Override
     protected void initView(View view) {
-        homefragmentXrv = (XRecyclerView) view.findViewById(R.id.homefragment_xrv);
+        homefragmentXrv = view.findViewById(R.id.homefragment_xrv);
 
 
         homeIPresenter = new HomePresenterImpl(this);
@@ -136,6 +138,8 @@ public class HomeFragment extends BaseFragment implements IHomeFragment {
         findtv = (TextView) view_banner.findViewById(R.id.home_banner_pandaeye_tv2);
         banner_brief1= (TextView) view_banner.findViewById(R.id.home_banner_brief1);
         banner_brief2= (TextView) view_banner.findViewById(R.id.home_banner_brief2);
+        banner_brief2.setOnClickListener(this);
+        banner_brief1.setOnClickListener(this);
         banner_imag= (ImageView) view_banner.findViewById(R.id.home_banner_imag);
         livetv.setText(pandaeye.getItems().get(0).getBrief());
         findtv.setText(pandaeye.getItems().get(1).getTitle());
@@ -152,16 +156,24 @@ public class HomeFragment extends BaseFragment implements IHomeFragment {
                 titlles.add(bigImg.get(a).getTitle());
 
             }
-            mybanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
+
+
             mybanner.setImageLoader(new GlideImageLoader());
 
             mybanner.setBannerTitles(titlles);
             mybanner.setImages(imags);
+            mybanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
             mybanner.setBannerAnimation(Transformer.DepthPage);
             mybanner.isAutoPlay(true);
             mybanner.setDelayTime(1000);
             mybanner.setIndicatorGravity(BannerConfig.CENTER);
             mybanner.start();
+            mybanner.setOnBannerListener(new OnBannerListener() {
+                @Override
+                public void OnBannerClick(int position) {
+                    Toast.makeText(getContext(), "这是"+bigImg.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                }
+            });
 
             livetv.setText(items.get(0).getTitle());
             findtv.setText(items.get(1).getTitle());
@@ -174,9 +186,12 @@ public class HomeFragment extends BaseFragment implements IHomeFragment {
             homefragmentXrv.setLayoutManager(layoutManager1);
             homefragmentXrv.addHeaderView(view_banner);
 
+            homefragmentXrv.setLoadingMoreEnabled(true);
+            homefragmentXrv.setLoadingMoreEnabled(true);
+
+            homefragmentXrv.setRefreshProgressStyle(ProgressStyle.LineScalePulseOutRapid);
 
 
-            homefragmentXrv.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
             homefragmentXrv.setLoadingMoreProgressStyle(ProgressStyle.Pacman);
             homefragmentXrv.setLoadingListener(new XRecyclerView.LoadingListener() {
                 @Override
@@ -225,4 +240,17 @@ public class HomeFragment extends BaseFragment implements IHomeFragment {
     private void initget() {
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.home_banner_pandaeye_tv1:
+
+                break;
+            case R.id.home_banner_pandaeye_tv2:
+
+                break;
+
+
+        }
+    }
 }

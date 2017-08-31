@@ -21,12 +21,18 @@ import java.util.List;
 public class HomeChianAdapter extends RecyclerView.Adapter{
     List<HomeBean.DataBean.ChinaliveBean.ListBeanX> chinaliveBeen;
     Context mContext;
+    OnClicks onClicks;
 
     public HomeChianAdapter(List<HomeBean.DataBean.ChinaliveBean.ListBeanX> chinaliveBeen, Context mContext) {
         this.chinaliveBeen = chinaliveBeen;
         this.mContext = mContext;
     }
-
+        public  interface  OnClicks{
+            void OnItemClick(viewholder view, int position);
+        }
+        public void SetOnItemClick(OnClicks onClicks){
+            this.onClicks=onClicks;
+        }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(mContext).inflate(R.layout.home_grid_lifechian_item,parent,false);
@@ -36,9 +42,16 @@ public class HomeChianAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            viewholder vi= (viewholder) holder;
+            final viewholder vi= (viewholder) holder;
           Glide.with(mContext).load(chinaliveBeen.get(position).getImage()).into(vi.imageView);
           vi.titletv.setText(chinaliveBeen.get(position).getTitle());
+            vi.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int adapterPosition = vi.getAdapterPosition();
+                   onClicks.OnItemClick(vi,adapterPosition);
+                }
+            });
     }
 
     @Override

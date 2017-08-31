@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.model.entry.home.HomeBean;
@@ -84,13 +85,19 @@ public class HomeAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
        if(holder instanceof Livebroadview){
            Livebroadview livebroadview= (Livebroadview) holder;
-           GridLayoutManager manager=new GridLayoutManager(mContext,3,GridLayoutManager.VERTICAL,false);
+           final GridLayoutManager manager=new GridLayoutManager(mContext,3,GridLayoutManager.VERTICAL,false);
 
            livebroadview.Live_rv.setNestedScrollingEnabled(false);
 
            livebroadview.Live_rv.setLayoutManager(manager);
            LivebroadAdapter livebroadAdapter=new LivebroadAdapter(mContext,pandaliveBeen);
            livebroadview.Live_rv.setAdapter(livebroadAdapter);
+           livebroadAdapter.SetOnItemClick(new LivebroadAdapter.OnClicks() {
+               @Override
+               public void OnItemClicks(LivebroadAdapter.viewholder view, int position) {
+                   Toast.makeText(mContext, "视频地址"+pandaliveBeen.get(position).getVid(), Toast.LENGTH_SHORT).show();
+               }
+           });
 
 
 
@@ -106,6 +113,13 @@ public class HomeAdapter extends RecyclerView.Adapter{
 
            MarvellousAdapter marvellousAdapter=new MarvellousAdapter(mContext,MarvellList);
            marvellousview.Marve_rv.setAdapter(marvellousAdapter);
+             marvellousAdapter.SetOnClicks(new MarvellousAdapter.onClicks() {
+                 @Override
+                 public void onItemClick(MarvellousAdapter.viewholder view, int position) {
+                     Toast.makeText(mContext, "敬请期待"+MarvellList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                 }
+             });
+
        }
         if(holder instanceof Rollingview){
            Rollingview rollingview= (Rollingview) holder;
@@ -116,16 +130,29 @@ public class HomeAdapter extends RecyclerView.Adapter{
            rollingview.rollingrv.setLayoutManager(layoutManager);
             HomeRollingAdapter rollingAdapter=new HomeRollingAdapter(mContext,rollinglist);
            rollingview.rollingrv.setAdapter(rollingAdapter);
+            rollingAdapter.SetClicks(new HomeRollingAdapter.OnClicks() {
+                @Override
+                public void SetOnItemClick(HomeRollingAdapter.viewholder view, int position) {
+                    Toast.makeText(mContext, "这是"+rollinglist.get(position).getPid()+"地址", Toast.LENGTH_SHORT).show();
+                }
+            });
+
        }
          if(holder instanceof LifeChianview){
            LifeChianview lifeChianview= (LifeChianview) holder;
 
-           GridLayoutManager manager=new GridLayoutManager(mContext,3,GridLayoutManager.VERTICAL,false);
+           final GridLayoutManager manager=new GridLayoutManager(mContext,3,GridLayoutManager.VERTICAL,false);
 
              lifeChianview.chian_rv.setNestedScrollingEnabled(false);
            lifeChianview.chian_rv.setLayoutManager(manager);
            HomeChianAdapter chianAdapter=new HomeChianAdapter(chinaliveBeen,mContext);
            lifeChianview.chian_rv.setAdapter(chianAdapter);
+             chianAdapter.SetOnItemClick(new HomeChianAdapter.OnClicks() {
+                 @Override
+                 public void OnItemClick(HomeChianAdapter.viewholder view, int position) {
+                     Toast.makeText(mContext, "这是"+chinaliveBeen.get(position).getVid()+"地址", Toast.LENGTH_SHORT).show();
+                 }
+             });
        }
 
     }
