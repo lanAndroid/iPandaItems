@@ -25,7 +25,7 @@ public class OriModelImpl implements OriModel {
             public void onNext(@NonNull originalbean originalbean) {
                 callback.succeed(originalbean);
             }
-
+//
             @Override
             public void onError(@NonNull Throwable e) {
                 callback.nothing(e.toString());
