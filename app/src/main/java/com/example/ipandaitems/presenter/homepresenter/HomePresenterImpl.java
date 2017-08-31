@@ -17,7 +17,7 @@ import io.reactivex.disposables.Disposable;
 public class HomePresenterImpl implements HomeIPresenter {
    IHomeFragment mIhomeFragment;
 
-    ModelImpl model;
+    HomeModel model;
 
 
 

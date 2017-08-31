@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_margin="10px"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/pl_live_multi_item_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:src="@drawable/_no_img"
      />
 
     <TextView
         android:id="@+id/pl_live_multi_item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5px"
+        android:layout_margin="10px"
         android:maxLines="1"
+        android:textColor="#000"
+        android:gravity="center"
         android:text="name"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
 
 
 </LinearLayout>

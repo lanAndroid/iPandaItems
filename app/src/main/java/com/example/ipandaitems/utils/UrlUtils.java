@@ -30,7 +30,8 @@ public class UrlUtils {
     //滚滚视频
     public static final String ROLLVIDEO = "http://www.ipanda.com/kehuduan/video/index.json";
     //熊猫播报2                              //http://www.ipanda.com/kehuduan/news/index.json
-    public static final String PANDAREPORTTWO = "http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1422435191506336&serviceId=panda";
+    public static final String PANDAREPORTTWO = "http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1422h435191506336&serviceId=panda";
+    //public static  final String TOP_MAP="http://www.ipanda.com/kehuduan/PAGE14503485387528442/index.json";
     //熊猫top榜
     public static final String PANDATOPNOTIVE = "http://115.182.35.91/api/getVideoInfoForCBox.do?pid=3d92fae34dc14b2492de15d5dd122ac8";
     //熊猫top榜条目1
@@ -50,7 +51,11 @@ public class UrlUtils {
     public static final String HOME_WONDERFUL = "http://www.ipanda.com/kehuduan/shipinliebieye/jingcaiyike/index.json";
 
     //精彩一刻
-    public static final String ORIGINALNEWS = "http://api.cntv.cn/video/videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1";
+    public static final String ORIGINALNEWS = "http://api.cntv.cn/video/videolistById?vsid=VSET100167216881&n=9&serviceId=panda&o=desc&of=time&p=1";
+
+    //熊猫播报top图片
+    public static final String TOP_MAP = "http://www.ipanda.com/kehuduan/news/index.json";
+    //public static  final String TOP_MAP="http://www.ipanda.com/kehuduan/PAGE14503485387528442/index.json";
 
     // 首页  滚滚视频
     public static final String HOME_ROLL = "http://www.ipanda.com/kehuduan/shipinliebieye/video/index.json";
@@ -63,5 +68,6 @@ public class UrlUtils {
     public static final String LOGIN = "https://reg.cntv.cn/login/login.action";
     //个人中心
     public static final String PHONE_URL_FROM = "http://cbox_mobile.regclientuser.cntv.cn";
-
+    //视频拼接地址
+    public static  final String VIDEO_URL=" http://115.182.9.189/api/getVideoInfoForCBox.do?pid=";
 }

@@ -14,6 +14,7 @@
     <color name="ivory">#FFFFF0</color><!--象牙色 -->
     <color name="lightyellow">#FFFFE0</color><!--亮黄色 -->
     <color name="yellow">#FFFF00</color><!--黄色 -->
+    <color name="black">#000000</color><!--黄色 -->
     <color name="snow">#FFFAFA</color><!--雪白色 -->
     <color name="floralwhite">#FFFAF0</color><!--花白色 -->
     <color name="lemonchiffon">#FFFACD</color><!--柠檬绸色 -->
@@ -99,7 +100,7 @@
     <color name="darkmagenta">#8B008B</color><!--暗洋红 -->
     <color name="darkred">#8B0000</color><!--暗红色 -->
     <color name="blueviolet">#8A2BE2</color><!--紫罗兰蓝色 -->
-    <color name="lightskyblue">#87CEFA</color><!--亮天蓝色 -->
+    <color name="tianse">#1E539C</color><!--亮天蓝色 -->
     <color name="skyblue">#87CEEB</color><!--天蓝色 -->
     <color name="gray">#808080</color><!--灰色 -->
     <color name="olive">#808000</color><!--橄榄色 -->
