@@ -43,7 +43,7 @@ public class ModelImpl implements IModel {
 
     @Override
     public void RequestHomeGet(Observer<HomeBean> observer) {
-      RetrofitUtils.getmRetrofitUtils_Demo().GetHomeNetwork(observer);
+     // RetrofitUtils.getmRetrofitUtils_Demo().GetHomeNetwork(observer);
     }
 
     @Override

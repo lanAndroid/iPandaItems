@@ -53,7 +53,7 @@ public class VideoFragment extends BaseFragment implements VideoInfo {
 
     @Override
     protected void initView(View view) {
-//        videoIPresenter = new VideoPresenterImpl(getActivity());
+     videoIPresenter = new VideoPresenterImpl(this);
         videoIPresenter.top();
     }
 
