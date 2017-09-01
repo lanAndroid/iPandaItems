@@ -9,7 +9,6 @@ import com.zhy.autolayout.AutoLayoutActivity;
 import java.sql.SQLException;
 
 import butterknife.ButterKnife;
-import io.vov.vitamio.Vitamio;
 
 
 /**
@@ -21,7 +20,6 @@ public abstract class BaseActivity extends AutoLayoutActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layoutID());
-        Vitamio.isInitialized(this);
         ButterKnife.bind(this);
         App.baseActivity = this;
         try {

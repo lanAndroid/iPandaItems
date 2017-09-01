@@ -2,8 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:scrollbars="none">
+    android:background="#804876FF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,11 +58,11 @@
 
                 <Button
                     android:id="@+id/live_china_select_channel_bianji"
-                    android:layout_width="64dp"
-                    android:layout_height="26dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80px"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="9dp"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/btn_shap"
                     android:text="编辑"
                     android:textColor="@android:color/black"
                     android:textSize="15sp" />

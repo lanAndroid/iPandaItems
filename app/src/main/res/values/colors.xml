@@ -10,7 +10,10 @@
     <color name="shell_brn1">#DDDDDD</color>
     <color name="shell_brn2">#FFFFFF</color>
     <color name="transparent">#00000000</color><!--透明色 -->
+    <color name="media_qingxidu">#99285AA0</color>
+    <color name="volume_seekBar">#285AA0</color>
     <color name="white">#FFFFFF</color><!--白色 -->
+    <color name="transparent_half_up">#AA000000</color>
     <color name="ivory">#FFFFF0</color><!--象牙色 -->
     <color name="lightyellow">#FFFFE0</color><!--亮黄色 -->
     <color name="yellow">#FFFF00</color><!--黄色 -->

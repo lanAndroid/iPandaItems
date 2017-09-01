@@ -1,6 +1,7 @@
 package com.example.ipandaitems.view.livechina.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -22,6 +24,8 @@ import com.example.ipandaitems.view.livechina.Ilivechinaview;
 import java.util.List;
 import java.util.Map;
 
+import io.vov.vitamio.Vitamio;
+import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 
 /**
@@ -35,6 +39,7 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
     private livechinavideobean flv;
     int a = 0;
     private Map<String, String> map;
+    private String url;
 
     public LiveChinaZhiboItemAdapter(Context context, List<livechinacontentbean.LiveBean> list) {
         this.context = context;
@@ -44,7 +49,7 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.fragment_livechina_item, parent, false);
-        RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layoutParams);
         return new ViewHolder(view);
     }
@@ -79,36 +84,36 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
                 }
             }
         });
+
         LivePresenterImpl presenter = new LivePresenterImpl(this);
         presenter.chinavideo("http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd" + list.get(position).getId() + "&client=androidapp");
 
-//        final MediaPlayer mediaPlayer = new MediaPlayer(context);
-//        holder.bo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                holder.videoview_top.stopPlayback();
-//                notifyItemChanged(holder.getLayoutPosition() - 1);
-//                Log.d("LiveChinaZhiboItemAdapt", "a:" + a);
-//
-//                a = position;
-//                if (position == holder.getLayoutPosition() - 1) {
-//
-//                    holder.bo.setVisibility(View.GONE);
-//                    holder.imageView.setVisibility(View.GONE);
-//
-//                    Toast.makeText(context, "播放", Toast.LENGTH_SHORT).show();
-//
-//                    holder.videoview_top.setVideoURI(Uri.parse(flv.getFlv_url().getFlv2()));
-//
-//                    holder.videoview_top.setVideoQuality(MediaPlayer.VIDEOQUALITY_LOW);
-//
-//
-//                    holder.videoview_top.requestFocus();
-//
-//                    holder.videoview_top.start();
-//                }
-//            }
-//        });
+        Log.e("Tag", "http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd" + list.get(position).getId() + "&client=androidapp");
+        // holder.videoview_top.start();
+        holder.bo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //  holder.videoview_top.stopPlayback();
+                notifyItemChanged(holder.getLayoutPosition() - 1);
+                Log.d("LiveChinaZhiboItemAdapt", "a:" + a);
+
+                a = position;
+                if (position == holder.getLayoutPosition() - 1) {
+                    Toast.makeText(context, "播放", Toast.LENGTH_SHORT).show();
+                    if (Vitamio.isInitialized(context)) {
+                        holder.imageView.setVisibility(View.GONE);
+                        holder.bo.setVisibility(View.GONE);
+                        Log.e("TAg", url);
+                        MediaController controller = new MediaController(context);
+                        holder.videoview_top.setVideoURI(Uri.parse(url));
+                        holder.videoview_top.setMediaController(controller);
+                        // holder.videoview_top.requestFocus();
+                        holder.videoview_top.start();
+                    }
+
+                }
+            }
+        });
     }
 
     @Override
@@ -128,8 +133,8 @@ public class LiveChinaZhiboItemAdapter extends RecyclerView.Adapter<LiveChinaZhi
 
     @Override
     public void succeedvideo(livechinavideobean livechinavideobean) {
-        flv = new livechinavideobean();
-        flv = livechinavideobean;
+
+        url = livechinavideobean.getHls_url().getHls1() + livechinavideobean.getFlv_cdn_info().getCdn_code();
 
     }
 

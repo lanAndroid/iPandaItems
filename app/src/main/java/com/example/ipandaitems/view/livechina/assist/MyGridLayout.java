@@ -87,20 +87,20 @@ public class MyGridLayout extends GridLayout implements View.OnLongClickListener
 
         // 设置GridLayout中条目的宽高
         LayoutParams params = new LayoutParams();
-        params.width = getResources().getDisplayMetrics().widthPixels / 3
-                - mMargin * 2;
-        params.height = LayoutParams.WRAP_CONTENT;
-        params.setMargins(mMargin, 8, mMargin, 8);
+        params.width = getResources().getDisplayMetrics().widthPixels / 3 - mMargin * 5;
+        params.height = 100;
+        ;
+        params.setMargins(mMargin, 15, mMargin, 15);
         tv.setLayoutParams(params);
 
         // 设置条目的背景和条目的内边距
-        tv.setBackgroundResource(R.drawable.drag_item_selector);
+        tv.setBackgroundResource(R.drawable.text_shap);
         tv.setGravity(Gravity.CENTER);
         tv.setPadding(10, 10, 10, 10);
 
 
 //        tv.setEnabled(false);
-        tv.setTextColor(getResources().getColor(R.color.black));
+        tv.setTextColor(getResources().getColor(R.color.white));
         addView(tv);
         if (mIsDragedAble) {
             // 设置条目长按事件

@@ -111,14 +111,10 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview, View.O
 
 
     private void initpop() {
-
         grid1.setGridLayoutItemDrageAble(true);
-
+        grid2.setGridLayoutItemDrageAble(false);
         list.addAll(titleList);
         grid1.addItems(list);
-
-        //下Gridview 添加item
-        grid2.setGridLayoutItemDrageAble(false);
         for (String str1 : list3) {
             if (!list.contains(str1)) {
                 // 打印出list2没有b,d
@@ -127,6 +123,18 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview, View.O
         }
         grid2.addItems(list2);
 
+        bianji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (bianji.getText().toString().equals("编辑")) {
+                    bianji.setText("完成");
+                } else if (bianji.getText().toString().equals("完成")) {
+                    bianji.setText("编辑");
+
+                }
+            }
+        });
         grid1.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
             @Override
             public void onItemSelect(String indexString) {
@@ -140,21 +148,14 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview, View.O
         grid2.setOnItemSelectListener(new MyGridLayout.OnItemSelectListener() {
             @Override
             public void onItemSelect(String indexString) {
-
                 list2.remove(indexString);
                 if (!list.contains(indexString)) {
                     list.add(indexString);
-//                    grid1.addItems(list);
+                    //                    grid1.addItems(list);
                     grid1.addTvItem(indexString);
-
                 }
-
-
             }
-
-
         });
-
 
         pop_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,7 +199,7 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview, View.O
 
         if (getContext().getSharedPreferences("data", Context.MODE_PRIVATE).getString("asd", "").equals("")) {
             for (int i = 0; i < livechinaBean.getTablist().size(); i++) {
-                Log.e("------------------->",livechinaBean.getTablist().get(i).getUrl());
+                Log.e("------------------->", livechinaBean.getTablist().get(i).getUrl());
                 fragmentList.add(new LiveChinaFragment(livechinaBean.getTablist().get(i).getUrl()));
                 titleList.add(livechinaBean.getTablist().get(i).getTitle());
             }
@@ -245,7 +246,7 @@ public class LiveFragment extends BaseFragment implements Ilivechinaview, View.O
 
     @Override
     public void Failure() {
-         Toast.makeText(getActivity(), "网络请求失败", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "网络请求失败", Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -13,6 +14,7 @@ import java.util.List;
 public class CFragmentPagerAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> fragments;
     private List<String> titles;
+    private final LinkedList<Fragment> recyleBin = new LinkedList<>();
 
     public CFragmentPagerAdapter(FragmentManager fm, List<Fragment> fragments, List<String> titles) {
         super(fm);
@@ -40,4 +42,5 @@ public class CFragmentPagerAdapter extends FragmentStatePagerAdapter {
     public int getItemPosition(Object object) {
         return POSITION_NONE;
     }
+
 }

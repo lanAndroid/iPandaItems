@@ -1,6 +1,7 @@
 package com.example.ipandaitems.view;
 
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,6 +35,12 @@ public class WebViewActivity extends BaseActivity {
         String name = getIntent().getStringExtra("name");
         String url = getIntent().getStringExtra("url");
         webTitle.setText(name);
+        WebSettings webSettings = webview.getSettings();
+        webSettings.setSupportZoom(true);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setDisplayZoomControls(true);
+        webSettings.setJavaScriptEnabled(true);
         webview.loadUrl(url);
     }
 
