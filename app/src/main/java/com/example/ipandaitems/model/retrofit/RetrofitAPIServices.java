@@ -15,6 +15,7 @@ import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.model.entry.pandalive.PLVideo;
 import com.example.ipandaitems.utils.UrlUtils;
 
 import java.util.Map;
@@ -57,6 +58,10 @@ public interface RetrofitAPIServices {
     //    熊猫直播 第二次网络获取
     @GET(UrlUtils.MULITANGLE)
     Observable<PLLive> getPandaLivesGET();
+
+    //    熊猫直播 视频播放
+    @GET(UrlUtils.SS)
+    Observable<PLVideo> getPLVideo();
 
     //    熊猫直播 精彩一刻
     @GET(UrlUtils.ORIGINALNEWS)

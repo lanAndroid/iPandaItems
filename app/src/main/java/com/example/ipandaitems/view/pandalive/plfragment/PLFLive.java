@@ -19,6 +19,7 @@ import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.model.entry.pandalive.PLVideo;
 import com.example.ipandaitems.presenter.pandalivepresenter.plfragment.PPLLives;
 import com.example.ipandaitems.view.pandalive.adapter.PL1AdapterLive;
 import com.example.ipandaitems.view.pandalive.view.MyGridView;
@@ -93,12 +94,8 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
         PPLLives pp = new PPLLives(this);
         pp.getViews();
         pp.getLives();
-        if (Vitamio.isInitialized(getContext())) {
-            plLiveVideo.setVideoPath(path);
-            MediaController controller = new MediaController(getContext());
-            plLiveVideo.setMediaController(controller);
-            plLiveVideo.start();
-        }
+        pp.getVideo();
+
     }
 
     @Override
@@ -124,6 +121,20 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
         list = plLive.getList();
         live = new PL1AdapterLive(getActivity(), list);
         plLiveMultiGrid.setAdapter(live);
+    }
+
+    @Override
+    public void getVideos(PLVideo plVideo) {
+        String ss = plVideo.getHls_url().getHls4() + plVideo.getFlv_cdn_info().getCdn_code();
+        if (Vitamio.isInitialized(getContext())) {
+            plLiveVideo.setVideoPath(ss);
+            MediaController controller = new MediaController(getContext());
+            plLiveVideo.setMediaController(controller);
+            plLiveVideo.start();
+        }
+
+
+
     }
 
     @Override

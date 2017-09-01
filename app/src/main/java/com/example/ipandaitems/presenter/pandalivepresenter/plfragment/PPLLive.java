@@ -11,4 +11,8 @@ public interface PPLLive {
     void getViews();
 
     void getLives();
+
+    void getVideo();
+
+
 }

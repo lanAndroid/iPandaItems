@@ -15,6 +15,7 @@ import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.model.entry.pandalive.PLVideo;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -115,6 +116,12 @@ public class RetrofitUtils {
     public void getPandaLives(Observer<PLLive> observer) {
         Observable<PLLive> pandaLiveGET = apiServices.getPandaLivesGET();
         pandaLiveGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    //    熊猫直播 播放视频
+    public void getVideo(Observer<PLVideo> observer) {
+        Observable<PLVideo> plVideoObservable = apiServices.getPLVideo();
+        plVideoObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
     //    熊猫直播 精彩一刻
