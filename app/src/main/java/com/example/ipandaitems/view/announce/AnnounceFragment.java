@@ -121,6 +121,22 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
             }
         });
         recy.addHeaderView(view);
+        recy.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        recy.refreshComplete();
+                    }
+                },2000);
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
     }
 
     @Override

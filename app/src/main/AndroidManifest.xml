@@ -35,17 +35,15 @@
             android:name="design_height"
             android:value="1920" />
 
-        <activity android:name=".view.LogActivity" />
-        <activity
-            android:name="io.vov.vitamio.activity.InitActivity"
+        <activity android:name="io.vov.vitamio.activity.InitActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.NoTitleBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".view.LogActivity" />
         <activity android:name=".view.registerandlogin.loginActivity" />
         <activity android:name=".view.registerandlogin.RegisterActivity" />
         <activity android:name=".view.OrinGinalActivity" />
-        <activity android:name=".view.WebViewActivity" />
         <activity android:name=".view.video.WebView"></activity>
     </application>
 

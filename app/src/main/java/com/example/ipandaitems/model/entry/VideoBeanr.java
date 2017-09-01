@@ -565,7 +565,7 @@ public class VideoBeanr {
             /**
              * duration : 65
              * image : http://p3.img.cctvpic.com/fmspic/2017/08/28/7d826d24b4e443ad88dd59ad03d50dfe-43.jpg
-             * url : http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/28/7d826d24b4e443ad88dd59ad03d50dfe_h2641200000nero_aac16.mp4
+                 * url : http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/28/7d826d24b4e443ad88dd59ad03d50dfe_h2641200000nero_aac16.mp4
              */
 
             private String duration;

@@ -93,7 +93,9 @@ public interface RetrofitAPIServices {
     //滚滚视频item进入后的数据
     @GET
     Observable<PanadaBean> getPanada(@Url String url);
+
+
     @GET
-    Observable<VideoBeanr> getVideo(String url);
+    Observable<VideoBeanr> getVideo(@Url  String url);
 }
 

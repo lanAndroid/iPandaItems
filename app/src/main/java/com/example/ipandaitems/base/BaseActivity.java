@@ -22,7 +22,6 @@ public abstract class BaseActivity extends AutoLayoutActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Vitamio.isInitialized(this);
         setContentView(layoutID());
         ButterKnife.bind(this);
         App.baseActivity = this;
