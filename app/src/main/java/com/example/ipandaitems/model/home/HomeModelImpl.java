@@ -5,6 +5,7 @@ import com.example.ipandaitems.model.Callback;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
+import com.example.ipandaitems.model.entry.home.HomeVideoBean;
 import com.example.ipandaitems.model.retrofit.RetrofitUtils;
 
 import io.reactivex.Observer;
@@ -25,6 +26,7 @@ public class HomeModelImpl implements HomeModel {
             @Override
             public void onNext(@NonNull HomeBean homeBean) {
                 callback.succeed(homeBean);
+
             }
 
             @Override
@@ -80,6 +82,31 @@ public class HomeModelImpl implements HomeModel {
             @Override
             public void onError(@NonNull Throwable e) {
                 callback.nothing(e.toString());
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
+    @Override
+    public void RequestHomeVoidGet(final Callback<HomeVideoBean> callback) {
+        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeVidoBean(new Observer<HomeVideoBean>() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(@NonNull HomeVideoBean homeVideoBean) {
+                callback.succeed(homeVideoBean);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+
             }
 
             @Override

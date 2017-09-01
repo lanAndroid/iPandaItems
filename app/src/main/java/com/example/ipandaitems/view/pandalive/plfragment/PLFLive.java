@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -81,6 +82,7 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
     private PL1AdapterLive live;
     private List<PLLive.ListBean> list;
     private String path = "http://baobab.wdjcdn.com/145076769089714.mp4";
+    private PPLLives pp;
 
     @Override
     protected int layoutID() {
@@ -92,7 +94,7 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
 
     @Override
     protected void initView(View view) {
-        PPLLives pp = new PPLLives(this);
+        pp = new PPLLives(this);
         pp.getViews();
         pp.getLives();
         pp.getVideo();
@@ -122,6 +124,12 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
         list = plLive.getList();
         live = new PL1AdapterLive(getActivity(), list);
         plLiveMultiGrid.setAdapter(live);
+        plLiveMultiGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                pp.getVideo();
+            }
+        });
     }
 
     @Override
@@ -143,7 +151,7 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
 //                @Override
 //                public void onCompletion(MediaPlayer mp) {
 //                    plLiveVideo.seekTo(0);
-                    plLiveVideo.start();
+            plLiveVideo.start();
 //                }
 //            });
         }

@@ -8,6 +8,7 @@ import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
+import com.example.ipandaitems.model.entry.home.HomeVideoBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -67,6 +68,9 @@ public interface RetrofitAPIServices {
     //    熊猫直播 精彩一刻
     @GET(UrlUtils.ORIGINALNEWS)
     Observable<PLAmaPhotoes> getPLAmaPhotoesGET();
+
+    @GET
+    Observable<HomeVideoBean> getHomevidwbean(@Url String url);
 
 
     @GET()

@@ -5,6 +5,7 @@ import com.example.ipandaitems.model.Callback;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
+import com.example.ipandaitems.model.entry.home.HomeVideoBean;
 
 //xx
 public interface HomeModel {
@@ -14,6 +15,9 @@ public interface HomeModel {
     void RequestHomeMarvellGet(Callback<HomeMarvellBean> callback);
 
     void RequestHomeRollingGet(Callback<HomeRollingBean> callback);
+
+    void RequestHomeVoidGet(Callback<HomeVideoBean> callback);
+
 
 
 }
