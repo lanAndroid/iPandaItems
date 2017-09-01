@@ -1,7 +1,9 @@
 package com.example.ipandaitems.view;
 
+import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +24,10 @@ public class WebViewActivity extends BaseActivity {
     TextView webTitle;
     @BindView(R.id.webview)
     WebView webview;
+    @BindView(R.id.shoucans)
+    CheckBox shoucans;
+    @BindView(R.id.fenxiang)
+    CheckBox fenxiang;
 
     @Override
     protected int layoutID() {
@@ -53,4 +59,10 @@ public class WebViewActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

@@ -30,6 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
@@ -130,9 +131,22 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
             plLiveVideo.setVideoPath(ss);
             MediaController controller = new MediaController(getContext());
             plLiveVideo.setMediaController(controller);
-            plLiveVideo.start();
+//            plLiveVideo.setVideoLayout(VideoView.VIDEO_LAYOUT_FIT_PARENT, 0);
+//            plLiveVideo.requestFocus();
+//            plLiveVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//                @Override
+//                public void onPrepared(MediaPlayer mp) {
+//                    mp.setPlaybackSpeed(1.0f);
+//                }
+//            });
+//            plLiveVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                @Override
+//                public void onCompletion(MediaPlayer mp) {
+//                    plLiveVideo.seekTo(0);
+                    plLiveVideo.start();
+//                }
+//            });
         }
-
 
 
     }

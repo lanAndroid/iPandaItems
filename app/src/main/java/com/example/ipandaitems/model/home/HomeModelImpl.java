@@ -16,7 +16,7 @@ public class HomeModelImpl implements HomeModel {
 
     @Override
     public void RequestHomeGet(final Callback<HomeBean> callback) {
-        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeNetwork(new Observer<HomeBean>() {
+       /* RetrofitUtils.getmRetrofitUtils_Demo().GetHomeNetwork(new Observer<HomeBean>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
 
@@ -36,7 +36,7 @@ public class HomeModelImpl implements HomeModel {
             public void onComplete() {
 
             }
-        });
+        });*/
     }
 
     @Override

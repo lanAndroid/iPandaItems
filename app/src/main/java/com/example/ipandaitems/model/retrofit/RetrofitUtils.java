@@ -71,13 +71,7 @@ public class RetrofitUtils {
         services.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    //首页 网络请求
-    public void GetHomeNetwork(Observer<HomeBean> observer) {
 
-        Observable<HomeBean> homeBeanObservable = apiServices.getHomeGET();
-
-        homeBeanObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
 
     //首页 精彩一刻网络请求
     public void GetHomeMarvellwork(Observer<HomeMarvellBean> observer) {
