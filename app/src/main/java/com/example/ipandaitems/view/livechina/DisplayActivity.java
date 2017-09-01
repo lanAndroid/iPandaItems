@@ -31,7 +31,7 @@ public class DisplayActivity extends AppCompatActivity {
         }
         initView();
     }
-
+//
     private void initView() {
         video_view = (VideoView) findViewById(R.id.video_view);
         app_video_play = (ImageView) findViewById(R.id.app_video_play);
