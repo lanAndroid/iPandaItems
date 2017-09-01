@@ -37,6 +37,8 @@ public class HomeAdapter extends RecyclerView.Adapter{
         this.rollinglist = rollinglist;
         this.pandaliveBeen = pandaliveBeen;
         MarvellList = marvellList;
+
+
     }
 
     @Override
@@ -71,14 +73,8 @@ public class HomeAdapter extends RecyclerView.Adapter{
         else if(viewType==3)
         { view = LayoutInflater.from(mContext).inflate(R.layout.home_grid_lifechina, parent, false);
             return new LifeChianview(view);}
-
-
-
-
-
-
-
-            return null;
+        
+        return null;
     }
 
     @Override

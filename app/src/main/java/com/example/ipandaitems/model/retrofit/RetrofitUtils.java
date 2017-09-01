@@ -8,6 +8,7 @@ import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
+import com.example.ipandaitems.model.entry.home.HomeVideoBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -16,6 +17,7 @@ import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -35,7 +37,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitUtils {
     private static RetrofitUtils mRetrofitUtils = null;
     private final RetrofitAPIServices apiServices;
+    String url="http://115.182.9.189/api/getVideoInfoForCBox.do";
 
+    Map<String, String> map=new HashMap<>();
     private RetrofitUtils() {
         OkHttpClient okhttp = new OkHttpClient.Builder()
                 .connectTimeout(50, TimeUnit.SECONDS)
@@ -93,6 +97,13 @@ public class RetrofitUtils {
 
         RollingObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+    //首页
+    public void GetHomeVidoBean(Observer<HomeVideoBean> observer){
+
+        Observable<HomeVideoBean> homevidwbean = apiServices.getHomevidwbean(url);
+        homevidwbean.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+
+    }
 
     public void annGetNetWork(Observer<AnnBean> observer) {
         Observable<AnnBean> annBeanObservable = apiServices.annServicesGET();
@@ -105,13 +116,13 @@ public class RetrofitUtils {
         annBeanObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    //    熊猫直播 第一次网络获取
+    //    熊猫首页特 第一次网络获取
     public void getPandaLive(Observer<PLHome> observer) {
         Observable<PLHome> pandaLiveGET = apiServices.getPandaLiveGET();
         pandaLiveGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    //    熊猫直播 第二次网络获取
+    //    熊猫首页第二次网络获取
     public void getPandaLives(Observer<PLLive> observer) {
         Observable<PLLive> pandaLiveGET = apiServices.getPandaLivesGET();
         pandaLiveGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
@@ -149,4 +160,5 @@ public class RetrofitUtils {
         Observable<TopListBean> topList = apiServices.getTopList(url);
         topList.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
 }
