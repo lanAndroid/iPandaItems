@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:background="@color/shell_brn1"
     android:orientation="vertical">
+
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:layout_width="match_parent"
         android:layout_height="1520dp"
         android:id="@+id/recy"
 
         ></com.jcodecraeer.xrecyclerview.XRecyclerView>
-
 </com.zhy.autolayout.AutoRelativeLayout>

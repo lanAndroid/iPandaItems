@@ -29,6 +29,8 @@ public class UrlUtils {
     public static final String CHAOMENG = "http://api.cntv.cn/video/videolistById?vsid=VSET100272959126&n=7&serviceId=panda&o=desc&of=time&p=1";
     //滚滚视频
     public static final String ROLLVIDEO = "http://www.ipanda.com/kehuduan/video/index.json";
+    //滚滚视频item内容拼接
+    public static final String GNNGNNVIDEO="http://api.cntv.cn/video/videolistById?";//后边需要拼接的 vsid=VSET100340574858&n=7&serviceId=panda&o=desc&of=time&p=1
     //熊猫播报2                              //http://www.ipanda.com/kehuduan/news/index.json
     public static final String PANDAREPORTTWO = "http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1422h435191506336&serviceId=panda";
     //public static  final String TOP_MAP="http://www.ipanda.com/kehuduan/PAGE14503485387528442/index.json";

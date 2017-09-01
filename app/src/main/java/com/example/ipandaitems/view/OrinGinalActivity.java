@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 
 import com.example.ipandaitems.R;
@@ -60,7 +61,7 @@ public class OrinGinalActivity extends BaseActivity implements originalIView, Vi
         adapter.SetOnItemCLick(new OriginalAdapter.OnItemCLick() {
             @Override
             public void OnClick(View v, int position) {
-                Intent intent = new Intent(OrinGinalActivity.this, WebViewActivity.class);
+                Intent intent = new Intent(OrinGinalActivity.this, WebView.class);
                 intent.putExtra("name", list.get(position).getTitle());
                 intent.putExtra("url", list.get(position).getUrl());
                 startActivity(intent);

@@ -3,8 +3,10 @@ package com.example.ipandaitems.model.retrofit;
 
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
+import com.example.ipandaitems.model.entry.PanadaBean;
 import com.example.ipandaitems.model.entry.TopBean;
 import com.example.ipandaitems.model.entry.TopListBean;
+import com.example.ipandaitems.model.entry.VideoBeanr;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
@@ -20,6 +22,7 @@ import com.example.ipandaitems.utils.UrlUtils;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -87,6 +90,10 @@ public interface RetrofitAPIServices {
     //TopList
     @GET
     Observable<TopListBean> getTopList(@Url String url);
-
+    //滚滚视频item进入后的数据
+    @GET
+    Observable<PanadaBean> getPanada(@Url String url);
+    @GET
+    Observable<VideoBeanr> getVideo(String url);
 }
 

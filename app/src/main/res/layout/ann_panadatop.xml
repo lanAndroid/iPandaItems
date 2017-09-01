@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/shell_brn1"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/web_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/personal_back_img" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:id="@+id/toptitle"
+                android:textColor="@color/white"
+                />
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+    <io.vov.vitamio.widget.VideoView
+        android:layout_width="match_parent"
+        android:layout_height="500px"
+        android:id="@+id/vita"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:background="@color/white"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="首播时间"
+            android:textColor="#000"
+            android:textSize="40px"
+            android:id="@+id/ti"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ti"
+            android:text="栏目介绍"
+            android:id="@+id/content"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/zankai"
+            android:layout_centerHorizontal="true"
+            android:button="@null"
+            android:layout_centerVertical="true"
+            android:id="@+id/listzankai"
+            />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/panadaContent"
+        android:visibility="gone"
+        android:paddingTop="10px"
+        android:background="@color/white"
+        />
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/panadarecy"
+            ></com.jcodecraeer.xrecyclerview.XRecyclerView>
 
 </LinearLayout>

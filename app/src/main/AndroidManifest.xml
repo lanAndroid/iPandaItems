@@ -26,7 +26,7 @@
         </activity>
         <activity android:name=".view.ShellActivity" />
         <activity android:name=".view.OrinGinalActivity" />
-        <activity android:name=".view.WebViewActivity" />
+        <activity android:name=".view.announce.PanadaTop" android:process=":vitamio"/>
 
         <meta-data
             android:name="design_width"
@@ -46,7 +46,7 @@
         <activity android:name=".view.registerandlogin.RegisterActivity" />
         <activity android:name=".view.OrinGinalActivity" />
         <activity android:name=".view.WebViewActivity" />
-        <activity android:name=".view.WebView"></activity>
+        <activity android:name=".view.video.WebView"></activity>
     </application>
 
 </manifest>

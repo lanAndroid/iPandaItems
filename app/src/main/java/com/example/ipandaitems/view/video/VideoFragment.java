@@ -18,8 +18,6 @@ import com.example.ipandaitems.model.entry.TopBean;
 import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.presenter.videopresenter.VideoIPresenter;
 import com.example.ipandaitems.presenter.videopresenter.VideoPresenterImpl;
-import com.example.ipandaitems.view.WebView;
-import com.example.ipandaitems.view.WebViewActivity;
 import com.example.ipandaitems.view.video.adapter.TopListAdapter;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 

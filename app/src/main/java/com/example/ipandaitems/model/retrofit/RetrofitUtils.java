@@ -3,8 +3,10 @@ package com.example.ipandaitems.model.retrofit;
 
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
+import com.example.ipandaitems.model.entry.PanadaBean;
 import com.example.ipandaitems.model.entry.TopBean;
 import com.example.ipandaitems.model.entry.TopListBean;
+import com.example.ipandaitems.model.entry.VideoBeanr;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
@@ -15,6 +17,7 @@ import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.google.common.eventbus.Subscribe;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -142,5 +145,15 @@ public class RetrofitUtils {
     public void getTopList(String url, Observer<TopListBean> observer) {
         Observable<TopListBean> topList = apiServices.getTopList(url);
         topList.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+    //滚滚视频item进入后的
+    public void getPanadaData(String url, Observer<PanadaBean> observer){
+        Observable<PanadaBean> panada = apiServices.getPanada(url);
+        panada.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+    //图片点击进入视频
+    public void getVideoData(String url,Observer<VideoBeanr> observer){
+        Observable<VideoBeanr> video=apiServices.getVideo(url);
+        video.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 }
