@@ -4,8 +4,9 @@ package com.example.ipandaitems.model.home;
 import com.example.ipandaitems.model.Callback;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomeRollVideo;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.home.HomeVideoBean;
+import com.example.ipandaitems.model.entry.home.HomeZhiBoVideoBean;
 import com.example.ipandaitems.model.retrofit.RetrofitUtils;
 
 import io.reactivex.Observer;
@@ -92,15 +93,40 @@ public class HomeModelImpl implements HomeModel {
     }
 
     @Override
-    public void RequestHomeVoidGet(final Callback<HomeVideoBean> callback) {
-        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeVidoBean(new Observer<HomeVideoBean>() {
+    public void RequestHomeRollingGet(String url, final Callback<HomeRollVideo> callback) {
+        RetrofitUtils.getmRetrofitUtils_Demo().gethomerollvideo(url, new Observer<HomeRollVideo>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
 
             }
 
             @Override
-            public void onNext(@NonNull HomeVideoBean homeVideoBean) {
+            public void onNext(@NonNull HomeRollVideo homeRollVideo) {
+                callback.succeed(homeRollVideo);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
+    @Override
+    public void RequestHomeVoidGet( String url,final Callback<HomeZhiBoVideoBean> callback) {
+        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeVidoBean(url,new Observer<HomeZhiBoVideoBean>() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(@NonNull HomeZhiBoVideoBean homeVideoBean) {
                 callback.succeed(homeVideoBean);
             }
 

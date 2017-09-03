@@ -16,8 +16,9 @@ import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomeRollVideo;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.home.HomeVideoBean;
+import com.example.ipandaitems.model.entry.home.HomeZhiBoVideoBean;
 import com.example.ipandaitems.presenter.homepresenter.HomePresenterImpl;
 import com.example.ipandaitems.presenter.homepresenter.homeadapter.HomeAdapter;
 import com.example.ipandaitems.utils.GlideImageLoader;
@@ -234,7 +235,16 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
     }
 
     @Override
-    public void gethomeViodbean(HomeVideoBean homeVideoBean) {
+    public void gethomeViodbean(HomeZhiBoVideoBean homeVideoBean) {
+
+
+
+
+    }
+
+    @Override
+    public void gethomeRollingVido(HomeRollVideo homeRollVideo) {
+
 
     }
 

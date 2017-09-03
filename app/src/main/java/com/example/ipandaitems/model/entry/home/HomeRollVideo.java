@@ -5,27 +5,27 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by xiaogang on 2017/8/30.
+ * Created by xiaogang on 2017/9/1.
  */
 
-public class HomeVideoBean {
+public class HomeRollVideo {
 
 
     /**
      * play_channel : 直播中国
-     * f_pgmtime : 2017-08-30 10:26:54
-     * tag : 精彩一刻大熊猫熊猫基地国宝动物
-     * cdn_info : {"cdn_vip":"cntv.vod.cdn.myqcloud.com","cdn_code":"VOD-MP4-CDN-QQ","cdn_name":"3rd腾讯云"}
-     * editer_name : huoxinlei
+     * f_pgmtime : 2017-07-20 17:33:24
+     * tag : 熊猫档案认猫插件国际范“雅竹”
+     * cdn_info : {"cdn_vip":"vod.cntv.lxdns.com","cdn_code":"VOD-MP4-CDN-CNC","cdn_name":"3rd网宿"}
+     * editer_name : fangjin
      * version : 0.2
+     * title : 《熊猫档案》 20170720 认猫插件第五期：国际范“雅竹”
      * is_fn_hot : true
-     * title : 《精彩一刻》 20170830 新生代“压路机”来了
      * is_protected : 0
-     * hls_url : http://asp.cntv.lxdns.com/asp/hls/main/0303000a/3/default/014c7bc2cbe44d1dbcb4e4b9b28ad3e7/main.m3u8?maxbr=4096
+     * hls_url : http://asp.cntv.lxdns.com/asp/hls/main/0303000a/3/default/03ddbe69099441b09961bd37d8a8f782/main.m3u8?maxbr=4096
      * hls_cdn_info : {"cdn_vip":"asp.cntv.lxdns.com","cdn_code":"VOD-HLS-CDN-CNC","cdn_name":"3rd网宿"}
-     * client_sid : 6cc1f72b62da43f8bc8f3e44e20ce975
+     * client_sid : 3759467d468a4c2698447563729e8e6c
      * is_ipad_support : true
-     * video : {"totalLength":"32.00","chapters":[{"image":"http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg","url":"http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h264418000nero_aac32.mp4","duration":"32"}],"validChapterNum":5,"chapters4":[{"image":"http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg","url":"http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h2642000000nero_aac16.mp4","duration":"32"}],"lowChapters":[{"image":"http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg","url":"http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h264200000nero_aac16.mp4","duration":"32"}],"chapters3":[{"image":"http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg","url":"http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h2641200000nero_aac16.mp4","duration":"32"}],"chapters2":[{"image":"http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg","url":"http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h264818000nero_aac32.mp4","duration":"32"}],"url":""}
+     * video : {"totalLength":"368.00","chapters":[{"duration":"300","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264418000nero_aac32-1.mp4"},{"duration":"68","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264418000nero_aac32-2.mp4"}],"validChapterNum":5,"chapters4":[{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2642000000nero_aac16-1.mp4"},{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2642000000nero_aac16-2.mp4"},{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2642000000nero_aac16-3.mp4"},{"duration":"8","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2642000000nero_aac16-4.mp4"}],"chapters3":[{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2641200000nero_aac16-1.mp4"},{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2641200000nero_aac16-2.mp4"},{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2641200000nero_aac16-3.mp4"},{"duration":"8","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2641200000nero_aac16-4.mp4"}],"lowChapters":[{"duration":"368","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264200000nero_aac16.mp4"}],"chapters2":[{"duration":"180","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264818000nero_aac32-1.mp4"},{"duration":"180","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264818000nero_aac32-2.mp4"},{"duration":"8","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264818000nero_aac32-3.mp4"}],"url":""}
      * is_invalid_copyright : 0
      * produce_id : wxsb01
      * default_stream : HD
@@ -33,8 +33,8 @@ public class HomeVideoBean {
      * is_fn_multi_stream : false
      * embed :
      * asp_error_code : 0
-     * column : 熊猫频道精彩一刻高清
-     * lc : {"isp_code":"1","city_code":"","provice_code":"BJ","country_code":"CN","ip":"115.171.33.124"}
+     * column : 熊猫频道熊猫档案高清
+     * lc : {"isp_code":"1","city_code":"","provice_code":"BJ","country_code":"CN","ip":"115.171.128.41"}
      * public : 1
      * is_p2p_use : false
      * produce :
@@ -46,8 +46,8 @@ public class HomeVideoBean {
     private CdnInfoBean cdn_info;
     private String editer_name;
     private String version;
-    private String is_fn_hot;
     private String title;
+    private String is_fn_hot;
     private String is_protected;
     private String hls_url;
     private HlsCdnInfoBean hls_cdn_info;
@@ -116,20 +116,20 @@ public class HomeVideoBean {
         this.version = version;
     }
 
-    public String getIs_fn_hot() {
-        return is_fn_hot;
-    }
-
-    public void setIs_fn_hot(String is_fn_hot) {
-        this.is_fn_hot = is_fn_hot;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getIs_fn_hot() {
+        return is_fn_hot;
+    }
+
+    public void setIs_fn_hot(String is_fn_hot) {
+        this.is_fn_hot = is_fn_hot;
     }
 
     public String getIs_protected() {
@@ -278,9 +278,9 @@ public class HomeVideoBean {
 
     public static class CdnInfoBean {
         /**
-         * cdn_vip : cntv.vod.cdn.myqcloud.com
-         * cdn_code : VOD-MP4-CDN-QQ
-         * cdn_name : 3rd腾讯云
+         * cdn_vip : vod.cntv.lxdns.com
+         * cdn_code : VOD-MP4-CDN-CNC
+         * cdn_name : 3rd网宿
          */
 
         private String cdn_vip;
@@ -350,13 +350,13 @@ public class HomeVideoBean {
 
     public static class VideoBean {
         /**
-         * totalLength : 32.00
-         * chapters : [{"image":"http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg","url":"http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h264418000nero_aac32.mp4","duration":"32"}]
+         * totalLength : 368.00
+         * chapters : [{"duration":"300","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264418000nero_aac32-1.mp4"},{"duration":"68","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264418000nero_aac32-2.mp4"}]
          * validChapterNum : 5
-         * chapters4 : [{"image":"http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg","url":"http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h2642000000nero_aac16.mp4","duration":"32"}]
-         * lowChapters : [{"image":"http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg","url":"http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h264200000nero_aac16.mp4","duration":"32"}]
-         * chapters3 : [{"image":"http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg","url":"http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h2641200000nero_aac16.mp4","duration":"32"}]
-         * chapters2 : [{"image":"http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg","url":"http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h264818000nero_aac32.mp4","duration":"32"}]
+         * chapters4 : [{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2642000000nero_aac16-1.mp4"},{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2642000000nero_aac16-2.mp4"},{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2642000000nero_aac16-3.mp4"},{"duration":"8","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2642000000nero_aac16-4.mp4"}]
+         * chapters3 : [{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2641200000nero_aac16-1.mp4"},{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2641200000nero_aac16-2.mp4"},{"duration":"120","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2641200000nero_aac16-3.mp4"},{"duration":"8","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2641200000nero_aac16-4.mp4"}]
+         * lowChapters : [{"duration":"368","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264200000nero_aac16.mp4"}]
+         * chapters2 : [{"duration":"180","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264818000nero_aac32-1.mp4"},{"duration":"180","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264818000nero_aac32-2.mp4"},{"duration":"8","image":"http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264818000nero_aac32-3.mp4"}]
          * url :
          */
 
@@ -365,8 +365,8 @@ public class HomeVideoBean {
         private String url;
         private List<ChaptersBean> chapters;
         private List<Chapters4Bean> chapters4;
-        private List<LowChaptersBean> lowChapters;
         private List<Chapters3Bean> chapters3;
+        private List<LowChaptersBean> lowChapters;
         private List<Chapters2Bean> chapters2;
 
         public String getTotalLength() {
@@ -409,20 +409,20 @@ public class HomeVideoBean {
             this.chapters4 = chapters4;
         }
 
-        public List<LowChaptersBean> getLowChapters() {
-            return lowChapters;
-        }
-
-        public void setLowChapters(List<LowChaptersBean> lowChapters) {
-            this.lowChapters = lowChapters;
-        }
-
         public List<Chapters3Bean> getChapters3() {
             return chapters3;
         }
 
         public void setChapters3(List<Chapters3Bean> chapters3) {
             this.chapters3 = chapters3;
+        }
+
+        public List<LowChaptersBean> getLowChapters() {
+            return lowChapters;
+        }
+
+        public void setLowChapters(List<LowChaptersBean> lowChapters) {
+            this.lowChapters = lowChapters;
         }
 
         public List<Chapters2Bean> getChapters2() {
@@ -435,14 +435,22 @@ public class HomeVideoBean {
 
         public static class ChaptersBean {
             /**
-             * image : http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg
-             * url : http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h264418000nero_aac32.mp4
-             * duration : 32
+             * duration : 300
+             * image : http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg
+             * url : http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264418000nero_aac32-1.mp4
              */
 
+            private String duration;
             private String image;
             private String url;
-            private String duration;
+
+            public String getDuration() {
+                return duration;
+            }
+
+            public void setDuration(String duration) {
+                this.duration = duration;
+            }
 
             public String getImage() {
                 return image;
@@ -458,27 +466,27 @@ public class HomeVideoBean {
 
             public void setUrl(String url) {
                 this.url = url;
-            }
-
-            public String getDuration() {
-                return duration;
-            }
-
-            public void setDuration(String duration) {
-                this.duration = duration;
             }
         }
 
         public static class Chapters4Bean {
             /**
-             * image : http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg
-             * url : http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h2642000000nero_aac16.mp4
-             * duration : 32
+             * duration : 120
+             * image : http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg
+             * url : http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2642000000nero_aac16-1.mp4
              */
 
+            private String duration;
             private String image;
             private String url;
-            private String duration;
+
+            public String getDuration() {
+                return duration;
+            }
+
+            public void setDuration(String duration) {
+                this.duration = duration;
+            }
 
             public String getImage() {
                 return image;
@@ -494,63 +502,27 @@ public class HomeVideoBean {
 
             public void setUrl(String url) {
                 this.url = url;
-            }
-
-            public String getDuration() {
-                return duration;
-            }
-
-            public void setDuration(String duration) {
-                this.duration = duration;
-            }
-        }
-
-        public static class LowChaptersBean {
-            /**
-             * image : http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg
-             * url : http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h264200000nero_aac16.mp4
-             * duration : 32
-             */
-
-            private String image;
-            private String url;
-            private String duration;
-
-            public String getImage() {
-                return image;
-            }
-
-            public void setImage(String image) {
-                this.image = image;
-            }
-
-            public String getUrl() {
-                return url;
-            }
-
-            public void setUrl(String url) {
-                this.url = url;
-            }
-
-            public String getDuration() {
-                return duration;
-            }
-
-            public void setDuration(String duration) {
-                this.duration = duration;
             }
         }
 
         public static class Chapters3Bean {
             /**
-             * image : http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg
-             * url : http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h2641200000nero_aac16.mp4
-             * duration : 32
+             * duration : 120
+             * image : http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg
+             * url : http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h2641200000nero_aac16-1.mp4
              */
 
+            private String duration;
             private String image;
             private String url;
-            private String duration;
+
+            public String getDuration() {
+                return duration;
+            }
+
+            public void setDuration(String duration) {
+                this.duration = duration;
+            }
 
             public String getImage() {
                 return image;
@@ -567,6 +539,18 @@ public class HomeVideoBean {
             public void setUrl(String url) {
                 this.url = url;
             }
+        }
+
+        public static class LowChaptersBean {
+            /**
+             * duration : 368
+             * image : http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg
+             * url : http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264200000nero_aac16.mp4
+             */
+
+            private String duration;
+            private String image;
+            private String url;
 
             public String getDuration() {
                 return duration;
@@ -574,19 +558,43 @@ public class HomeVideoBean {
 
             public void setDuration(String duration) {
                 this.duration = duration;
+            }
+
+            public String getImage() {
+                return image;
+            }
+
+            public void setImage(String image) {
+                this.image = image;
+            }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
             }
         }
 
         public static class Chapters2Bean {
             /**
-             * image : http://p4.img.cctvpic.com/fmspic/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7-21.jpg
-             * url : http://cntv.vod.cdn.myqcloud.com/flash/mp4video61/TMS/2017/08/30/014c7bc2cbe44d1dbcb4e4b9b28ad3e7_h264818000nero_aac32.mp4
-             * duration : 32
+             * duration : 180
+             * image : http://p5.img.cctvpic.com/fmspic/2017/07/20/03ddbe69099441b09961bd37d8a8f782-189.jpg
+             * url : http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/03ddbe69099441b09961bd37d8a8f782_h264818000nero_aac32-1.mp4
              */
 
+            private String duration;
             private String image;
             private String url;
-            private String duration;
+
+            public String getDuration() {
+                return duration;
+            }
+
+            public void setDuration(String duration) {
+                this.duration = duration;
+            }
 
             public String getImage() {
                 return image;
@@ -602,14 +610,6 @@ public class HomeVideoBean {
 
             public void setUrl(String url) {
                 this.url = url;
-            }
-
-            public String getDuration() {
-                return duration;
-            }
-
-            public void setDuration(String duration) {
-                this.duration = duration;
             }
         }
     }
@@ -620,7 +620,7 @@ public class HomeVideoBean {
          * city_code :
          * provice_code : BJ
          * country_code : CN
-         * ip : 115.171.33.124
+         * ip : 115.171.128.41
          */
 
         private String isp_code;

@@ -7,8 +7,9 @@ import com.example.ipandaitems.model.entry.TopBean;
 import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomeRollVideo;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.home.HomeVideoBean;
+import com.example.ipandaitems.model.entry.home.HomeZhiBoVideoBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -37,7 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitUtils {
     private static RetrofitUtils mRetrofitUtils = null;
     private final RetrofitAPIServices apiServices;
-    String url="http://115.182.9.189/api/getVideoInfoForCBox.do";
+
 
     Map<String, String> map=new HashMap<>();
     private RetrofitUtils() {
@@ -98,9 +99,9 @@ public class RetrofitUtils {
         RollingObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
     //首页
-    public void GetHomeVidoBean(Observer<HomeVideoBean> observer){
+    public void GetHomeVidoBean(String url,Observer<HomeZhiBoVideoBean> observer){
 
-        Observable<HomeVideoBean> homevidwbean = apiServices.getHomevidwbean(url);
+        Observable<HomeZhiBoVideoBean> homevidwbean = apiServices.getHomevidwbean(url);
         homevidwbean.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
 
     }
@@ -120,6 +121,12 @@ public class RetrofitUtils {
     public void getPandaLive(Observer<PLHome> observer) {
         Observable<PLHome> pandaLiveGET = apiServices.getPandaLiveGET();
         pandaLiveGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    //    熊猫首页特 第一次网络获取
+    public void gethomerollvideo(String url,Observer<HomeRollVideo> observer) {
+        Observable<HomeRollVideo> gethomerollvideo = apiServices.gethomerollvideo(url);
+        gethomerollvideo.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
     //    熊猫首页第二次网络获取

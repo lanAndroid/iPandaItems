@@ -7,8 +7,9 @@ import com.example.ipandaitems.model.entry.TopBean;
 import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomeRollVideo;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.home.HomeVideoBean;
+import com.example.ipandaitems.model.entry.home.HomeZhiBoVideoBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -64,7 +65,12 @@ public interface RetrofitAPIServices {
     Observable<PLAmaPhotoes> getPLAmaPhotoesGET();
 
     @GET
-    Observable<HomeVideoBean> getHomevidwbean(@Url String url);
+    Observable<HomeZhiBoVideoBean> getHomevidwbean(@Url String url);
+
+
+
+    @GET
+    Observable<HomeRollVideo> gethomerollvideo(@Url String url);
 
 
     @GET()
