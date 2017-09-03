@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/shell_brn1"
@@ -12,8 +12,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            >
             <ImageView
                 android:id="@+id/web_finish"
                 android:layout_width="wrap_content"
@@ -32,7 +32,10 @@
     </android.support.v7.widget.Toolbar>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="500px">
+        android:layout_height="500px"
+        android:layout_below="@+id/toolbar2"
+        android:id="@+id/rela"
+        >
     <io.vov.vitamio.widget.VideoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -50,6 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="100px"
         android:background="@color/white"
+        android:layout_below="@+id/rela"
+        android:id="@+id/tit"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -85,9 +90,47 @@
         android:background="@color/white"
         />
         <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:layout_below="@+id/tit"
+            android:layout_above="@+id/re"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/panadarecy"
             ></com.jcodecraeer.xrecyclerview.XRecyclerView>
 
-</LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/re"
+        >
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#fff"
+            />
+        <RelativeLayout
+            android:layout_width="384px"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            >
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shoucan"
+                android:button="@null"
+                android:layout_centerVertical="true"
+                android:id="@+id/panadashoucan"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/play_fullsrcee_share_true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/panadafenxiang"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,14 +1,20 @@
 package com.example.ipandaitems.view.announce;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,10 +35,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.vov.vitamio.Vitamio;
-import io.vov.vitamio.provider.MediaStore;
 import io.vov.vitamio.utils.Log;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
+
+import static java.security.AccessController.getContext;
 
 
 /**
@@ -58,6 +65,10 @@ class PanadaTop extends BaseActivity implements AnnView {
     ImageView videoStart;
     @BindView(R.id.vita)
     VideoView vita;
+    @BindView(R.id.panadashoucan)
+    CheckBox panadashoucan;
+    @BindView(R.id.panadafenxiang)
+    ImageView panadafenxiang;
     private AnnIPresenterImpl annIPresenter;
     private int page = 1;
     private String url;
@@ -90,7 +101,41 @@ class PanadaTop extends BaseActivity implements AnnView {
 
     @Override
     protected void initListener() {
+        panadashoucan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (panadashoucan.isChecked()){
+                    Toast.makeText(PanadaTop.this,"已经收藏",Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(PanadaTop.this,"取消收藏",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        DisplayMetrics metric = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metric);
+        final int width = metric.widthPixels;     // 屏幕宽度（像素）
+        final int height = metric.heightPixels;   // 屏幕高度（像素）
+        final View inflate = View.inflate(PanadaTop.this, R.layout.videodenxiang, null);
+        Button btn_quxiao = inflate.findViewById(R.id.btn_quxiao);
+        final PopupWindow popupWindow = new PopupWindow(width,height/3);
+        btn_quxiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+            }
+        });
+        panadafenxiang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                popupWindow.setContentView(inflate);
+                popupWindow.setFocusable(true);
+
+                popupWindow.setOutsideTouchable(true);
+                // 设置popupWindow的显示位置，此处是在手机屏幕底部且水平居中的位置
+                popupWindow.showAtLocation(inflate, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+            }
+        });
     }
 
     @Override
@@ -147,8 +192,8 @@ class PanadaTop extends BaseActivity implements AnnView {
                 String vid = video.get(position).getVid();
                 String s = UrlUtils.VIDEO_URL + vid;
                 //annIPresenter.videoGet(s);
-                Toast.makeText(PanadaTop.this,"你麻皮",Toast.LENGTH_SHORT).show();
-                AnnIPresenter annIPresenter=new AnnIPresenterImpl(PanadaTop.this);
+                Toast.makeText(PanadaTop.this, "你麻皮", Toast.LENGTH_SHORT).show();
+                AnnIPresenter annIPresenter = new AnnIPresenterImpl(PanadaTop.this);
                 annIPresenter.videoGet(s);
             }
         });
@@ -176,6 +221,12 @@ class PanadaTop extends BaseActivity implements AnnView {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        vita.stopPlayback();
+    }
+
+    @Override
     public void videoSuccess(VideoBeanr videoBeanr) {
 
         VideoBeanr.VideoBean video = videoBeanr.getVideo();
@@ -189,10 +240,10 @@ class PanadaTop extends BaseActivity implements AnnView {
         Log.e("---------------->", urll);
         for (int i = 0; i < chapters3.size(); i++) {
             String image = chapters3.get(i).getImage();
-          //  String url = chapters3.get(i).getUrl();
+            //  String url = chapters3.get(i).getUrl();
         }
         //自动播放
-        if ( Vitamio.isInitialized(PanadaTop.this)) {
+        if (Vitamio.isInitialized(PanadaTop.this)) {
             videoStart.setVisibility(View.GONE);
             vita.setVideoURI(Uri.parse(urll));//设置视频地址
             MediaController controller = new MediaController(PanadaTop.this);
@@ -203,7 +254,7 @@ class PanadaTop extends BaseActivity implements AnnView {
 
             Toast.makeText(PanadaTop.this, "1111", Toast.LENGTH_SHORT).show();
         }
-            //点击播放
+        //点击播放
 //            videoStart.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {

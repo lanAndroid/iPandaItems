@@ -90,16 +90,17 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
         for (int i = 0; i < bigImg.size(); i++) {
             tv.setText(bigImg.get(i).getTitle());
             String imageurl = bigImg.get(i).getImage();
+            String vid = bigImg.get(i).getVid();
             Glide.with(getActivity()).load(imageurl).into(image);
-            final String url = bigImg.get(i).getUrl();
-//            Imagev.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(getActivity(), PanadaVideo.class);
-//                    intent.putExtra("path", url);
-//                    startActivity(intent);
-//                }
-//            });
+            final String url = bigImg.get(i).getPid();
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), PanadaVideo.class);
+                    intent.putExtra("path", UrlUtils.VIDEO_URL+url);
+                    startActivity(intent);
+                }
+            });
         }
         recy.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         AnnMyadapter adapter = new AnnMyadapter(getActivity(), list);
