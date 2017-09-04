@@ -9,10 +9,10 @@ import com.example.ipandaitems.base.BaseFragment;
  * Created by 1 on 2017/9/4.
  */
 
-public class PhoneRegFragment extends BaseFragment{
+public class EmailRegFragment extends BaseFragment {
     @Override
     protected int layoutID() {
-        return R.layout.fragment_personal_phone_register;
+        return R.layout.fragment_personal_email_register;
     }
 
     @Override
