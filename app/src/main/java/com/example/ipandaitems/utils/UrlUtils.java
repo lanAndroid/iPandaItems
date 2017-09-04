@@ -7,6 +7,12 @@ package com.example.ipandaitems.utils;
 public class UrlUtils {
     //服务器地址
     public static final String BASEURL = "http://www.ipanda.com/kehuduan/";
+
+    public static final String SS = "http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hdipanda&client=androidapp";
+
+
+    public static final String SS = "http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hdipanda&client=androidapp";
+
     //首页
     public static final String HOMEURLALL = "http://www.ipanda.com/kehuduan/shouye/index.json";
     //直播中国

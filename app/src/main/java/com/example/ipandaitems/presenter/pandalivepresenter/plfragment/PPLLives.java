@@ -3,6 +3,7 @@ package com.example.ipandaitems.presenter.pandalivepresenter.plfragment;
 import com.example.ipandaitems.model.Callback;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.model.entry.pandalive.PLVideo;
 import com.example.ipandaitems.model.panda.PandaModelImpl;
 import com.example.ipandaitems.view.pandalive.plfragment.PLFLiveView;
 
@@ -52,4 +53,20 @@ public class PPLLives implements PPLLive {
             }
         });
     }
+
+    @Override
+    public void getVideo(String url) {
+        ml.doVideo(url,new Callback<PLVideo>() {
+            @Override
+            public void succeed(PLVideo plVideo) {
+                pplLive.getVideos(plVideo);
+            }
+
+            @Override
+            public void nothing(String str) {
+
+            }
+        });
+    }
+
 }

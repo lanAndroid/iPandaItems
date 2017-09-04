@@ -10,6 +10,7 @@ import com.example.ipandaitems.model.entry.VideoBeanr;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
+import com.example.ipandaitems.model.entry.home.HomeVideoBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -17,6 +18,7 @@ import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.model.entry.pandalive.PLVideo;
 import com.example.ipandaitems.utils.UrlUtils;
 
 import java.util.Map;
@@ -62,9 +64,16 @@ public interface RetrofitAPIServices {
     @GET(UrlUtils.MULITANGLE)
     Observable<PLLive> getPandaLivesGET();
 
+    //    熊猫直播 视频播放
+    @GET()
+    Observable<PLVideo> getPLVideo(@Url String url);
+
     //    熊猫直播 精彩一刻
     @GET(UrlUtils.ORIGINALNEWS)
     Observable<PLAmaPhotoes> getPLAmaPhotoesGET();
+
+    @GET
+    Observable<HomeVideoBean> getHomevidwbean(@Url String url);
 
 
     @GET()

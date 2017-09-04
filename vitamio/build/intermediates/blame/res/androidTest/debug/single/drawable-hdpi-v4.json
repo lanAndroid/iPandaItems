@@ -1,5 +1,7 @@
 [
     {
+<<<<<<< .merge_file_a02168
+<<<<<<< .merge_file_a06616
         "merged": "D:\\ShiXun\\iPandaItems\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
         "source": "D:\\ShiXun\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
     },
@@ -10,5 +12,13 @@
     {
         "merged": "E:\\Android Practical training\\iPandaItems\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
         "source": "E:\\Android Practical training\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
+=======
+        "merged": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
+>>>>>>> .merge_file_a06184
+=======
+        "merged": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
+>>>>>>> .merge_file_a06212
     }
 ]

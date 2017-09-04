@@ -21,10 +21,18 @@ import java.util.List;
 public class HomeRollingAdapter extends RecyclerView.Adapter{
     Context mContext;
     List<HomeRollingBean.ListBean> listBeanList;
+    OnClicks onClicks;
 
     public HomeRollingAdapter(Context mContext, List<HomeRollingBean.ListBean> listBeanList) {
         this.mContext = mContext;
         this.listBeanList = listBeanList;
+    }
+
+    public interface OnClicks{
+        void SetOnItemClick(viewholder view, int position);
+    }
+    public void SetClicks(OnClicks onClicks){
+       this.onClicks=onClicks;
     }
 
     @Override
@@ -37,11 +45,20 @@ public class HomeRollingAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        viewholder vi= (viewholder) holder;
+        final viewholder vi= (viewholder) holder;
         Glide.with(mContext).load(listBeanList.get(position).getImage()).into(vi.imageView);
         vi.timetv.setText(listBeanList.get(position).getDaytime());
         vi.titletv.setText(listBeanList.get(position).getTitle());
         vi.secondtv.setText(listBeanList.get(position).getVideoLength());
+        vi.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int adapterPosition = vi.getAdapterPosition();
+                if(onClicks!=null){}
+                onClicks.SetOnItemClick(vi,adapterPosition);
+            }
+        });
+
     }
 
     @Override

@@ -2,11 +2,13 @@ package com.example.ipandaitems.view.pandalive.plfragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,6 +21,7 @@ import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.model.entry.pandalive.PLVideo;
 import com.example.ipandaitems.presenter.pandalivepresenter.plfragment.PPLLives;
 import com.example.ipandaitems.view.pandalive.adapter.PL1AdapterLive;
 import com.example.ipandaitems.view.pandalive.view.MyGridView;
@@ -78,7 +81,10 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
     private boolean boo = false;
     private PL1AdapterLive live;
     private List<PLLive.ListBean> list;
-    private String path = "http://baobab.wdjcdn.com/145076769089714.mp4";
+    private String path = "&client=androidapp";
+    private String paths = "http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd";
+    private PPLLives pp;
+    private String url;
 
     @Override
     protected int layoutID() {
@@ -90,15 +96,11 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
 
     @Override
     protected void initView(View view) {
-        PPLLives pp = new PPLLives(this);
+        pp = new PPLLives(this);
         pp.getViews();
         pp.getLives();
-        if (Vitamio.isInitialized(getContext())) {
-            plLiveVideo.setVideoPath(path);
-            MediaController controller = new MediaController(getContext());
-            plLiveVideo.setMediaController(controller);
-            plLiveVideo.start();
-        }
+        pp.getVideo(url);
+
     }
 
     @Override
@@ -124,6 +126,42 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
         list = plLive.getList();
         live = new PL1AdapterLive(getActivity(), list);
         plLiveMultiGrid.setAdapter(live);
+        plLiveMultiGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                url = paths + list.get(i).getId() + path;
+                Log.e("---------", url + "--------" + i + "--" + l);
+                pp.getVideo(url);
+                plLiveName.setText(list.get(i).getTitle());
+            }
+        });
+    }
+
+    @Override
+    public void getVideos(PLVideo plVideo) {
+        String ss = plVideo.getHls_url().getHls4() + plVideo.getFlv_cdn_info().getCdn_code();
+        if (Vitamio.isInitialized(getContext())) {
+            plLiveVideo.setVideoPath(ss);
+            MediaController controller = new MediaController(getContext());
+            plLiveVideo.setMediaController(controller);
+//            plLiveVideo.setVideoLayout(VideoView.VIDEO_LAYOUT_FIT_PARENT, 0);
+//            plLiveVideo.requestFocus();
+//            plLiveVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//                @Override
+//                public void onPrepared(MediaPlayer mp) {
+//                    mp.setPlaybackSpeed(1.0f);
+//                }
+//            });
+//            plLiveVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                @Override
+//                public void onCompletion(MediaPlayer mp) {
+//                    plLiveVideo.seekTo(0);
+            plLiveVideo.start();
+//                }
+//            });
+        }
+
+
     }
 
     @Override
