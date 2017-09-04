@@ -72,5 +72,9 @@ public class UrlUtils {
     //个人中心
     public static final String PHONE_URL_FROM = "http://cbox_mobile.regclientuser.cntv.cn";
     //视频拼接地址
+<<<<<<< .merge_file_a11860
     public static final String VIDEO_URL = " http://115.182.9.189/api/getVideoInfoForCBox.do?pid=";
+=======
+    public static  final String VIDEO_URL="http://115.182.9.189/api/getVideoInfoForCBox.do?pid=";
+>>>>>>> .merge_file_a02024
 }

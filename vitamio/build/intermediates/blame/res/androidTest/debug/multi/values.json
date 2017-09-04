@@ -341,6 +341,7 @@
                     "endOffset": 2233
                 },
                 "from": {
+<<<<<<< .merge_file_a13060
 <<<<<<< .merge_file_a06936
                     "file": "E:\\Android Practical training\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
@@ -1056,6 +1057,9 @@
 =======
                     "file": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
 >>>>>>> .merge_file_a03472
+=======
+                    "file": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> .merge_file_a02324
                     "position": {
                         "startLine": 31,
                         "startColumn": 4,

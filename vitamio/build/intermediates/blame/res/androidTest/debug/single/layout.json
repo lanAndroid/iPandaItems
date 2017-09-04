@@ -1,5 +1,6 @@
 [
     {
+<<<<<<< .merge_file_a09372
 <<<<<<< .merge_file_a13024
         "merged": "D:\\ShiXun\\iPandaItems\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
         "source": "D:\\ShiXun\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
@@ -15,5 +16,9 @@
         "merged": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
         "source": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
 >>>>>>> .merge_file_a00420
+=======
+        "merged": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\mediacontroller.xml",
+        "source": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\layout\\mediacontroller.xml"
+>>>>>>> .merge_file_a07868
     }
 ]
