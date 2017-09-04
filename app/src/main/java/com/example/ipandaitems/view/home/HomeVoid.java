@@ -10,6 +10,6 @@ public class HomeVoid extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_void);
+//        setContentView(R.layout.activity_home_void);
     }
 }

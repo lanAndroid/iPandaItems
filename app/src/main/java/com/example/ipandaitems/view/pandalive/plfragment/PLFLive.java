@@ -2,6 +2,7 @@ package com.example.ipandaitems.view.pandalive.plfragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
@@ -81,8 +81,10 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
     private boolean boo = false;
     private PL1AdapterLive live;
     private List<PLLive.ListBean> list;
-    private String path = "http://baobab.wdjcdn.com/145076769089714.mp4";
+    private String path = "&client=androidapp";
+    private String paths = "http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hd";
     private PPLLives pp;
+    private String url;
 
     @Override
     protected int layoutID() {
@@ -97,7 +99,7 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
         pp = new PPLLives(this);
         pp.getViews();
         pp.getLives();
-        pp.getVideo();
+        pp.getVideo(url);
 
     }
 
@@ -127,7 +129,10 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
         plLiveMultiGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                pp.getVideo();
+                url = paths + list.get(i).getId() + path;
+                Log.e("---------", url + "--------" + i + "--" + l);
+                pp.getVideo(url);
+                plLiveName.setText(list.get(i).getTitle());
             }
         });
     }

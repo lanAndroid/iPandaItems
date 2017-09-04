@@ -67,8 +67,8 @@ public class PandaModelImpl implements PandaModel {
     }
 
     @Override
-    public void doVideo(final Callback<PLVideo> callback) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getVideo(new Observer<PLVideo>() {
+    public void doVideo(String url, final Callback<PLVideo> callback) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getVideo(url, new Observer<PLVideo>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
 

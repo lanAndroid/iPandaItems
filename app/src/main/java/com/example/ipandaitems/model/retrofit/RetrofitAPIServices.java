@@ -62,8 +62,8 @@ public interface RetrofitAPIServices {
     Observable<PLLive> getPandaLivesGET();
 
     //    熊猫直播 视频播放
-    @GET(UrlUtils.SS)
-    Observable<PLVideo> getPLVideo();
+    @GET()
+    Observable<PLVideo> getPLVideo(@Url String url);
 
     //    熊猫直播 精彩一刻
     @GET(UrlUtils.ORIGINALNEWS)

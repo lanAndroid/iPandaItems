@@ -17,7 +17,7 @@ public interface PandaModel {
     void doGets(Callback<PLLive> callback);
 
     //    熊猫直播 播放视频
-    void doVideo(Callback<PLVideo> callback);
+    void doVideo(String url, Callback<PLVideo> callback);
 
     //    熊猫直播 精彩一刻
     void doAmaPhotoes(Callback<PLAmaPhotoes> callback);

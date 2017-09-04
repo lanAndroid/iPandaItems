@@ -124,8 +124,8 @@ public class RetrofitUtils {
     }
 
     //    熊猫直播 播放视频
-    public void getVideo(Observer<PLVideo> observer) {
-        Observable<PLVideo> plVideoObservable = apiServices.getPLVideo();
+    public void getVideo(String url,Observer<PLVideo> observer) {
+        Observable<PLVideo> plVideoObservable = apiServices.getPLVideo(url);
         plVideoObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 

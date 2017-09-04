@@ -12,7 +12,7 @@ public interface PPLLive {
 
     void getLives();
 
-    void getVideo();
+    void getVideo(String url);
 
 
 }

@@ -55,8 +55,8 @@ public class PPLLives implements PPLLive {
     }
 
     @Override
-    public void getVideo() {
-        ml.doVideo(new Callback<PLVideo>() {
+    public void getVideo(String url) {
+        ml.doVideo(url,new Callback<PLVideo>() {
             @Override
             public void succeed(PLVideo plVideo) {
                 pplLive.getVideos(plVideo);
