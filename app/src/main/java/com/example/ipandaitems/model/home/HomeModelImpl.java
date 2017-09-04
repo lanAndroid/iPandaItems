@@ -6,11 +6,8 @@ import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollVideo;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-<<<<<<< .merge_file_a08460
 import com.example.ipandaitems.model.entry.home.HomeVideoBean;
-=======
 import com.example.ipandaitems.model.entry.home.HomeZhiBoVideoBean;
->>>>>>> .merge_file_a12476
 import com.example.ipandaitems.model.retrofit.RetrofitUtils;
 
 import io.reactivex.Observer;
@@ -97,61 +94,38 @@ public class HomeModelImpl implements HomeModel {
     }
 
     @Override
-<<<<<<< .merge_file_a08460
-    public void RequestHomeVoidGet(final Callback<HomeVideoBean> callback) {
-        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeVidoBean(new Observer<HomeVideoBean>() {
-=======
-    public void RequestHomeRollingGet(String url, final Callback<HomeRollVideo> callback) {
-        RetrofitUtils.getmRetrofitUtils_Demo().gethomerollvideo(url, new Observer<HomeRollVideo>() {
->>>>>>> .merge_file_a12476
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
+    public void RequestHomeVoidGet(Callback<HomeVideoBean> callback) {
 
-            }
-
-            @Override
-<<<<<<< .merge_file_a08460
-            public void onNext(@NonNull HomeVideoBean homeVideoBean) {
-=======
-            public void onNext(@NonNull HomeRollVideo homeRollVideo) {
-                callback.succeed(homeRollVideo);
-            }
-
-            @Override
-            public void onError(@NonNull Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
     }
 
     @Override
-    public void RequestHomeVoidGet( String url,final Callback<HomeZhiBoVideoBean> callback) {
-        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeVidoBean(url,new Observer<HomeZhiBoVideoBean>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
+    public void RequestHomeRollingGet(String url, Callback<HomeRollVideo> callback) {
 
-            }
+    }
 
-            @Override
-            public void onNext(@NonNull HomeZhiBoVideoBean homeVideoBean) {
->>>>>>> .merge_file_a12476
-                callback.succeed(homeVideoBean);
-            }
 
-            @Override
-            public void onError(@NonNull Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
+    @Override
+    public void RequestHomeVoidGet(String url, final Callback<HomeZhiBoVideoBean> callback) {
+//        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeVidoBean(url,new Observer<HomeZhiBoVideoBean>() {
+//            @Override
+//            public void onSubscribe(@NonNull Disposable d) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(@NonNull HomeZhiBoVideoBean homeVideoBean) {
+//                callback.succeed(homeVideoBean);
+//            }
+//
+//            @Override
+//            public void onError(@NonNull Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//
+//            }
+//        });
     }
 }

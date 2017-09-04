@@ -2,6 +2,7 @@
     {
         "merged": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\mediacontroller_button.xml",
         "source": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable\\mediacontroller_button.xml"
+<<<<<<< .merge_file_a07904
 <<<<<<< .merge_file_a07044
     },
     {
@@ -51,5 +52,15 @@
         "merged": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\scrubber_progress_horizontal_holo_dark.xml",
         "source": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable\\scrubber_progress_horizontal_holo_dark.xml"
 >>>>>>> .merge_file_a09888
+=======
+    },
+    {
+        "merged": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\scrubber_control_selector_holo.xml",
+        "source": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable\\scrubber_control_selector_holo.xml"
+    },
+    {
+        "merged": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\scrubber_progress_horizontal_holo_dark.xml",
+        "source": "E:\\mypanander\\iPandaItems\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable\\scrubber_progress_horizontal_holo_dark.xml"
+>>>>>>> .merge_file_a02616
     }
 ]

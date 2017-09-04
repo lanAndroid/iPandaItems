@@ -1,6 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< .merge_file_a12048
 <merger version="3"><dataSet config="main"><source path="E:\my project\iPandaItems\vitamio\src\main\assets"/><source path="E:\my project\iPandaItems\vitamio\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="E:\my project\iPandaItems\vitamio\src\release\assets"/></dataSet></merger>
-=======
-<merger version="3"><dataSet config="main"><source path="E:\mypanander\iPandaItems\vitamio\src\main\assets"/><source path="E:\mypanander\iPandaItems\vitamio\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="E:\mypanander\iPandaItems\vitamio\src\release\assets"/></dataSet></merger>
->>>>>>> .merge_file_a09084

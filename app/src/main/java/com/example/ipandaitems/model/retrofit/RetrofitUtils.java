@@ -8,7 +8,7 @@ import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.home.HomeVideoBean;
+import com.example.ipandaitems.model.entry.home.HomeZhiBoVideoBean;
 import com.example.ipandaitems.model.entry.livechina.livechinaBean;
 import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
@@ -38,9 +38,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitUtils {
     private static RetrofitUtils mRetrofitUtils = null;
     private final RetrofitAPIServices apiServices;
-    String url="http://115.182.9.189/api/getVideoInfoForCBox.do";
+    String url = "http://115.182.9.189/api/getVideoInfoForCBox.do";
 
-    Map<String, String> map=new HashMap<>();
+    Map<String, String> map = new HashMap<>();
+
     private RetrofitUtils() {
         OkHttpClient okhttp = new OkHttpClient.Builder()
                 .connectTimeout(50, TimeUnit.SECONDS)
@@ -76,7 +77,6 @@ public class RetrofitUtils {
     }
 
 
-
     //首页 精彩一刻网络请求
     public void GetHomeMarvellwork(Observer<HomeMarvellBean> observer) {
 
@@ -91,13 +91,6 @@ public class RetrofitUtils {
         Observable<HomeRollingBean> RollingObservable = apiServices.getHomeRollingGET();
 
         RollingObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-    }
-    //首页
-    public void GetHomeVidoBean(Observer<HomeVideoBean> observer){
-
-        Observable<HomeVideoBean> homevidwbean = apiServices.getHomevidwbean(url);
-        homevidwbean.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-
     }
 
     public void annGetNetWork(Observer<AnnBean> observer) {
@@ -124,7 +117,7 @@ public class RetrofitUtils {
     }
 
     //    熊猫直播 播放视频
-    public void getVideo(String url,Observer<PLVideo> observer) {
+    public void getVideo(String url, Observer<PLVideo> observer) {
         Observable<PLVideo> plVideoObservable = apiServices.getPLVideo(url);
         plVideoObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
@@ -161,5 +154,6 @@ public class RetrofitUtils {
         Observable<TopListBean> topList = apiServices.getTopList(url);
         topList.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
 
 }

@@ -16,11 +16,15 @@ public class HomePresenterImpl implements HomeIPresenter {
 
 
 
+<<<<<<< .merge_file_a00664
 <<<<<<< .merge_file_a03756
     public HomePresenterImpl(HomeFragment mIhomeFragment) {
 =======
     public HomePresenterImpl(IHomeFragment mIhomeFragment) {
 >>>>>>> .merge_file_a04676
+=======
+    public HomePresenterImpl(IHomeFragment mIhomeFragment) {
+>>>>>>> .merge_file_a08384
         this.mIhomeFragment = mIhomeFragment;
         model = new HomeModelImpl();
     }

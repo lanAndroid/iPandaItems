@@ -18,11 +18,15 @@ import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollVideo;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
+<<<<<<< .merge_file_a03700
 <<<<<<< .merge_file_a12856
 import com.example.ipandaitems.model.entry.home.HomeVideoBean;
 =======
 import com.example.ipandaitems.model.entry.home.HomeZhiBoVideoBean;
 >>>>>>> .merge_file_a01612
+=======
+import com.example.ipandaitems.model.entry.home.HomeZhiBoVideoBean;
+>>>>>>> .merge_file_a01496
 import com.example.ipandaitems.presenter.homepresenter.HomePresenterImpl;
 import com.example.ipandaitems.presenter.homepresenter.homeadapter.HomeAdapter;
 import com.example.ipandaitems.utils.GlideImageLoader;
@@ -239,9 +243,12 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
     }
 
     @Override
+<<<<<<< .merge_file_a03700
 <<<<<<< .merge_file_a12856
     public void gethomeViodbean(HomeVideoBean homeVideoBean) {
 =======
+=======
+>>>>>>> .merge_file_a01496
     public void gethomeViodbean(HomeZhiBoVideoBean homeVideoBean) {
 
 
@@ -252,7 +259,10 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
     @Override
     public void gethomeRollingVido(HomeRollVideo homeRollVideo) {
 
+<<<<<<< .merge_file_a03700
 >>>>>>> .merge_file_a01612
+=======
+>>>>>>> .merge_file_a01496
 
     }
 

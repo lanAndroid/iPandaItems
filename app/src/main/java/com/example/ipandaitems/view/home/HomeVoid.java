@@ -1,5 +1,6 @@
 package com.example.ipandaitems.view.home;
 
+<<<<<<< .merge_file_a06344
 <<<<<<< .merge_file_a09924
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ public class HomeVoid extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_home_void);
 =======
+=======
+>>>>>>> .merge_file_a01572
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -51,6 +54,9 @@ public class HomeVoid extends AppCompatActivity {
         v.requestFocus();
         v.start();
 
+<<<<<<< .merge_file_a06344
 >>>>>>> .merge_file_a09748
+=======
+>>>>>>> .merge_file_a01572
     }
 }
