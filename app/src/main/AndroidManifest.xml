@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ipandaitems">
 
     <uses-permission android:name="android.permission.INTERNET" />
     //vitamio权限
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon, android:theme">
         <activity android:name=".iPandaActivity" />
-        <activity android:name=".view.announce.PanadaVideo" />
         <activity android:name=".view.HelloActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +30,9 @@
         </activity>
         <activity android:name=".view.ShellActivity" />
         <activity android:name=".view.OrinGinalActivity" />
-        <activity android:name=".view.WebViewActivity" />
+        <activity
+            android:name=".view.announce.PanadaTop"
+            android:process=":vitamio" />
 
         <meta-data
             android:name="design_width"
@@ -35,18 +41,42 @@
             android:name="design_height"
             android:value="1920" />
 
-        <activity android:name=".view.LogActivity" />
         <activity
             android:name="io.vov.vitamio.activity.InitActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".view.registerandlogin.loginActivity" />
+        <activity android:name=".view.LogActivity" />
+        <activity android:name=".view.registerandlogin.LoginActivity" />
         <activity android:name=".view.registerandlogin.RegisterActivity" />
         <activity android:name=".view.OrinGinalActivity" />
-        <activity android:name=".view.WebViewActivity" />
-        <activity android:name=".view.WebView"></activity>
+        <activity android:name=".view.video.WebView" />
+        <activity android:name=".view.announce.PanadaVideo"></activity>
+
+        <!--facebook  -->
+        <!--<meta-data-->
+            <!--android:name="com.facebook.sdk.ApplicationId"-->
+            <!--android:value="@string/facebook_app_id" />-->
+
+        <!--<activity-->
+            <!--android:name="com.facebook.FacebookActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"-->
+            <!--android:label="@string/app_name" />-->
+        <!--<activity-->
+            <!--android:name="com.facebook.CustomTabActivity"-->
+            <!--android:exported="true">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.VIEW" />-->
+
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="android.intent.category.BROWSABLE" />-->
+
+                <!--<data android:scheme="@string/fb_login_protocol_scheme" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
+
     </application>
 
 </manifest>

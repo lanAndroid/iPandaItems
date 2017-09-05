@@ -2,6 +2,7 @@ package com.example.ipandaitems.view.video;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,8 +19,6 @@ import com.example.ipandaitems.model.entry.TopBean;
 import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.presenter.videopresenter.VideoIPresenter;
 import com.example.ipandaitems.presenter.videopresenter.VideoPresenterImpl;
-import com.example.ipandaitems.view.WebView;
-import com.example.ipandaitems.view.WebViewActivity;
 import com.example.ipandaitems.view.video.adapter.TopListAdapter;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -133,7 +132,12 @@ public class VideoFragment extends BaseFragment implements VideoInfo {
         xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        xrecy.refreshComplete();
+                    }
+                },2000);
             }
 
             @Override

@@ -5,10 +5,6 @@ import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.panda.PandaModelImpl;
 import com.example.ipandaitems.view.pandalive.plfragment.PLF2AmaPhotoesView;
 
-import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-
 /**
  * @name yanantian
  * @motto 莫羡他人谢语花, 腹有诗书气自华

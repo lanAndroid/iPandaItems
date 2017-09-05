@@ -17,8 +17,11 @@ import com.chanven.lib.cptr.recyclerview.RecyclerAdapterWithHF;
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
 import com.example.ipandaitems.model.entry.AnnBean;
+import com.example.ipandaitems.model.entry.PanadaBean;
+import com.example.ipandaitems.model.entry.VideoBeanr;
 import com.example.ipandaitems.presenter.annpresenter.AnnIPresenter;
 import com.example.ipandaitems.presenter.annpresenter.AnnIPresenterImpl;
+import com.example.ipandaitems.utils.UrlUtils;
 import com.example.ipandaitems.view.announce.annadapter.AnnMyadapter;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -79,7 +82,7 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
 
     @Override
     public void onSuccess(AnnBean annBean) {
-        List<AnnBean.BigImgBean> bigImg = annBean.getBigImg();
+        final List<AnnBean.BigImgBean> bigImg = annBean.getBigImg();
         final List<AnnBean.ListBean> list = annBean.getList();
         View view = View.inflate(getActivity(), R.layout.video_image, null);
         ImageView image = view.findViewById(R.id.Imagev);
@@ -87,16 +90,17 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
         for (int i = 0; i < bigImg.size(); i++) {
             tv.setText(bigImg.get(i).getTitle());
             String imageurl = bigImg.get(i).getImage();
+            String vid = bigImg.get(i).getVid();
             Glide.with(getActivity()).load(imageurl).into(image);
-            final String url = bigImg.get(i).getUrl();
-//            Imagev.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(getActivity(), PanadaVideo.class);
-//                    intent.putExtra("path", url);
-//                    startActivity(intent);
-//                }
-//            });
+            final String url = bigImg.get(i).getPid();
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), PanadaVideo.class);
+                    intent.putExtra("path", UrlUtils.VIDEO_URL+url);
+                    startActivity(intent);
+                }
+            });
         }
         recy.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         AnnMyadapter adapter = new AnnMyadapter(getActivity(), list);
@@ -107,15 +111,47 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
             @Override
             public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
                 list.get(position).getUrl();
+                String id = list.get(position).getId();
+               // &n=7&serviceId=panda&o=desc&of=time&p=1
+                System.out.println(id+"++++++++++++++++++");
+                String sid = bigImg.get(0).getPid();
                 Intent intent = new Intent(getActivity(), PanadaTop.class);
+                intent.putExtra("id",id);
+                intent.putExtra("sid",sid);
                 startActivity(intent);
             }
         });
         recy.addHeaderView(view);
+        recy.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        recy.refreshComplete();
+                    }
+                },2000);
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
     }
 
     @Override
     public void onError(String error) {
+        System.out.println(error);
+    }
+
+    @Override
+    public void panadaSuccess(PanadaBean panadaBean) {
+
+    }
+
+    @Override
+    public void videoSuccess(VideoBeanr videoBeanr) {
 
     }
 }

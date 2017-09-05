@@ -8,7 +8,7 @@ import android.widget.RelativeLayout;
 
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseActivity;
-import com.example.ipandaitems.view.registerandlogin.loginActivity;
+import com.example.ipandaitems.view.registerandlogin.LoginActivity;
 
 import java.sql.SQLException;
 
@@ -68,7 +68,7 @@ public class LogActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.person_no_login_layout:
-                startActivity(new Intent(LogActivity.this, loginActivity.class));
+                startActivity(new Intent(LogActivity.this, LoginActivity.class));
                 break;
             case R.id.personal_history_layout:
                 break;

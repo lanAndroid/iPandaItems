@@ -1,5 +1,6 @@
 package com.example.ipandaitems.view.home;
 
+
 import android.os.Handler;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,17 +19,8 @@ import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollVideo;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-<<<<<<< .merge_file_a03700
-<<<<<<< .merge_file_a12856
 import com.example.ipandaitems.model.entry.home.HomeVideoBean;
-=======
 import com.example.ipandaitems.model.entry.home.HomeZhiBoVideoBean;
->>>>>>> .merge_file_a01612
-=======
-import com.example.ipandaitems.model.entry.home.HomeZhiBoVideoBean;
->>>>>>> .merge_file_a01496
-import com.example.ipandaitems.presenter.homepresenter.HomePresenterImpl;
-import com.example.ipandaitems.presenter.homepresenter.homeadapter.HomeAdapter;
 import com.example.ipandaitems.utils.GlideImageLoader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -48,7 +40,7 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
 
     XRecyclerView homefragmentXrv;
 
-    HomePresenterImpl homeIPresenter;
+//    HomePresenterImpl homeIPresenter;
     private View view_banner;
     private Banner mybanner;
     private TextView livetv;
@@ -62,7 +54,7 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
 
     private List<HomeMarvellBean.ListBean> homeMarvellBeanList = new ArrayList<>();
     private List<HomeRollingBean.ListBean> homeRollingBeanList = new ArrayList<>();
-    private HomeAdapter homeAdapter;
+//    private HomeAdapter homeAdapter;
     private List<HomeBean.DataBean.ChinaliveBean.ListBeanX> listBeanXes;
     private List<HomeBean.DataBean.PandaliveBean.ListBean> been = new ArrayList<>();
     private HomeBean.DataBean data = new HomeBean.DataBean();
@@ -72,7 +64,6 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
 
     @Override
     protected int layoutID() {
-
 
         return R.layout.home_fragment;
 
@@ -84,8 +75,8 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
         homefragmentXrv = view.findViewById(R.id.homefragment_xrv);
 
 
-        homeIPresenter = new HomePresenterImpl(this);
-        homeIPresenter.getHomeBean();
+//        homeIPresenter = new HomePresenterImpl(this);
+//        homeIPresenter.getHomeBean();
 
 
     }
@@ -104,29 +95,29 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
 
     @Override
     public void gethomebean(HomeBean homeBean) {
-        homeIPresenter.getHomeMarvellBean();
-        data = homeBean.getData();
+//        homeIPresenter.getHomeMarvellBean();
+//        data = homeBean.getData();
+//
+//        if (data.getBigImg().size() < 0) {
+//            Log.e("TAG", "没有值");
+//        } else {
+//            bigImg = data.getBigImg();
+//            items = data.getPandaeye().getItems();
+//            listBeanXes = data.getChinalive().getList();
+//            been.addAll(data.getPandalive().getList());
+//            Log.e("TAG", "bean" + been.size() + "");
+//            Log.e("TAG", bigImg.get(1).getImage() + "图片");
+//            pandaeye = data.getPandaeye();
 
-        if (data.getBigImg().size() < 0) {
-            Log.e("TAG", "没有值");
-        } else {
-            bigImg = data.getBigImg();
-            items = data.getPandaeye().getItems();
-            listBeanXes = data.getChinalive().getList();
-            been.addAll(data.getPandalive().getList());
-            Log.e("TAG", "bean" + been.size() + "");
-            Log.e("TAG", bigImg.get(1).getImage() + "图片");
-            pandaeye = data.getPandaeye();
-
-        }
+//        }
 
 
     }
 
     @Override
     public void gethomeMarvellbean(HomeMarvellBean homeMarvellBean) {
-        homeIPresenter.getHomeRollingBean();
-        homeMarvellBeanList = homeMarvellBean.getList();
+//        homeIPresenter.getHomeRollingBean();
+//        homeMarvellBeanList = homeMarvellBean.getList();
 
 
 //        Log.e("TAG","gethomeRollingbean方法外"+homeRollingBeanList.size());
@@ -192,8 +183,8 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
             livetv.setText(items.get(0).getTitle());
             findtv.setText(items.get(1).getTitle());
             Log.e("TAG", "bean" + been.size() + "");
-            homeAdapter = new HomeAdapter(getContext(), listBeanXes, homeRollingBeanList,
-                    been, homeMarvellBeanList);
+//            homeAdapter = new HomeAdapter(getContext(), listBeanXes, homeRollingBeanList,
+//                    been, homeMarvellBeanList);
             RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(getContext(), GridLayoutManager.VERTICAL, false);
             homefragmentXrv.setLayoutManager(layoutManager1);
             homefragmentXrv.addHeaderView(view_banner);
@@ -206,7 +197,7 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
                 public void onRefresh() {
                     new Handler().postDelayed(new Runnable() {
                         public void run() {
-                            homeAdapter.notifyDataSetChanged();
+//                            homeAdapter.notifyDataSetChanged();
                             homefragmentXrv.refreshComplete();
                         }
 
@@ -217,7 +208,7 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
                 public void onLoadMore() {
                     new Handler().postDelayed(new Runnable() {
                         public void run() {
-                            homeAdapter.notifyDataSetChanged();
+//                            homeAdapter.notifyDataSetChanged();
                             homefragmentXrv.refreshComplete();
                         }
 
@@ -227,7 +218,7 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
             });
 
 
-            homefragmentXrv.setAdapter(homeAdapter);
+//            homefragmentXrv.setAdapter(homeAdapter);
 
 
 //            Toast.makeText(getContext(), "来数据了", Toast.LENGTH_SHORT).show();
@@ -243,12 +234,11 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
     }
 
     @Override
-<<<<<<< .merge_file_a03700
-<<<<<<< .merge_file_a12856
     public void gethomeViodbean(HomeVideoBean homeVideoBean) {
-=======
-=======
->>>>>>> .merge_file_a01496
+
+    }
+
+    @Override
     public void gethomeViodbean(HomeZhiBoVideoBean homeVideoBean) {
 
 
@@ -258,12 +248,6 @@ public class HomeFragment extends BaseFragment implements IHomeFragment, View.On
 
     @Override
     public void gethomeRollingVido(HomeRollVideo homeRollVideo) {
-
-<<<<<<< .merge_file_a03700
->>>>>>> .merge_file_a01612
-=======
->>>>>>> .merge_file_a01496
-
     }
 
 
