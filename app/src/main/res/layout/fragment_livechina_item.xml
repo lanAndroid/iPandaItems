@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/currentPlayLayoutParent"
         android:layout_width="match_parent"
         android:layout_height="600px">
 
@@ -28,6 +29,68 @@
             android:layout_height="30dp"
             android:layout_centerInParent="true"
             android:src="@drawable/lpanda_pause" />
+
+        <LinearLayout
+            android:id="@+id/china_video_bottom_box"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/shape_gradient_black_bottom"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+
+            <!--底部播放按钮  -->
+            <ImageView
+                android:id="@+id/app_video_play_bottom"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/pla_pause" />
+
+            <ImageView
+                android:id="@+id/app_video_oval_point"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/custom_oval" />
+
+            <TextView
+                android:id="@+id/app_video_oval_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="7dp"
+                android:gravity="center"
+                android:text="Live"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/livechina_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/lpanda_live_screen" />
+            </RelativeLayout>
+
+            <SeekBar
+                android:id="@+id/livechina_video_volume_seekBar"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:maxHeight="4.0dip"
+                android:minHeight="4.0dip"
+                android:progressDrawable="@drawable/custom_seekbar"
+                android:thumb="@drawable/custom_oval_blue"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
     </RelativeLayout>
 
 

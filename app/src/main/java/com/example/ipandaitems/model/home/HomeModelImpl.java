@@ -25,6 +25,7 @@ public class HomeModelImpl implements HomeModel {
             @Override
             public void onNext(@NonNull HomeBean homeBean) {
                 callback.succeed(homeBean);
+
             }
 
             @Override
@@ -88,4 +89,29 @@ public class HomeModelImpl implements HomeModel {
             }
         });
     }
+
+//    @Override
+//    public void RequestHomeVoidGet(final Callback<HomeVideoBean> callback) {
+//        RetrofitUtils.getmRetrofitUtils_Demo().GetHomeVidoBean(new Observer<HomeVideoBean>() {
+//            @Override
+//            public void onSubscribe(@NonNull Disposable d) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(@NonNull HomeVideoBean homeVideoBean) {
+//                callback.succeed(homeVideoBean);
+//            }
+//
+//            @Override
+//            public void onError(@NonNull Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//
+//            }
+//        });
+    //   }
 }

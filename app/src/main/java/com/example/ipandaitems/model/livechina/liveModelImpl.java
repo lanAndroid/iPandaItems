@@ -2,10 +2,10 @@ package com.example.ipandaitems.model.livechina;
 
 
 import com.example.ipandaitems.model.Callback;
-import com.example.ipandaitems.model.entry.livechina.livechinaBean;
-import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 import com.example.ipandaitems.model.retrofit.RetrofitUtils;
+import com.example.ipandaitems.view.livechina.entity.LiveChinaAllTablist;
+import com.example.ipandaitems.view.livechina.entity.LiveChinaBean;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
@@ -16,15 +16,15 @@ public class liveModelImpl implements IiveModel {
 
 
     @Override
-    public void RequestChinaGet(final Callback<livechinaBean> callback) {
-        RetrofitUtils.getmRetrofitUtils_Demo().chinaGetNetWork(new Observer<livechinaBean>() {
+    public void RequestChinaGet(final Callback<LiveChinaAllTablist> callback) {
+        RetrofitUtils.getmRetrofitUtils_Demo().chinaGetNetWork(new Observer<LiveChinaAllTablist>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
 
             }
 
             @Override
-            public void onNext(@NonNull livechinaBean livechinaBean) {
+            public void onNext(@NonNull LiveChinaAllTablist livechinaBean) {
                 callback.succeed(livechinaBean);
             }
 
@@ -41,15 +41,15 @@ public class liveModelImpl implements IiveModel {
     }
 
     @Override
-    public void RequestChinaContentGet(String url, final Callback<livechinacontentbean> callback) {
-        RetrofitUtils.getmRetrofitUtils_Demo().getLiveChinaContent(url, new Observer<livechinacontentbean>() {
+    public void RequestChinaContentGet(String url, final Callback<LiveChinaBean> callback) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getLiveChinaContent(url, new Observer<LiveChinaBean>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
 
             }
 
             @Override
-            public void onNext(@NonNull livechinacontentbean livechinacontentbean) {
+            public void onNext(@NonNull LiveChinaBean livechinacontentbean) {
                 callback.succeed(livechinacontentbean);
             }
 

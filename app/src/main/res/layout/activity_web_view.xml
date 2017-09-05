@@ -40,5 +40,38 @@
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar2"></WebView>
+        android:layout_below="@+id/toolbar2"
+        android:layout_above="@+id/res"
+        ></WebView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/res"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <RelativeLayout
+            android:layout_width="384px"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            >
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shoucan"
+            android:button="@null"
+            android:layout_centerVertical="true"
+            android:id="@+id/shoucans"
+            />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/play_fullsrcee_share_true"
+                android:layout_centerVertical="true"
+                android:id="@+id/fenxiang"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>

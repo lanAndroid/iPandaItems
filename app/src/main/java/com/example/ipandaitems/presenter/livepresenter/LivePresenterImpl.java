@@ -2,11 +2,11 @@ package com.example.ipandaitems.presenter.livepresenter;
 
 
 import com.example.ipandaitems.model.Callback;
-import com.example.ipandaitems.model.entry.livechina.livechinaBean;
-import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 import com.example.ipandaitems.model.livechina.liveModelImpl;
 import com.example.ipandaitems.view.livechina.Ilivechinaview;
+import com.example.ipandaitems.view.livechina.entity.LiveChinaAllTablist;
+import com.example.ipandaitems.view.livechina.entity.LiveChinaBean;
 
 public class LivePresenterImpl implements LiveIPresenter {
 
@@ -21,9 +21,9 @@ public class LivePresenterImpl implements LiveIPresenter {
 
     @Override
     public void chinaget() {
-        model.RequestChinaGet(new Callback<livechinaBean>() {
+        model.RequestChinaGet(new Callback<LiveChinaAllTablist>() {
             @Override
-            public void succeed(livechinaBean livechinaBean) {
+            public void succeed(LiveChinaAllTablist livechinaBean) {
                 ilivechinaview.succeed(livechinaBean);
             }
 
@@ -36,9 +36,9 @@ public class LivePresenterImpl implements LiveIPresenter {
 
     @Override
     public void chinacontent(String url) {
-        model.RequestChinaContentGet(url, new Callback<livechinacontentbean>() {
+        model.RequestChinaContentGet(url, new Callback<LiveChinaBean>() {
             @Override
-            public void succeed(livechinacontentbean livechinacontentbean) {
+            public void succeed(LiveChinaBean livechinacontentbean) {
                 ilivechinaview.succeedcontent(livechinacontentbean);
             }
 

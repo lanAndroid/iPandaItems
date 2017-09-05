@@ -3,18 +3,22 @@ package com.example.ipandaitems.model.retrofit;
 
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
+import com.example.ipandaitems.model.entry.PanadaBean;
 import com.example.ipandaitems.model.entry.TopBean;
 import com.example.ipandaitems.model.entry.TopListBean;
+import com.example.ipandaitems.model.entry.VideoBeanr;
 import com.example.ipandaitems.model.entry.home.HomeBean;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.livechina.livechinaBean;
-import com.example.ipandaitems.model.entry.livechina.livechinacontentbean;
+import com.example.ipandaitems.model.entry.home.HomeVideoBean;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
 import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.model.entry.pandalive.PLVideo;
+import com.example.ipandaitems.view.livechina.entity.LiveChinaAllTablist;
+import com.example.ipandaitems.view.livechina.entity.LiveChinaBean;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -70,13 +74,13 @@ public class RetrofitUtils {
         services.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    //首页 网络请求
     public void GetHomeNetwork(Observer<HomeBean> observer) {
 
         Observable<HomeBean> homeBeanObservable = apiServices.getHomeGET();
 
         homeBeanObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
 
     //首页 精彩一刻网络请求
     public void GetHomeMarvellwork(Observer<HomeMarvellBean> observer) {
@@ -100,8 +104,8 @@ public class RetrofitUtils {
     }
 
     // 直播中国
-    public void chinaGetNetWork(Observer<livechinaBean> observer) {
-        Observable<livechinaBean> annBeanObservable = apiServices.getLiveChinaGET();
+    public void chinaGetNetWork(Observer<LiveChinaAllTablist> observer) {
+        Observable<LiveChinaAllTablist> annBeanObservable = apiServices.getLiveChinaGET();
         annBeanObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
@@ -117,6 +121,12 @@ public class RetrofitUtils {
         pandaLiveGET.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
+    //    熊猫直播 播放视频
+    public void getVideo(Observer<PLVideo> observer) {
+        Observable<PLVideo> plVideoObservable = apiServices.getPLVideo();
+        plVideoObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
     //    熊猫直播 精彩一刻
     public void getPLAmaPhotoes(Observer<PLAmaPhotoes> observer) {
         Observable<PLAmaPhotoes> plAmaPhotoesGET = apiServices.getPLAmaPhotoesGET();
@@ -124,8 +134,8 @@ public class RetrofitUtils {
     }
 
 
-    public void getLiveChinaContent(String url, Observer<livechinacontentbean> observer) {
-        Observable<livechinacontentbean> livechinacontent = apiServices.getLiveChinaContentGET(url);
+    public void getLiveChinaContent(String url, Observer<LiveChinaBean> observer) {
+        Observable<LiveChinaBean> livechinacontent = apiServices.getLiveChinaContentGET(url);
         livechinacontent.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
@@ -148,5 +158,22 @@ public class RetrofitUtils {
     public void getTopList(String url, Observer<TopListBean> observer) {
         Observable<TopListBean> topList = apiServices.getTopList(url);
         topList.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void getPanadaData(String url, Observer<PanadaBean> observer) {
+        Observable<PanadaBean> panada = apiServices.getPanada(url);
+        panada.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    //图片点击进入视频
+    public void getVideoData(String url, Observer<VideoBeanr> observer) {
+        Observable<VideoBeanr> video = apiServices.getVideo(url);
+        video.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+
+    public void GetHomeVidoBean(String url, Observer<HomeVideoBean> observer) {
+        Observable<HomeVideoBean> video = apiServices.getHomevidwbean(url);
+        video.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 }

@@ -2,6 +2,7 @@ package com.example.ipandaitems.view.pandalive.plfragment;
 
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.model.entry.pandalive.PLVideo;
 
 /**
  * @name yanantian
@@ -15,4 +16,6 @@ public interface PLFLiveView {
     void getDatas(PLHome plHome);
 
     void getDataLive(PLLive plLive);
+
+    void getVideos(PLVideo plVideo);
 }

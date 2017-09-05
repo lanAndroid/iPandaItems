@@ -1,8 +1,8 @@
 package com.example.ipandaitems.view.announce;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,16 +15,22 @@ import com.bumptech.glide.Glide;
 import com.chanven.lib.cptr.recyclerview.RecyclerAdapterWithHF;
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
+import com.example.ipandaitems.model.entry.VideoBeanr;
 import com.example.ipandaitems.model.entry.AnnBean;
+import com.example.ipandaitems.model.entry.PanadaBean;
 import com.example.ipandaitems.presenter.annpresenter.AnnIPresenter;
 import com.example.ipandaitems.presenter.annpresenter.AnnIPresenterImpl;
+import com.example.ipandaitems.utils.UrlUtils;
 import com.example.ipandaitems.view.announce.annadapter.AnnMyadapter;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+
+import static com.example.ipandaitems.R.id.Imagev;
 
 /**
  * Created by 张豫耀 on 2017/8/23.
@@ -33,14 +39,9 @@ import butterknife.Unbinder;
 public class AnnounceFragment extends BaseFragment implements AnnView {
 
     Unbinder unbinder;
-    @BindView(R.id.Imagev)
-    ImageView Imagev;
     @BindView(R.id.recy)
-    RecyclerView recy;
-    @BindView(R.id.ptr)
-    SwipeRefreshLayout ptr;
-    @BindView(R.id.ImagevText)
-    TextView ImagevText;
+    XRecyclerView recy;
+
     private AnnIPresenter annIPresenter;
 
     @Override
@@ -63,18 +64,7 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
 
     @Override
     protected void initListener() {
-        ptr.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        annIPresenter.annGet();
-                        ptr.setRefreshing(false);
-                    }
-                }, 3000);
-            }
-        });
+
     }
 
     @Override
@@ -93,38 +83,80 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
 
     @Override
     public void onSuccess(AnnBean annBean) {
-        List<AnnBean.BigImgBean> bigImg = annBean.getBigImg();
+        final List<AnnBean.BigImgBean> bigImg = annBean.getBigImg();
         final List<AnnBean.ListBean> list = annBean.getList();
+        View view = View.inflate(getActivity(), R.layout.video_image, null);
+        ImageView image = view.findViewById(Imagev);
+        TextView tv = view.findViewById(R.id.ImagevText);
         for (int i = 0; i < bigImg.size(); i++) {
-            ImagevText.setText(bigImg.get(i).getTitle());
-            String image = bigImg.get(i).getImage();
-            Glide.with(getActivity()).load(image).into(Imagev);
+            tv.setText(bigImg.get(i).getTitle());
+            String imageurl = bigImg.get(i).getImage();
+            Glide.with(getActivity()).load(imageurl).into(image);
             final String url = bigImg.get(i).getUrl();
-//            Imagev.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(getActivity(), PanadaVideo.class);
-//                    intent.putExtra("path", url);
-//                    startActivity(intent);
-//                }
-//            });
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), PanadaVideo.class);
+                    intent.putExtra("path", UrlUtils.VIDEO_URL + url);
+                    startActivity(intent);
+                }
+            });
         }
         recy.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         AnnMyadapter adapter = new AnnMyadapter(getActivity(), list);
         RecyclerAdapterWithHF myadapter = new RecyclerAdapterWithHF((RecyclerView.Adapter) adapter);
         recy.setAdapter(myadapter);
         //Recycle点击事件
-//        myadapter.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
-//                list.get(position).getUrl();
-//                Intent intent = new Intent(getActivity(), PanadaTop.class);
-//            }
-//        });
+        myadapter.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
+            @Override
+            public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
+                list.get(position).getUrl();
+                String id = list.get(position).getId();
+                // &n=7&serviceId=panda&o=desc&of=time&p=1
+                System.out.println(id + "++++++++++++++++++");
+                String sid = bigImg.get(0).getPid();
+                Intent intent = new Intent(getActivity(), PanadaTop.class);
+                intent.putExtra("id", id);
+                intent.putExtra("sid", sid);
+                startActivity(intent);
+            }
+        });
+        recy.addHeaderView(view);
+        recy.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        recy.refreshComplete();
+                    }
+                }, 2000);
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
     }
 
     @Override
     public void onError(String error) {
+        System.out.println(error);
+    }
 
+    @Override
+    public void panadaSuccess(PanadaBean panadaBean) {
+
+    }
+
+    @Override
+    public void videoSuccess(VideoBeanr videoBeanr) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

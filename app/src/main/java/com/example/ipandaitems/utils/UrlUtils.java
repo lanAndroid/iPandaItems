@@ -5,8 +5,13 @@ package com.example.ipandaitems.utils;
  */
 
 public class UrlUtils {
+
+    public static final String GNNGNNVIDEO = "http://api.cntv.cn/video/videolistById?";
     //服务器地址
     public static final String BASEURL = "http://www.ipanda.com/kehuduan/";
+
+    public static final String SS = "http://vdn.live.cntv.cn/api2/live.do?channel=pa://cctv_p2p_hdipanda&client=androidapp";
+
     //首页
     public static final String HOMEURLALL = "http://www.ipanda.com/kehuduan/shouye/index.json";
     //直播中国
@@ -69,5 +74,5 @@ public class UrlUtils {
     //个人中心
     public static final String PHONE_URL_FROM = "http://cbox_mobile.regclientuser.cntv.cn";
     //视频拼接地址
-    public static  final String VIDEO_URL=" http://115.182.9.189/api/getVideoInfoForCBox.do?pid=";
+    public static final String VIDEO_URL = " http://115.182.9.189/api/getVideoInfoForCBox.do?pid=";
 }

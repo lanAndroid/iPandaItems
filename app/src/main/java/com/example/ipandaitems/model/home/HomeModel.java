@@ -15,5 +15,8 @@ public interface HomeModel {
 
     void RequestHomeRollingGet(Callback<HomeRollingBean> callback);
 
+  //  void RequestHomeVoidGet(Callback<HomeVideoBean> callback);
+
+
 
 }

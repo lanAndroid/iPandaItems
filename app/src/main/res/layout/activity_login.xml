@@ -20,8 +20,10 @@
                 android:id="@+id/login_finish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/personal_back_img"
                 android:layout_centerVertical="true"
-                android:src="@drawable/personal_back_img" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/login_regis"

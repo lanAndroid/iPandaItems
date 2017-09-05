@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/live_china_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:background="@color/white">
+
+        <com.example.ipandaitems.view.livechina.assist.LiveChinaTab2PageIndicator
+            android:id="@+id/live_china_indicator"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="41dp"
+            android:background="#fff" />
+
+        <ImageView
+            android:id="@+id/live_china_add_channel"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/white"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/live_china_add" />
+    </RelativeLayout>
+
+    <com.example.ipandaitems.view.livechina.assist.NoInteruViewPager
+        android:id="@+id/live_china_viewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/live_china_tab_layout" />
+
+</LinearLayout>

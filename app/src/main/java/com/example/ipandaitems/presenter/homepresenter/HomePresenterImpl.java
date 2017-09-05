@@ -8,11 +8,11 @@ import com.example.ipandaitems.model.entry.home.HomeRollingBean;
 import com.example.ipandaitems.model.home.HomeModelImpl;
 import com.example.ipandaitems.view.home.HomeFragment;
 import com.example.ipandaitems.view.home.IHomeFragment;
-
 public class HomePresenterImpl implements HomeIPresenter {
-    IHomeFragment mIhomeFragment;
+   IHomeFragment mIhomeFragment;
 
     HomeModelImpl model;
+
 
 
     public HomePresenterImpl(HomeFragment mIhomeFragment) {
@@ -24,16 +24,18 @@ public class HomePresenterImpl implements HomeIPresenter {
     public void getHomeBean() {
 
         model.RequestHomeGet(new Callback<HomeBean>() {
-            @Override
-            public void succeed(HomeBean homeBean) {
-                mIhomeFragment.gethomebean(homeBean);
-            }
+                                 @Override
+                                 public void succeed(HomeBean homeBean) {
+                                     mIhomeFragment.gethomebean(homeBean);
+                                 }
 
-            @Override
-            public void nothing(String str) {
+                                 @Override
+                                 public void nothing(String str) {
 
-            }
-        });
+                                 }
+                             }
+
+        );
 
     }
 

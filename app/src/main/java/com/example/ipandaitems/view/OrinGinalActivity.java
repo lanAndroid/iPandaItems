@@ -10,6 +10,7 @@ import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseActivity;
 import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.presenter.OriPresenterImpl;
+import com.example.ipandaitems.view.video.WebView;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class OrinGinalActivity extends BaseActivity implements originalIView, Vi
         adapter.SetOnItemCLick(new OriginalAdapter.OnItemCLick() {
             @Override
             public void OnClick(View v, int position) {
-                Intent intent = new Intent(OrinGinalActivity.this, WebViewActivity.class);
+                Intent intent = new Intent(OrinGinalActivity.this, WebView.class);
                 intent.putExtra("name", list.get(position).getTitle());
                 intent.putExtra("url", list.get(position).getUrl());
                 startActivity(intent);

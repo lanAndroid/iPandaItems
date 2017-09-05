@@ -44,4 +44,6 @@ public abstract class BaseActivity extends AutoLayoutActivity {
         super.onResume();
         App.baseActivity = this;
     }
+
+
 }

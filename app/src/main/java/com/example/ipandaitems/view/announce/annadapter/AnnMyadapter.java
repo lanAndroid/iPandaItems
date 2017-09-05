@@ -59,10 +59,10 @@ public class AnnMyadapter extends RecyclerView.Adapter<AnnMyadapter.ViewHolder>{
         TextView text,text1,video_length;
         public ViewHolder(View itemView) {
             super(itemView);
-            image=itemView.findViewById(R.id.list_Image);
-            text=itemView.findViewById(R.id.list_Name);
-            text1=itemView.findViewById(R.id.list_Content);
-            video_length=itemView.findViewById(R.id.video_Length);
+            image= (ImageView) itemView.findViewById(R.id.list_Image);
+            text= (TextView) itemView.findViewById(R.id.list_Name);
+            text1= (TextView) itemView.findViewById(R.id.list_Content);
+            video_length= (TextView) itemView.findViewById(R.id.video_Length);
         }
     }
 

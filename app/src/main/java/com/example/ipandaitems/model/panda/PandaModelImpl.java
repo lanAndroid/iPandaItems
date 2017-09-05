@@ -5,6 +5,7 @@ import com.example.ipandaitems.model.Callback;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.model.entry.pandalive.PLVideo;
 import com.example.ipandaitems.model.retrofit.RetrofitUtils;
 
 import io.reactivex.Observer;
@@ -51,6 +52,31 @@ public class PandaModelImpl implements PandaModel {
             @Override
             public void onNext(@NonNull PLLive plLive) {
                 callback.succeed(plLive);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                callback.nothing(e.toString());
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
+    @Override
+    public void doVideo(final Callback<PLVideo> callback) {
+        RetrofitUtils.getmRetrofitUtils_Demo().getVideo(new Observer<PLVideo>() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(@NonNull PLVideo plVideo) {
+                callback.succeed(plVideo);
             }
 
             @Override

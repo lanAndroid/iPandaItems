@@ -21,26 +21,53 @@ import java.util.List;
 public class MarvellousAdapter extends RecyclerView.Adapter{
     private Context mContext;
     List<HomeMarvellBean.ListBean> listBeanList;
+    onClicks clicks;
+
+
 
     public MarvellousAdapter(Context mContext, List<HomeMarvellBean.ListBean> listBeanList) {
         this.mContext = mContext;
         this.listBeanList = listBeanList;
+    }
+    //回调监听
+   public interface  onClicks{
+        void  onItemClick(viewholder view, int position);
+    }
+    public void SetOnClicks(onClicks clicks) {
+        this.clicks = clicks;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(mContext).inflate(R.layout.home_grid_marvellous_item,parent,false);
 
+
+
         return new viewholder(view);
     }
 
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        viewholder vi= (viewholder) holder;
+        final viewholder vi= (viewholder) holder;
+
+
+
         Glide.with(mContext).load(listBeanList.get(position).getImage()).into(vi.iv);
         vi.tiemtv.setText(listBeanList.get(position).getDaytime());
         vi.secondtv.setText(listBeanList.get(position).getVideoLength());
         vi.title.setText(listBeanList.get(position).getTitle());
+        vi.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(clicks!=null){
+                    int adapterPosition = vi.getAdapterPosition();
+                    clicks.onItemClick(vi,adapterPosition);
+
+                }
+            }
+        });
+
 
 
     }

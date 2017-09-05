@@ -10,238 +10,11 @@
     <io.vov.vitamio.widget.VideoView
         android:id="@+id/video_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <ImageView
-        android:id="@+id/app_playvideo_bg"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp">
-
-
-        <FrameLayout
-            android:id="@+id/app_video_center_box"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@drawable/app_video_center_bg"
-            android:visibility="visible">
-            <!-- volume-->
-            <LinearLayout
-                android:id="@+id/app_video_volume_box"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/app_video_volume_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_volume_up_white_36dp" />
-
-                <TextView
-                    android:id="@+id/app_video_volume"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="50%"
-                    android:textColor="@android:color/white"
-                    android:textSize="18dp" />
-            </LinearLayout>
-            <!-- brightness-->
-            <LinearLayout
-                android:id="@+id/app_video_brightness_box"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/app_video_brightness_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_brightness_6_white_36dp" />
-
-                <TextView
-                    android:id="@+id/app_video_brightness"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/operation_bg"
-                    android:paddingTop="8dp"
-                    android:text="50%"
-                    android:textColor="@android:color/white"
-                    android:textSize="16dp" />
-            </LinearLayout>
-
-
-            <!-- fast forward-->
-
-
-        </FrameLayout>
-
-        <!-- status-->
-        <LinearLayout
-            android:id="@+id/app_video_status"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/background_dark"
-            android:gravity="center"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/app_video_status_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="播放遇到了点小问题"
-                android:textColor="@android:color/white"
-                android:textSize="14dp" />
-        </LinearLayout>
-
-        <!-- loading-->
-        <ProgressBar
-            android:id="@+id/app_video_loading"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerInParent="true"
-            android:indeterminateBehavior="repeat"
-            android:indeterminateOnly="true"
-            android:visibility="gone" />
-
-        <!--中心底部按钮  -->
-        <ImageView
-            android:id="@+id/app_video_play"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ic_play_arrow_white_24dp" />
-
-        <LinearLayout
-            android:id="@+id/app_video_bottom_box"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/shape_gradient_black_bottom"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:visibility="visible">
-
-
-            <!--底部播放按钮  -->
-            <ImageView
-                android:id="@+id/app_video_play_bottom"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/pla_pause" />
-
-            <ImageView
-                android:id="@+id/app_video_oval_point"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/custom_oval" />
-
-            <TextView
-                android:id="@+id/app_video_oval_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="7dp"
-                android:gravity="center"
-                android:text="Live"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-
-
-            <!--    <TextView
-                   android:text="06:21"
-                   android:id="@+id/app_video_currentTime"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginLeft="8dp"
-                   android:textColor="@android:color/white"
-                   android:textSize="15sp"
-                   /> -->
-
-            <!--  <SeekBar
-                 android:id="@+id/app_video_seekBar"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginLeft="8dp"
-                 android:layout_weight="1"
-                 /> -->
-            <View
-                android:id="@+id/app_video_seekBar"
-                android:layout_width="wrap_content"
-                android:layout_height="5dp"
-                android:layout_weight="1" />
-
-            <!--   <TextView
-                  android:id="@+id/app_video_endTime"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="10:10"
-                  android:textColor="@android:color/white"
-                  android:textSize="15sp"
-                  android:layout_marginLeft="8dp"
-                  /> -->
-
-
-            <TextView
-                android:id="@+id/app_video_qingxidu"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_media_qingxidu"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="高清"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:visibility="gone" />
-
-
-            <ImageView
-                android:id="@+id/app_video_play_volume_icon"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginLeft="17dp"
-                android:layout_marginRight="-7dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/volume_continue"
-                android:visibility="gone" />
-
-            <!--声音进度条  -->
-            <SeekBar
-                android:id="@+id/app_video_volume_seekBar"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:maxHeight="4.0dip"
-                android:minHeight="4.0dip"
-                android:progressDrawable="@drawable/custom_seekbar"
-                android:thumb="@drawable/custom_oval_blue"
-                android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/app_video_fullscreen"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="5dp"
-                android:src="@drawable/lpanda_live_screen"
-                android:visibility="gone" />
-
-        </LinearLayout>
-    </RelativeLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
 
     <LinearLayout
         android:id="@+id/app_video_top_box"
@@ -271,13 +44,13 @@
             android:textSize="20sp"
             android:visibility="visible" />
 
-        <ImageView
+        <CheckBox
             android:id="@+id/app_video_collect"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginLeft="9dp"
-
-            android:src="@drawable/play_fullsrcee_collect" />
+            android:background="@drawable/live_shoucang"
+            android:button="@null" />
 
         <ImageView
             android:id="@+id/app_video_share"
@@ -299,4 +72,113 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_med"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="#77000000">
+
+            <LinearLayout
+                android:id="@+id/app_video_bottom_box"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/shape_gradient_black_bottom"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <!--底部播放按钮  -->
+                <ImageButton
+                    android:id="@+id/mediacontroller_play_pause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/mediacontroller_button"
+                    android:contentDescription="@string/mediacontroller_play_pause"
+                    android:src="@drawable/mediacontroller_pause" />
+
+                <ImageView
+                    android:id="@+id/app_video_oval_point"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/custom_oval" />
+
+                <TextView
+                    android:id="@+id/app_video_oval_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="7dp"
+                    android:gravity="center"
+                    android:text="Live"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <CheckBox
+                        android:id="@+id/video_check_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/shrinkscreen"
+                        android:button="@null" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/operation_volume_brightness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#00000000"
+            android:orientation="horizontal"
+            android:padding="0dip"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/operation_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/video_volumn_bg" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:paddingBottom="25dip">
+
+                <ImageView
+                    android:id="@+id/operation_full"
+                    android:layout_width="94dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:src="@drawable/video_num_bg" />
+
+                <ImageView
+                    android:id="@+id/operation_percent"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:scaleType="matrix"
+                    android:src="@drawable/video_num_front" />
+            </FrameLayout>
+        </FrameLayout>
+    </RelativeLayout>
 </RelativeLayout>

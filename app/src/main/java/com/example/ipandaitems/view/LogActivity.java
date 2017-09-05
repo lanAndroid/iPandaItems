@@ -51,6 +51,7 @@ public class LogActivity extends BaseActivity {
     @Override
     protected void initListener() {
 
+
     }
 
     @Override
@@ -73,6 +74,7 @@ public class LogActivity extends BaseActivity {
             case R.id.personal_history_layout:
                 break;
             case R.id.personal_shoucang_layout:
+                startActivity(new Intent(LogActivity.this, CollectActivity.class));
                 break;
             case R.id.personal_set_layout:
                 break;

@@ -19,6 +19,7 @@ import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.model.entry.pandalive.PLVideo;
 import com.example.ipandaitems.presenter.pandalivepresenter.plfragment.PPLLives;
 import com.example.ipandaitems.view.pandalive.adapter.PL1AdapterLive;
 import com.example.ipandaitems.view.pandalive.view.MyGridView;
@@ -29,6 +30,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.vov.vitamio.Vitamio;
+import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 
 import static com.example.ipandaitems.R.id.pl_live_abstract;
@@ -91,12 +94,8 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
         PPLLives pp = new PPLLives(this);
         pp.getViews();
         pp.getLives();
-//        if (Vitamio.isInitialized(getContext())) {
-//            plLiveVideo.setVideoPath(path);
-//            MediaController controller = new MediaController(getContext());
-//            plLiveVideo.setMediaController(controller);
-//            plLiveVideo.start();
-//        }
+        pp.getVideo();
+
     }
 
     @Override
@@ -122,6 +121,33 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
         list = plLive.getList();
         live = new PL1AdapterLive(getActivity(), list);
         plLiveMultiGrid.setAdapter(live);
+    }
+
+    @Override
+    public void getVideos(PLVideo plVideo) {
+        String ss = plVideo.getHls_url().getHls4() + plVideo.getFlv_cdn_info().getCdn_code();
+        if (Vitamio.isInitialized(getContext())) {
+            plLiveVideo.setVideoPath(ss);
+            MediaController controller = new MediaController(getContext());
+            plLiveVideo.setMediaController(controller);
+//            plLiveVideo.setVideoLayout(VideoView.VIDEO_LAYOUT_FIT_PARENT, 0);
+//            plLiveVideo.requestFocus();
+//            plLiveVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//                @Override
+//                public void onPrepared(MediaPlayer mp) {
+//                    mp.setPlaybackSpeed(1.0f);
+//                }
+//            });
+//            plLiveVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                @Override
+//                public void onCompletion(MediaPlayer mp) {
+//                    plLiveVideo.seekTo(0);
+                    plLiveVideo.start();
+//                }
+//            });
+        }
+
+
     }
 
     @Override

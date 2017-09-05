@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/play_content_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/play_layout"
+        android:layout_width="match_parent"
+        android:layout_height="600px">
+
+        <io.vov.vitamio.widget.VideoView
+            android:id="@+id/videoview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/live_china_tab_item_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
+
+        <ImageView
+            android:id="@+id/btn_play"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/lpanda_pause" />
+
+
+        <!--    	<include
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/live_play_video"
+                   layout="@layout/giraffe_player_live"
+                   android:visibility="gone"
+                   /> -->
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/live_china_tab_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12px"
+        android:layout_marginLeft="40px"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="40px" />
+
+    <RelativeLayout
+        android:id="@+id/live_china_tab_item_jianjie_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/live_china_tab_item_jianjie_tishi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:text="简介"
+            android:textColor="@color/live_china_grak"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:id="@+id/livechina_arrow"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/live_china_tab_item_jianjie_img"
+                android:layout_width="48px"
+                android:layout_height="48px"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/live_china_detail_down"
+                android:textColor="@color/live_china_grak" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/livechina_jianjie_underline"
+            android:layout_width="match_parent"
+            android:layout_height="5px"
+            android:layout_below="@id/live_china_tab_item_jianjie_tishi"
+            android:layout_marginTop="5dp"
+            android:background="@color/shell_brn1"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/live_china_tab_item_jianjie_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/livechina_jianjie_underline"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:lineSpacingExtra="12px"
+            android:paddingBottom="32px"
+            android:paddingTop="72px"
+            android:text="aaaaaaaaaaaa"
+            android:textColor="@color/black"
+            android:textSize="40px" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:background="@color/shell_brn1" />
+
+
+</LinearLayout>

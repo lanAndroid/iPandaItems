@@ -59,6 +59,7 @@ public class FragmentBuilder {
         return this;
     }
 
+
     public FragmentBuilder setParms(Bundle bundle) {
         fragment.setParmars(bundle);
         return this;
