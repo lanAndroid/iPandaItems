@@ -4,49 +4,11 @@
     android:layout_height="match_parent"
     android:background="@color/shell_brn1"
     android:orientation="vertical">
-<android.support.v4.widget.SwipeRefreshLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/ptr"
-    >
-    <com.example.ipandaitems.view.ui.MyScrollview
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="500px">
-  <ImageView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:id="@+id/Imagev"
-      android:scaleType="fitXY"
-      android:src="@drawable/_no_img"
-      />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/pe_top_txt_bg"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/ImagevText"
-            android:layout_centerVertical="true"
-            android:textColor="@color/white"
-            android:gravity="center_vertical"
-            />
-    </RelativeLayout>
-    <android.support.v7.widget.RecyclerView
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:layout_width="match_parent"
         android:layout_height="1520dp"
         android:id="@+id/recy"
-        android:layout_margin="20px"
-        ></android.support.v7.widget.RecyclerView>
-    </LinearLayout>
-    </com.example.ipandaitems.view.ui.MyScrollview>
-</android.support.v4.widget.SwipeRefreshLayout>
 
+        ></com.jcodecraeer.xrecyclerview.XRecyclerView>
 </com.zhy.autolayout.AutoRelativeLayout>

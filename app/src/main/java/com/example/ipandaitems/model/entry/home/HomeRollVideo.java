@@ -68,6 +68,8 @@ public class HomeRollVideo {
     private boolean is_p2p_use;
     private String produce;
 
+
+
     public String getPlay_channel() {
         return play_channel;
     }
@@ -368,6 +370,7 @@ public class HomeRollVideo {
         private List<Chapters3Bean> chapters3;
         private List<LowChaptersBean> lowChapters;
         private List<Chapters2Bean> chapters2;
+
 
         public String getTotalLength() {
             return totalLength;

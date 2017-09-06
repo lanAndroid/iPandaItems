@@ -3,10 +3,11 @@ package com.example.ipandaitems.presenter.homepresenter;
 
 import com.example.ipandaitems.model.Callback;
 import com.example.ipandaitems.model.entry.home.HomeBean;
+import com.example.ipandaitems.model.entry.home.HomeChianVideo;
 import com.example.ipandaitems.model.entry.home.HomeMarvellBean;
+import com.example.ipandaitems.model.entry.home.HomePandanVideo;
 import com.example.ipandaitems.model.entry.home.HomeRollVideo;
 import com.example.ipandaitems.model.entry.home.HomeRollingBean;
-import com.example.ipandaitems.model.entry.home.HomeZhiBoVideoBean;
 import com.example.ipandaitems.model.home.HomeModelImpl;
 import com.example.ipandaitems.view.home.IHomeFragment;
 public class HomePresenterImpl implements HomeIPresenter {
@@ -72,12 +73,14 @@ public class HomePresenterImpl implements HomeIPresenter {
         });
     }
 
+
+
     @Override
-    public void setHomeRollVideoURl(String str) {
-        model.RequestHomeVoidGet(str,new Callback<HomeZhiBoVideoBean>() {
+    public void setHomeBannerVideoURl(String url) {
+        model.RequestHomeBanner(url, new Callback<HomeRollVideo>() {
             @Override
-            public void succeed(HomeZhiBoVideoBean homeVideoBean) {
-                mIhomeFragment.gethomeViodbean(homeVideoBean);
+            public void succeed(HomeRollVideo homeRollVideo) {
+                mIhomeFragment.gethomebannerVido(homeRollVideo);
             }
 
             @Override
@@ -85,6 +88,68 @@ public class HomePresenterImpl implements HomeIPresenter {
 
             }
         });
+    }
+
+    @Override
+    public void setHomeBrodcastVideoURl(String url) {
+        model.Requestgethomebroadcastvideo(url, new Callback<HomeRollVideo>() {
+            @Override
+            public void succeed(HomeRollVideo homeRollVideo) {
+                mIhomeFragment.gethomebrodcastVido(homeRollVideo);
+            }
+
+            @Override
+            public void nothing(String str) {
+
+            }
+        });
+    }
+
+    @Override
+    public void setHomeBrodcastTwoVideoURl(String url) {
+            model.Requestgethomebroadcasttwovideo(url, new Callback<HomeRollVideo>() {
+                @Override
+                public void succeed(HomeRollVideo homeRollVideo) {
+                    mIhomeFragment.gethomebrodcasttwoVido(homeRollVideo);
+                }
+
+                @Override
+                public void nothing(String str) {
+
+                }
+            });
+    }
+
+    @Override
+    public void setHomePandanVideo(String url) {
+
+        model.RequestHomePandanVideoGet(url, new Callback<HomePandanVideo>() {
+            @Override
+            public void succeed(HomePandanVideo homePandanVideo) {
+                mIhomeFragment.gethomePandanVideo(homePandanVideo);
+            }
+
+            @Override
+            public void nothing(String str) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public void setHomeChianVideo(String url) {
+            model.RequestHomeChianVoidGet(url, new Callback<HomeChianVideo>() {
+                @Override
+                public void succeed(HomeChianVideo homeChianVideo) {
+                    mIhomeFragment.gethomeChianVideo(homeChianVideo);
+                }
+
+                @Override
+                public void nothing(String str) {
+
+                }
+            });
     }
 
     @Override
@@ -100,5 +165,10 @@ public class HomePresenterImpl implements HomeIPresenter {
 
             }
         });
+    }
+
+    @Override
+    public void setHomeRollVideoURl(String url) {
+
     }
 }

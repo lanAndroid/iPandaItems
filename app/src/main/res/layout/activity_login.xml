@@ -146,10 +146,10 @@
 
 
             <EditText
-                android:id="@+id/edit_account"
+                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="132px"
-                android:background="@drawable/pe_shape_border_gray"
+                android:background="@drawable/user_text_shep"
                 android:hint="账号:请输入邮箱或手机号"
                 android:padding="5dp"
                 android:textColor="@color/gray"
@@ -167,6 +167,7 @@
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -175,10 +176,10 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/edit_password"
+                android:id="@+id/passwrod"
                 android:layout_width="match_parent"
                 android:layout_height="132px"
-                android:background="@drawable/pe_shape_border_gray"
+                android:background="@drawable/user_text_shep"
                 android:hint="请输入密码"
                 android:padding="5dp"
                 android:password="true"
@@ -205,6 +206,7 @@
                 android:id="@+id/personal_login_forget_pwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="忘记密码"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:textColor="@color/colorPrimaryDark" />
@@ -217,7 +219,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/pe_login_view_bg"
+            android:background="@drawable/button_text_shep"
             android:gravity="center"
             android:padding="10dp"
             android:text="登录"

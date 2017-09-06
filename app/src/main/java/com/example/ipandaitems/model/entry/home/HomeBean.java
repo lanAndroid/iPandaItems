@@ -339,7 +339,7 @@ public class HomeBean {
                 public String getTitle() {
                     return title;
                 }
-//asd
+
                 public void setTitle(String title) {
                     this.title = title;
                 }
