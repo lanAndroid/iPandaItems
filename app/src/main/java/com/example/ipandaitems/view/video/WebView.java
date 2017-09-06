@@ -28,6 +28,7 @@ public class WebView extends AppCompatActivity {
     @BindView(R.id.fenxiang)
     CheckBox fenxiang;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +39,7 @@ public class WebView extends AppCompatActivity {
         webTitle.setText(name);
 
 
-        WebSettings webSettings=webview.getSettings();
+        WebSettings webSettings = webview.getSettings();
         webSettings.setSupportZoom(true);
         webSettings.setDisplayZoomControls(true);
         webSettings.setJavaScriptEnabled(true);
@@ -54,17 +55,24 @@ public class WebView extends AppCompatActivity {
         shoucans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (shoucans.isChecked()){
-                    Toast.makeText(WebView.this,"已收藏",Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(WebView.this,"取消收藏",Toast.LENGTH_SHORT).show();
+                if (shoucans.isChecked()) {
+                    Toast.makeText(WebView.this, "已收藏", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(WebView.this, "取消收藏", Toast.LENGTH_SHORT).show();
                 }
             }
         });
         fenxiang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(WebView.this,"分享",Toast.LENGTH_SHORT).show();
+                Toast.makeText(WebView.this, "分享", Toast.LENGTH_SHORT).show();
+            }
+        });
+        //返回按钮的监听
+        webFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

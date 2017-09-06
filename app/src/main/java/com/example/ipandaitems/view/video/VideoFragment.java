@@ -19,6 +19,8 @@ import com.example.ipandaitems.model.entry.TopBean;
 import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.presenter.videopresenter.VideoIPresenter;
 import com.example.ipandaitems.presenter.videopresenter.VideoPresenterImpl;
+import com.example.ipandaitems.utils.UrlUtils;
+import com.example.ipandaitems.view.announce.PanadaVideo;
 import com.example.ipandaitems.view.video.adapter.TopListAdapter;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -127,6 +129,15 @@ public class VideoFragment extends BaseFragment implements VideoInfo {
             Glide.with(getActivity()).load(image1).into(image);
             String title = bigImg.get(i).getTitle();
             tv.setText(title);
+            final String pid = bigImg.get(i).getPid();
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(getActivity(), PanadaVideo.class);
+                    intent.putExtra("path", UrlUtils.VIDEO_URL+pid);
+                    startActivity(intent);
+                }
+            });
         }
         xrecy.addHeaderView(view);
         xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {

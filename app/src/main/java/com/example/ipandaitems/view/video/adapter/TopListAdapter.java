@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide;
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.model.entry.TopListBean;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,7 +40,9 @@ public void onBindViewHolder(ViewHolder holder,int position){
         Glide.with(activity).load(list.get(position).getPicurl()).into(holder.image);
         }
         if(holder.content!=null){
-
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+            String format = sdf.format(list.get(position).getFocus_date());
+            holder.content.setText(format);
         }
         if(holder.title!=null){
         holder.title.setText(list.get(position).getTitle());

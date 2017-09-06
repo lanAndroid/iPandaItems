@@ -1,5 +1,7 @@
 package com.example.ipandaitems.base;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -65,6 +67,21 @@ public abstract class BaseFragment extends Fragment {
 
     public void setTitleBar() {
     }
-
+    //判断时间是否有网络
+    public Boolean isConnected(){
+        //获取手机所有连接管理类（wifi,net等）
+        ConnectivityManager conn= (ConnectivityManager) getActivity().getSystemService(getActivity().CONNECTIVITY_SERVICE);
+        if (conn!=null) {
+            //获取网络连接管理的对象
+            NetworkInfo activeNetworkInfo = conn.getActiveNetworkInfo();
+            if (activeNetworkInfo!=null&&activeNetworkInfo.isConnected()){
+                //判断网络是否是连接的
+                if (activeNetworkInfo.getState()== NetworkInfo.State.CONNECTED){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
 

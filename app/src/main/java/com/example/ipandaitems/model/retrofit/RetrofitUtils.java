@@ -1,9 +1,16 @@
 package com.example.ipandaitems.model.retrofit;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Message;
+import android.webkit.CookieManager;
+
+import com.example.ipandaitems.App;
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.Bean;
 import com.example.ipandaitems.model.entry.PanadaBean;
+import com.example.ipandaitems.model.entry.RegisterBean;
 import com.example.ipandaitems.model.entry.TopBean;
 import com.example.ipandaitems.model.entry.TopListBean;
 import com.example.ipandaitems.model.entry.VideoBeanr;
@@ -17,8 +24,21 @@ import com.example.ipandaitems.model.entry.originalbean;
 import com.example.ipandaitems.model.entry.pandalive.PLAmaPhotoes;
 import com.example.ipandaitems.model.entry.pandalive.PLHome;
 import com.example.ipandaitems.model.entry.pandalive.PLLive;
+import com.example.ipandaitems.view.registerandlogin.fragment.PhoneRegFragment;
+import com.google.common.collect.ArrayListMultimap;
 import com.google.common.eventbus.Subscribe;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.CookieStore;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -26,7 +46,15 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Cookie;
+import okhttp3.CookieJar;
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -36,20 +64,80 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitUtils {
+   // private static String JSESSIONID = null ;
     private static RetrofitUtils mRetrofitUtils = null;
     private final RetrofitAPIServices apiServices;
+    private final RetrofitAPIServices apiService;
+    String from = "http://cbox_mobile.regclientuser.cntv.cn";
 
     private RetrofitUtils() {
+       /*CookieJar cookieJar=new CookieJar() {
+            List<Cookie> array=new ArrayList<>();
+            @Override
+            public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+               array=cookies;
+                for (Cookie cookie:array) {
+                    if ("JSESSIONID".equals(cookie.name())){
+                        JSESSIONID=cookie.value();
+                        System.out.println(JSESSIONID+"--------------------工具类");
+                    }
+                }
+            }
+            @Override
+            public List<Cookie> loadForRequest(HttpUrl url) {
+                return array;
+            }
+        };*/
+
+        //OkHttpClient client= new  OkHttpClient.Builder().cookieJar(cookieJar).build();
+        //获取验证码
         OkHttpClient okhttp = new OkHttpClient.Builder()
                 .connectTimeout(50, TimeUnit.SECONDS)
                 .readTimeout(50, TimeUnit.SECONDS)
-                .writeTimeout(50, TimeUnit.SECONDS).build();
+                .writeTimeout(50, TimeUnit.SECONDS)
+               // .cookieJar(cookieJar)
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request request=chain.request().newBuilder()
+                        .addHeader("Referer", URLEncoder.encode(from, "UTF-8"))
+                        .addHeader("User-Agent", URLEncoder.encode("CNTV_APP_CLIENT_CBOX_MOBILE", "UTF-8"))
+                        .addHeader("Cookie", "JSESSIONID=" + PhoneRegFragment.JSESSIONID)
+                                .build();
+                        return chain.proceed(request);
+                    }
+                })
+                //.retryOnConnectionFailure(true)
+                .build();
+        OkHttpClient zhuce = new OkHttpClient.Builder()
+                .connectTimeout(50, TimeUnit.SECONDS)
+                .readTimeout(50, TimeUnit.SECONDS)
+                .writeTimeout(50, TimeUnit.SECONDS)
+                // .cookieJar(cookieJar)
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request request=chain.request().newBuilder()
+                                .addHeader("Referer",  URLEncoder.encode("http://cbox_mobile.regclientuser.cntv.cn", "UTF-8"))
+                                .addHeader("User-Agent",  URLEncoder.encode("CNTV_APP_CLIENT_CBOX_MOBILE", "UTF-8"))
+                                .addHeader("Cookie", "JSESSIONID=" + PhoneRegFragment.JSESSIONID)
+                                .build();
+                        return chain.proceed(request);
+                    }
+                })
+                //.retryOnConnectionFailure(true)
+                .build();
         apiServices = new Retrofit.Builder()
                 .client(okhttp)
                 .baseUrl("https://www.baidu.com/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create()).build().create(RetrofitAPIServices.class);
 
+        apiService = new Retrofit.Builder()
+                .client(zhuce)
+                .baseUrl("https://www.baidu.com/")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create()).build().create(RetrofitAPIServices.class);
     }
 
     public static RetrofitUtils getmRetrofitUtils_Demo() {
@@ -155,5 +243,16 @@ public class RetrofitUtils {
     public void getVideoData(String url,Observer<VideoBeanr> observer){
         Observable<VideoBeanr> video=apiServices.getVideo(url);
         video.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    //注册
+    public void postRegistNumber(String url,HashMap<String,String> map,Observer<Object> observer){
+        Observable<ResponseBody> responseBodyObservable = apiService.postReist(url, map);
+        responseBodyObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+    //短信
+    public void postRegist(String url,HashMap<String,String> map,Observer<Object> observer){
+        Observable<ResponseBody> responseBodyObservable = apiServices.postRegistCode(url, map);
+        responseBodyObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 }

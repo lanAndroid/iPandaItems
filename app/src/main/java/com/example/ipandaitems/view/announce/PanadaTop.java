@@ -116,6 +116,11 @@ class PanadaTop extends BaseActivity implements AnnView {
         final int width = metric.widthPixels;     // 屏幕宽度（像素）
         final int height = metric.heightPixels;   // 屏幕高度（像素）
         final View inflate = View.inflate(PanadaTop.this, R.layout.videodenxiang, null);
+        TextView tv = inflate.findViewById(R.id.sina);
+        TextView wxtv = inflate.findViewById(R.id.wx);
+        TextView py = inflate.findViewById(R.id.penyouquan);
+
+
         Button btn_quxiao = inflate.findViewById(R.id.btn_quxiao);
         final PopupWindow popupWindow = new PopupWindow(width,height/3);
         btn_quxiao.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +139,12 @@ class PanadaTop extends BaseActivity implements AnnView {
                 popupWindow.setOutsideTouchable(true);
                 // 设置popupWindow的显示位置，此处是在手机屏幕底部且水平居中的位置
                 popupWindow.showAtLocation(inflate, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+            }
+        });
+        webFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

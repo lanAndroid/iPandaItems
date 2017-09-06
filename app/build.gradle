@@ -49,4 +49,5 @@ dependencies {
     compile 'com.yanzhenjie:recyclerview-swipe:1.1.2'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.9.5'
+    compile 'com.squareup.okhttp3:okhttp:3.9.0'
 }
