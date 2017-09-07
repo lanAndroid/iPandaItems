@@ -5,6 +5,7 @@ package com.example.ipandaitems.presenter.personpresenter;
  */
 
 public interface IpersonPresenter {
+    //
 
     void  login(String name,String pwd);
 }

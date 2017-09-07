@@ -1,7 +1,6 @@
 package com.example.ipandaitems.presenter.personpresenter;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.ipandaitems.model.Callback;
@@ -14,7 +13,7 @@ import com.example.ipandaitems.view.registerandlogin.fragment.iLogActivity;
  */
 
 public class PersonPresenterImpl implements IpersonPresenter{
-
+//
  PersonModle personmodle;
  iLogActivity IlogActivity;
 

@@ -69,6 +69,7 @@ public class PersonModle implements IpersonModle{
             }
         });
     }
+    //
 
     @Override
     public void getname(String url, final Callback callback) {

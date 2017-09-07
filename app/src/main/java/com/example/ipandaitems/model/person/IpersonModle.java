@@ -7,6 +7,7 @@ import com.example.ipandaitems.model.Callback;
  */
 
 public interface IpersonModle {
+    //
     void getuser(String name, String pwd, Callback callback);
     void  getname(String url,Callback callback);
 
