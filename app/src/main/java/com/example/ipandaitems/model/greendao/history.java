@@ -1,5 +1,7 @@
 package com.example.ipandaitems.model.greendao;
 
+import com.example.ipandaitems.model.entry.BaseInfo;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
@@ -8,7 +10,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by 张豫耀 on 2017/9/5.
  */
 @Entity
-public class history {
+public class history extends BaseInfo {
     @Id
     private Long id;
     private String img;

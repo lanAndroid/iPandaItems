@@ -1,4 +1,4 @@
-package com.example.ipandaitems.view;
+package com.example.ipandaitems.view.navigation;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

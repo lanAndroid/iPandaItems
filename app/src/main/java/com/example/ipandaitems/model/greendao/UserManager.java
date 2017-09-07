@@ -1,13 +1,10 @@
 
 package com.example.ipandaitems.model.greendao;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
 
-import org.greenrobot.greendao.query.QueryBuilder;
-
-import java.util.List;
-
+import com.example.ipandaitems.App;
 
 /**
  * Created by 张豫耀 on 2017/8/23.
@@ -15,141 +12,78 @@ import java.util.List;
 
 public class UserManager {
 
-    private final static String dbName = "haha";
-    private static UserManager mInstance;
-    private DaoMaster.DevOpenHelper openHelper;
-    private Context context;
-    private DaoMaster daoMaster;
-    private DaoSession daoSession;
+    private static UserManager sInstance;
 
-    public UserManager(Context context) {
-        this.context = context;
-        openHelper = new DaoMaster.DevOpenHelper(context, dbName, null);
+    private SharedPreferences prefs;
+
+    private boolean isUserInfoRetrieved;
+
+    private UserManager() {
+        prefs = App.getInstance().getSharedPreferences("user_info", 0);
+    }
+
+    public static UserManager getInstance() {
+        if (sInstance == null) {
+            sInstance = new UserManager();
+        }
+        return sInstance;
+    }
+
+    public boolean isUserLogged() {
+        String userId = prefs.getString("userId", null);
+        return !TextUtils.isEmpty(userId);
+    }
+
+    public String getUserId() {
+        return prefs.getString("userId", null);
+    }
+
+    public void saveUserId(String userId) {
+        prefs.edit().putString("userId", userId).commit();
+    }
+
+    public String getNickName() {
+        return prefs.getString("nickName", null);
+    }
+
+    public void saveNickName(String nickName) {
+        prefs.edit().putString("nickName", nickName).commit();
+    }
+
+    public String getUserFace() {
+        return prefs.getString("userface", null);
+    }
+
+    public void saveUserFace(String userface) {
+        prefs.edit().putString("userface", userface).commit();
+    }
+
+    public String getVerifycode() {
+        return prefs.getString("verifycode", null);
+    }
+
+    public void saveVerifycode(String verifycode) {
+        prefs.edit().putString("verifycode", verifycode).commit();
     }
 
     /**
-     * 获取单例引用
+     * 是否成功请求过用户信息
      *
-     * @param context
      * @return
      */
-    public static synchronized UserManager getInstance(Context context) {
-        if (mInstance == null) {
-            synchronized (UserManager.class) {
-                if (mInstance == null) {
-                    mInstance = new UserManager(context);
-                }
-            }
-        }
-        return mInstance;
+    public boolean isUserInfoRetrieved() {
+        return isUserInfoRetrieved;
+    }
+
+    public void setUserInfoRetrieved(boolean b) {
+        isUserInfoRetrieved = b;
     }
 
     /**
-     * 获取可读数据库
+     * 删除用户信息
      */
-    public SQLiteDatabase getReadableDatabase() {
-        if (openHelper == null) {
-            openHelper = new DaoMaster.DevOpenHelper(context, dbName, null);
-        }
-        SQLiteDatabase db = openHelper.getReadableDatabase();
-        return db;
-    }
-
-    /**
-     * 获取可写数据库
-     */
-    public SQLiteDatabase getWritableDatabase() {
-        if (openHelper == null) {
-            openHelper = new DaoMaster.DevOpenHelper(context, dbName, null);
-        }
-        SQLiteDatabase db = openHelper.getWritableDatabase();
-        return db;
-    }
-
-    /**
-     * 打开输出日志的操作,默认是关闭的
-     */
-    public void setDebug() {
-        QueryBuilder.LOG_SQL = true;
-        QueryBuilder.LOG_VALUES = true;
-    }
-
-
-    /**
-     * 插入一条记录
-     *
-     * @param user
-     */
-    public void insertUser(User user) {
-        daoMaster = new DaoMaster(getWritableDatabase());
-        daoSession = daoMaster.newSession();
-        UserDao userDao = daoSession.getUserDao();
-        userDao.insert(user);
-    }
-
-    /**
-     * 插入用户集合
-     *
-     * @param users
-     */
-    public void insertUserList(List<User> users) {
-        if (users == null || users.isEmpty()) {
-            return;
-        }
-       DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
-        DaoSession daoSession = daoMaster.newSession();
-       UserDao userDao = daoSession.getUserDao();
-        userDao.insertInTx(users);
-    }
-
-    /**
-     * 删除一条记录
-     *
-     * @param user
-     */
-    public void deleteUser(User user) {
-        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
-        DaoSession daoSession = daoMaster.newSession();
-        UserDao userDao = daoSession.getUserDao();
-        userDao.delete(user);
-    }
-
-    /**
-     * 更新一条记录
-     *
-     * @param user
-     */
-    public void updateUser(User user) {
-        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
-        DaoSession daoSession = daoMaster.newSession();
-        UserDao userDao = daoSession.getUserDao();
-        userDao.update(user);
-    }
-
-    /**
-     * 查询用户列表
-     */
-    public List<User> queryUserList() {
-        DaoMaster daoMaster = new DaoMaster(getReadableDatabase());
-      DaoSession daoSession = daoMaster.newSession();
-        UserDao userDao = daoSession.getUserDao();
-        QueryBuilder<User> query = userDao.queryBuilder();
-        List<User> list = query.list();
-        return list;
-
-    }
-
-    /**
-     * 查询用户列表
-     */
-    public List<User> queryUserList(Long id) {
-      DaoMaster daoMaster = new DaoMaster(getReadableDatabase());
-       DaoSession daoSession = daoMaster.newSession();
-       UserDao userDao = daoSession.getUserDao();
-        QueryBuilder<User> qb = userDao.queryBuilder();
-        qb.where(UserDao.Properties.Id.gt(id)).orderAsc(UserDao.Properties.Id);
-        List<User> list = qb.list();
-        return list;
+    public void clearUser() {
+        prefs.edit().remove("userId").remove("nickName").remove("userface").remove("verifycode").commit();
     }
 
 }

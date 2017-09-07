@@ -1,4 +1,4 @@
-package com.example.ipandaitems.view;
+package com.example.ipandaitems.view.navigation;
 
 import com.example.ipandaitems.model.entry.originalbean;
 

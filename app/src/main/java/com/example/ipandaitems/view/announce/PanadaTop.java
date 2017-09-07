@@ -15,9 +15,9 @@ import android.widget.Toast;
 import com.chanven.lib.cptr.recyclerview.RecyclerAdapterWithHF;
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseActivity;
-import com.example.ipandaitems.model.entry.VideoBeanr;
 import com.example.ipandaitems.model.entry.AnnBean;
 import com.example.ipandaitems.model.entry.PanadaBean;
+import com.example.ipandaitems.model.entry.VideoBeanr;
 import com.example.ipandaitems.presenter.annpresenter.AnnIPresenter;
 import com.example.ipandaitems.presenter.annpresenter.AnnIPresenterImpl;
 import com.example.ipandaitems.utils.UrlUtils;
@@ -57,6 +57,7 @@ public class PanadaTop extends BaseActivity implements AnnView {
     ImageView videoStart;
     @BindView(R.id.vita)
     VideoView vita;
+
     private AnnIPresenterImpl annIPresenter;
     private int page = 1;
     private String url;
@@ -89,7 +90,13 @@ public class PanadaTop extends BaseActivity implements AnnView {
 
     @Override
     protected void initListener() {
-
+        webFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vita.stopPlayback();
+                finish();
+            }
+        });
     }
 
     @Override
@@ -195,6 +202,7 @@ public class PanadaTop extends BaseActivity implements AnnView {
             videoStart.setVisibility(View.GONE);
             vita.setVideoURI(Uri.parse(urll));//设置视频地址
             MediaController controller = new MediaController(PanadaTop.this);
+            controller.setVisibility(View.GONE);
             vita.setMediaController(controller);//设置Controller，注意一定要io.vov.vitamio.widget.MediaController
             //   controller.setMediaPlayer(vita);//给Controller设置VideoView
             vita.requestFocus();//获得焦点
@@ -222,5 +230,12 @@ public class PanadaTop extends BaseActivity implements AnnView {
 //                }
 //            });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        vita.stopPlayback();
+        finish();
     }
 }

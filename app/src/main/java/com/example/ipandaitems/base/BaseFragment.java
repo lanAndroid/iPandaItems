@@ -1,5 +1,6 @@
 package com.example.ipandaitems.base;
 
+import android.app.Dialog;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -8,6 +9,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+
+import com.example.ipandaitems.R;
 
 import butterknife.ButterKnife;
 import io.vov.vitamio.Vitamio;
@@ -17,6 +21,9 @@ import io.vov.vitamio.Vitamio;
  */
 
 public abstract class BaseFragment extends Fragment {
+    private int dialogNum;
+    private Dialog loadDialog;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -78,6 +85,38 @@ public abstract class BaseFragment extends Fragment {
         }
 
     }
+
+    public void dismissLoadDialog() {
+        dialogNum--;
+        if (dialogNum > 0) {
+            return;
+        }
+        if (null != loadDialog && loadDialog.isShowing() == true) {
+            loadDialog.dismiss();
+            loadDialog = null;
+        }
+    }
+
+    /**
+     * 显示正在加载的进度条
+     */
+    public void showLoadingDialog() {
+        dialogNum++;
+        if (loadDialog != null && loadDialog.isShowing()) {
+            loadDialog.dismiss();
+            loadDialog = null;
+        }
+        loadDialog = new Dialog(getActivity(), R.style.dialog);
+        loadDialog.setCanceledOnTouchOutside(false);
+
+        loadDialog.setContentView(R.layout.layout_dialog);
+        try {
+            loadDialog.show();
+        } catch (WindowManager.BadTokenException exception) {
+            exception.printStackTrace();
+        }
+    }
+
 
     public void onShow() {
         loadData();

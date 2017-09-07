@@ -1,4 +1,4 @@
-package com.example.ipandaitems.view;
+package com.example.ipandaitems.view.navigation;
 
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +9,10 @@ import android.widget.ImageView;
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseActivity;
 import com.example.ipandaitems.model.entry.originalbean;
+import com.example.ipandaitems.model.greendao.DaoMaster;
+import com.example.ipandaitems.model.greendao.DaoSession;
+import com.example.ipandaitems.model.greendao.history;
+import com.example.ipandaitems.model.greendao.historyDao;
 import com.example.ipandaitems.presenter.OriPresenterImpl;
 import com.example.ipandaitems.view.video.WebView;
 
@@ -28,6 +32,7 @@ public class OrinGinalActivity extends BaseActivity implements originalIView, Vi
     @BindView(R.id.original_recycler)
     RecyclerView originalRecycler;
     List<originalbean.InteractiveBean> list = new ArrayList<>();
+    private historyDao dao;
 
     @Optional
     @Override
@@ -44,7 +49,10 @@ public class OrinGinalActivity extends BaseActivity implements originalIView, Vi
 
     @Override
     protected void loadData() {
-
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(this, "hs.db");
+        DaoMaster daoMaster = new DaoMaster(openHelper.getWritableDb());
+        DaoSession daoSession = daoMaster.newSession();
+        dao = daoSession.getHistoryDao();
     }
 
     @Override
@@ -61,6 +69,11 @@ public class OrinGinalActivity extends BaseActivity implements originalIView, Vi
         adapter.SetOnItemCLick(new OriginalAdapter.OnItemCLick() {
             @Override
             public void OnClick(View v, int position) {
+                history history = dao.queryBuilder().where(historyDao.Properties.Name.eq(list.get(position).getTitle())).build().unique();
+                if (history == null) {
+                    dao.insert(new history(null, list.get(position).getImage(), list.get(position).getUrl(), "", list.get(position).getTitle()));
+                }
+
                 Intent intent = new Intent(OrinGinalActivity.this, WebView.class);
                 intent.putExtra("name", list.get(position).getTitle());
                 intent.putExtra("url", list.get(position).getUrl());

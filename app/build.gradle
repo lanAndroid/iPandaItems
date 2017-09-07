@@ -31,10 +31,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':vitamio')
+    compile files('libs/MobileAppTracker.jar')
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile files('libs/SocialSDK_QQ_Simplify.jar')
-    compile files('libs/SocialSDK_WeChat_Simplify.jar')
-    compile files('libs/SocialSDK_Sina_Simplify.jar')
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -57,6 +55,8 @@ dependencies {
     compile 'com.yanzhenjie:recyclerview-swipe:1.1.2'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.9.5'
-    compile files('libs/MobileAppTracker.jar')
-    compile files('libs/VDTracker.jar')
+
+
+
+
 }

@@ -19,6 +19,7 @@ import com.example.ipandaitems.view.announce.AnnounceFragment;
 import com.example.ipandaitems.view.home.HomeFragment;
 import com.example.ipandaitems.view.livechina.LiveFragment;
 import com.example.ipandaitems.view.pandalive.PandaLiveFragment;
+import com.example.ipandaitems.view.personalcenter.LogActivity;
 import com.example.ipandaitems.view.video.VideoFragment;
 
 import java.sql.SQLException;
@@ -114,7 +115,7 @@ public class ShellActivity extends BaseActivity {
                 startActivity(new Intent(ShellActivity.this, LogActivity.class));
                 break;
             case R.id.title_inter:
-                startActivity(new Intent(ShellActivity.this, OrinGinalActivity.class));
+                startActivity(new Intent(ShellActivity.this,com.example.ipandaitems.view.navigation.OrinGinalActivity.class));
                 break;
         }
         //    FragmentBuilder.getInstance().builder();

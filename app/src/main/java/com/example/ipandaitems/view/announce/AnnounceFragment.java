@@ -86,8 +86,10 @@ public class AnnounceFragment extends BaseFragment implements AnnView {
         final List<AnnBean.BigImgBean> bigImg = annBean.getBigImg();
         final List<AnnBean.ListBean> list = annBean.getList();
         View view = View.inflate(getActivity(), R.layout.video_image, null);
+
         ImageView image = view.findViewById(Imagev);
         TextView tv = view.findViewById(R.id.ImagevText);
+
         for (int i = 0; i < bigImg.size(); i++) {
             tv.setText(bigImg.get(i).getTitle());
             String imageurl = bigImg.get(i).getImage();

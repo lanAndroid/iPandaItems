@@ -17,6 +17,10 @@ import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
 import com.example.ipandaitems.model.entry.TopBean;
 import com.example.ipandaitems.model.entry.TopListBean;
+import com.example.ipandaitems.model.greendao.DaoMaster;
+import com.example.ipandaitems.model.greendao.DaoSession;
+import com.example.ipandaitems.model.greendao.history;
+import com.example.ipandaitems.model.greendao.historyDao;
 import com.example.ipandaitems.presenter.videopresenter.VideoIPresenter;
 import com.example.ipandaitems.presenter.videopresenter.VideoPresenterImpl;
 import com.example.ipandaitems.view.video.adapter.TopListAdapter;
@@ -43,6 +47,7 @@ public class VideoFragment extends BaseFragment implements VideoInfo {
     XRecyclerView xrecy;
     private VideoIPresenter videoIPresenter;
     private List<TopBean.DataBean.BigImgBean> bigImg;
+    private historyDao dao;
 
     @Override
     protected int layoutID() {
@@ -57,7 +62,10 @@ public class VideoFragment extends BaseFragment implements VideoInfo {
 
     @Override
     protected void loadData() {
-
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(getActivity(), "hs.db");
+        DaoMaster daoMaster = new DaoMaster(openHelper.getWritableDb());
+        DaoSession daoSession = daoMaster.newSession();
+        dao = daoSession.getHistoryDao();
     }
 
     @Override
@@ -111,6 +119,10 @@ public class VideoFragment extends BaseFragment implements VideoInfo {
         myadapter.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
             @Override
             public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
+                history history = dao.queryBuilder().where(historyDao.Properties.Name.eq(list.get(position).getTitle())).build().unique();
+                if (history == null) {
+                    dao.insert(new history(null, list.get(position).getPicurl(), list.get(position).getUrl(), list.get(position).getVideolength(), list.get(position).getTitle()));
+                }
                 Intent intent = new Intent(getActivity(), WebView.class);
                 String url = list.get(position).getUrl();
                 intent.putExtra("url", url);

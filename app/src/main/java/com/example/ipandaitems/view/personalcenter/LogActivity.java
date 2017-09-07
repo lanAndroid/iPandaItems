@@ -1,4 +1,4 @@
-package com.example.ipandaitems.view;
+package com.example.ipandaitems.view.personalcenter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +25,6 @@ public class LogActivity extends BaseActivity {
     ImageView personal_back_img;
     @BindView(R.id.person_no_login_layout)
     RelativeLayout personNoLoginLayout;
-
     @BindView(R.id.personal_history_layout)
     RelativeLayout personalHistoryLayout;
     @BindView(R.id.personal_shoucang_layout)
@@ -72,11 +71,13 @@ public class LogActivity extends BaseActivity {
                 startActivity(new Intent(LogActivity.this, loginActivity.class));
                 break;
             case R.id.personal_history_layout:
+                startActivity(new Intent(LogActivity.this, HistoryActivity.class));
                 break;
             case R.id.personal_shoucang_layout:
                 startActivity(new Intent(LogActivity.this, CollectActivity.class));
                 break;
             case R.id.personal_set_layout:
+                startActivity(new Intent(LogActivity.this, SetActivity.class));
                 break;
         }
     }

@@ -129,6 +129,7 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
         if (Vitamio.isInitialized(getContext())) {
             plLiveVideo.setVideoPath(ss);
             MediaController controller = new MediaController(getContext());
+            controller.setVisibility(View.GONE);
             plLiveVideo.setMediaController(controller);
 //            plLiveVideo.setVideoLayout(VideoView.VIDEO_LAYOUT_FIT_PARENT, 0);
 //            plLiveVideo.requestFocus();
@@ -142,7 +143,7 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
 //                @Override
 //                public void onCompletion(MediaPlayer mp) {
 //                    plLiveVideo.seekTo(0);
-                    plLiveVideo.start();
+            plLiveVideo.start();
 //                }
 //            });
         }
@@ -191,6 +192,7 @@ public class PLFLive extends BaseFragment implements PLFLiveView {
                 plLiveKanliaoBiao.setBackgroundColor(getResources().getColor(R.color.tianse));
                 plLiveDuoshijiao.setTextColor(Color.BLACK);
                 plLiveDuoshijiaoBiao.setBackgroundColor(0x00000000);
+
                 plLiveMultiGrid.setVisibility(View.GONE);
                 plLiveChat.setVisibility(View.VISIBLE);
                 break;

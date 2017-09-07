@@ -56,6 +56,7 @@ public class LiveChinaTabItemAdapter extends SimpleBaseAdapter<LiveChineItem> im
     private boolean isFirstLoad = true;
     private Context mContext;
 
+
     public LiveChinaTabItemAdapter(Context context, List<LiveChineItem> list, String titile) {
         super(context, list);
         this.list = list;
@@ -66,6 +67,7 @@ public class LiveChinaTabItemAdapter extends SimpleBaseAdapter<LiveChineItem> im
         //小窗口的比例
         float ratio = (float) 16 / 9;
         adjusted_h = (int) Math.ceil((float) display[0] / ratio);
+
     }
 
     @Override
@@ -153,6 +155,7 @@ public class LiveChinaTabItemAdapter extends SimpleBaseAdapter<LiveChineItem> im
             @Override
             public void onClick(View v) {
                 //统计
+
                 MobileAppTracker.trackEvent("直播中国" + list.get(position).title + "视频", "", mtitle.toString(), 0, list.get(position).id, "视频观看", context);
                 MobileAppTracker.setPolicy(MobileAppTracker.POLICY_INTIME);
                 Log.e("统计", "事件名称:" + list.get(position).title + "***事件类别:" + "列表" + "***事件标签:" + "直播中国*" + mtitle.toString() + "***类型:" + "视频播放" + "***ID" + list.get(position).id);
@@ -165,9 +168,9 @@ public class LiveChinaTabItemAdapter extends SimpleBaseAdapter<LiveChineItem> im
                     return;
                 }
 
-                    liveChinaItemClickImple.initViewLocation(list.get(position), tag);
+                liveChinaItemClickImple.initViewLocation(list.get(position), tag);
 
-                }
+            }
 
         });
 
@@ -186,7 +189,7 @@ public class LiveChinaTabItemAdapter extends SimpleBaseAdapter<LiveChineItem> im
         RelativeLayout live_play_layout;
         LinearLayout play_content_view;
         View livechina_jianjie_underline;
-         VideoView  videoView;
+        VideoView videoView;
     }
 
     public int getPlayPostion() {

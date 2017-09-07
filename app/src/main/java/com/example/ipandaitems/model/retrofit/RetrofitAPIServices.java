@@ -106,6 +106,8 @@ public interface RetrofitAPIServices {
     @GET
     Observable<HomeVideoBean> getHomevidwbean(@Url String url);
 
+    @GET
+    Observable<String> getYanzhengma(@Url String url);
 
 }
 

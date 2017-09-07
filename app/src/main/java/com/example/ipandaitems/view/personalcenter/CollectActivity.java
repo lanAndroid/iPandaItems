@@ -1,4 +1,4 @@
-package com.example.ipandaitems.view;
+package com.example.ipandaitems.view.personalcenter;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;

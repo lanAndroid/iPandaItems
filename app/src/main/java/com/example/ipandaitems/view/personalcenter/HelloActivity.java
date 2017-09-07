@@ -1,9 +1,10 @@
-package com.example.ipandaitems.view;
+package com.example.ipandaitems.view.personalcenter;
 
 import android.content.Intent;
 
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseActivity;
+import com.example.ipandaitems.view.ShellActivity;
 
 import java.sql.SQLException;
 import java.util.Timer;

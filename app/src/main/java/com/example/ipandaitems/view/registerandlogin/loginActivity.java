@@ -6,16 +6,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseActivity;
-import com.umeng.socialize.UMAuthListener;
-import com.umeng.socialize.UMShareAPI;
-import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.sql.SQLException;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +18,7 @@ import butterknife.OnClick;
 
 public class loginActivity extends BaseActivity {
 
-
+//    private Oauth2AccessToken mAccessToken;
     @BindView(R.id.login_finish)
     ImageView loginFinish;
     @BindView(R.id.login_regis)
@@ -34,6 +29,8 @@ public class loginActivity extends BaseActivity {
     LinearLayout llqqlogin;
     @BindView(R.id.llsinalogin)
     LinearLayout llsinalogin;
+//    private WbShareHandler shareHandler;
+//    private SsoHandler mSsoHandler;
 
     @Override
     protected int layoutID() {
@@ -74,68 +71,136 @@ public class loginActivity extends BaseActivity {
                 startActivity(new Intent(loginActivity.this, RegisterActivity.class));
                 break;
             case R.id.llweixinlogin:
-                UMShareAPI.get(this).getPlatformInfo(loginActivity.this, SHARE_MEDIA.WEIXIN, authListener);
+                //       UMShareAPI.get(this).getPlatformInfo(loginActivity.this, SHARE_MEDIA.WEIXIN, authListener);
                 break;
             case R.id.llqqlogin:
-                UMShareAPI.get(this).getPlatformInfo(loginActivity.this, SHARE_MEDIA.QQ, authListener);
+                //initFenXiang();
                 break;
             case R.id.llsinalogin:
-                UMShareAPI.get(this).getPlatformInfo(loginActivity.this, SHARE_MEDIA.SINA, authListener);
+              //  initWebSDK();
                 break;
         }
     }
 
+//    private void initFenXiang() {
+//        shareHandler = new WbShareHandler(this);
+//        shareHandler.registerApp();
+//        WeiboMultiMessage multiMessage = new WeiboMultiMessage();
+//        multiMessage.mediaObject = getWebpageObj();
+//        shareHandler.shareMessage(multiMessage, false);
+//    }
 
-    private UMAuthListener authListener = new UMAuthListener() {
-        /**
-         * @desc 授权开始的回调
-         * @param platform 平台名称
-         */
-        @Override
-        public void onStart(SHARE_MEDIA platform) {
+    /**
+     * 创建多媒体（网页）消息对象。
+     *
+     * @return 多媒体（网页）消息对象。
+//     */
+//    private WebpageObject getWebpageObj() {
+//        WebpageObject mediaObject = new WebpageObject();
+//        mediaObject.identify = Utility.generateGUID();
+//        mediaObject.title = "测试title";   //      这里填写想要分享的title
+//        mediaObject.description = "测试描述"; //      这里填写想要分享的描述
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.person_sign);
+//        // 设置 Bitmap 类型的图片到视频对象里         设置缩略图。 注意：最终压缩过的缩略图大小不得超过 32kb。
+//        mediaObject.setThumbImage(bitmap);
+//        mediaObject.actionUrl = "http://news.sina.com.cn/c/2013-10-22/021928494669.shtml"; //      这里填写想要分享的url
+//        mediaObject.defaultText = "Webpage 默认文案"; //      这里填写想要分享的默认语句
+//        return mediaObject;
+//    }
+//
+//    @Override
+//    protected void onNewIntent(Intent intent) {
+//        super.onNewIntent(intent);
+//        shareHandler.doResultIntent(intent, new com.sina.weibo.sdk.share.WbShareCallback() {
+//            @Override
+//            public void onWbShareSuccess() {
+//                Toast.makeText(loginActivity.this, "分享成功", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onWbShareCancel() {
+//                Toast.makeText(loginActivity.this, "取消分享", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onWbShareFail() {
+//                Toast.makeText(loginActivity.this, "分享失败", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+//
+//    //新浪微博初始化，对应的参数分别是app_key,回调地址，和权限
+//    private void initWebSDK() {
+//        mSsoHandler = new SsoHandler(loginActivity.this);
+//        mSsoHandler.authorize(new SelfWbAuthListener());
+//    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (mSsoHandler != null) {
+//            mSsoHandler.authorizeCallBack(requestCode, resultCode, data);
+//        }
+////        callbackManager.onActivityResult(requestCode, resultCode, data);
+//    }
+//
+////    public void getFaceBookToken(View view) {
+////        AccessToken mAccessToken = AccessToken.getCurrentAccessToken();
+////        Log.e("token", "token :" + mAccessToken.getToken() + "," + "user_id" + mAccessToken.getUserId());
+////    }
+//
+////    @Override
+////    protected void onResume() {
+////        super.onResume();
+////        AppEventsLogger.activateApp(this);
+////    }
+////
+////    @Override
+////    protected void onPause() {
+////        super.onPause();
+////        AppEventsLogger.deactivateApp(this);
+////    }
+//
+//    //请求数据
+//    private class SelfWbAuthListener implements WbAuthListener {
+//        //请求成功
+//        @Override
+//        public void onSuccess(final Oauth2AccessToken token) {
+//            loginActivity.this.runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    mAccessToken = token;
+//                    String name = token.getPhoneNum();
+//                    String token1 = token.getToken();
+//                    Bundle bundle = token.getBundle();
+//                    String token2 = token.getRefreshToken();
+//                    long time = token.getExpiresTime();
+//                    String uid = token.getUid();
+//                    Log.e("login", "name==" + name + "----time==" + time + "----uid==" + uid);
+//                    Log.e("login", "name==" + token1 + "----time==" + bundle + "----uid==" + token2);
+//                    if (mAccessToken.isSessionValid()) {
+//                        // 显示 Token
+////                     updateTokenView(false);
+//                        // 保存 Token 到 SharedPreferences
+//                        AccessTokenKeeper.writeAccessToken(loginActivity.this, mAccessToken);
+//                        Toast.makeText(loginActivity.this,
+//                                "name==" + name + "----time==" + time + "----uid==" + uid, Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
+//        }
+//
+//        @Override
+//        public void cancel() {
+//            Toast.makeText(loginActivity.this,
+//                    "取消了", Toast.LENGTH_LONG).show();
+//        }
+//
+//        @Override
+//        public void onFailure(WbConnectErrorMessage errorMessage) {
+//            Toast.makeText(loginActivity.this, errorMessage.getErrorMessage(), Toast.LENGTH_LONG).show();
+//        }
+//
+//    }
 
-        }
-
-        /**
-         * @desc 授权成功的回调
-         * @param platform 平台名称
-         * @param action 行为序号，开发者用不上
-         * @param data 用户资料返回
-         */
-        @Override
-        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
-
-            Toast.makeText(loginActivity.this, "成功了", Toast.LENGTH_LONG).show();
-
-        }
-
-        /**
-         * @desc 授权失败的回调
-         * @param platform 平台名称
-         * @param action 行为序号，开发者用不上
-         * @param t 错误原因
-         */
-        @Override
-        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
-
-            Toast.makeText(loginActivity.this, "失败：" + t.getMessage(), Toast.LENGTH_LONG).show();
-        }
-
-        /**
-         * @desc 授权取消的回调
-         * @param platform 平台名称
-         * @param action 行为序号，开发者用不上
-         */
-        @Override
-        public void onCancel(SHARE_MEDIA platform, int action) {
-            Toast.makeText(loginActivity.this, "取消了", Toast.LENGTH_LONG).show();
-        }
-    };
-
-    //  回调
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-      //  UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
-    }
 }

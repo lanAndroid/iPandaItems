@@ -17,7 +17,7 @@ public class livechinavideobean {
      * hls_cdn_info : {"cdn_code":"LIVE-HLS-CDN-FW","cdn_name":"3rdHLS快网"}
      * hls_url : {"hls1":"http://3811.liveplay.myqcloud.com/live/m3u8/3811_channel1519.m3u8?AUTH=6TNpqHqQWOfJtdaFb+d0QsBvUKA9Abr0ziu2MeW0w/Vs1Zx9v5egU6BxwKlyqnk+6m/63igekKQaEAiU8L5aQg==","hls2":"http://3811.liveplay.myqcloud.com/live/m3u8/3811_channel1519.m3u8?AUTH=6TNpqHqQWOfJtdaFb+d0QsBvUKA9Abr0ziu2MeW0w/Vs1Zx9v5egU6BxwKlyqnk+6m/63igekKQaEAiU8L5aQg==","hls3":"","hls4":"","hls5":"","hls6":""}
      * hds_cdn_info : {"cdn_code":"LIVE-HDS-CDN-FW","cdn_name":"3rdHDS快网"}
-     * hds_url : {"hds1":"http://livechina.cntv.wscdns.com:8000/cache/1519_/seg1/index.f4m?AUTH=6TNpqHqQWOfJtdaFb+d0QsBvUKA9Abr0ziu2MeW0w/Vs1Zx9v5egU6BxwKlyqnk+6m/63igekKQaEAiU8L5aQg==","hds2":"http://livechina.cntv.wscdns.com:8000/live/flv/channel1519?AUTH=6TNpqHqQWOfJtdaFb+d0QsBvUKA9Abr0ziu2MeW0w/Vs1Zx9v5egU6BxwKlyqnk+6m/63igekKQaEAiU8L5aQg==","hds3":"","hds4":"","hds5":"","hds6":""}
+     * hds_url : {"hds1":"http://livechina.cntv.wscdns.com:8000/cache/1519_/seg1/index.f4m?AUTH=6TNpqHqQWOfJtdaFb+d0QsBvUKA9Abr0ziu2MeW0w/Vs1Zx9v5egU6BxwKlyqnk+6m/63igekKQaEAiU8L5aQg==","hds2":"http://livechina.cntv.wscdns.com:8000/live/flv/channel1519?AUTH=6TNpqHqQWOfJtdaFb+d0QsBvUKA9Abr0ziu2MeW0w/Vs1Zx9v5egU6BxwKlyqnk+6m/63igekKQaEAiU8L5aQg==LIVE-FLV-CDN-FW,"hds3":"","hds4":"","hds5":"","hds6":""}
      * public : 1
      */
 

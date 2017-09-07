@@ -18,6 +18,10 @@ import android.widget.Toast;
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseFragment;
 import com.example.ipandaitems.model.entry.livechina.livechinavideobean;
+import com.example.ipandaitems.model.greendao.DaoMaster;
+import com.example.ipandaitems.model.greendao.DaoSession;
+import com.example.ipandaitems.model.greendao.history;
+import com.example.ipandaitems.model.greendao.historyDao;
 import com.example.ipandaitems.presenter.livepresenter.LivePresenterImpl;
 import com.example.ipandaitems.view.livechina.adapter.LiveChinaTabItemAdapter;
 import com.example.ipandaitems.view.livechina.assist.XListView;
@@ -78,6 +82,7 @@ public class LchinaItemFragment extends BaseFragment implements OnClickListener,
     private MediaController controller;
     private CheckBox video_check;
     private String usrl;
+    private historyDao dao;
 
 
     @Override
@@ -97,7 +102,10 @@ public class LchinaItemFragment extends BaseFragment implements OnClickListener,
 
     @Override
     protected void loadData() {
-
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(getActivity(), "hs.db");
+        DaoMaster daoMaster = new DaoMaster(openHelper.getWritableDb());
+        DaoSession daoSession = daoMaster.newSession();
+        dao = daoSession.getHistoryDao();
     }
 
     @Override
@@ -298,6 +306,7 @@ public class LchinaItemFragment extends BaseFragment implements OnClickListener,
             notNetImg.setVisibility(View.GONE);
         }
 
+
         //   LiveChinaBean liveChinaBean = (LiveChinaBean) chinaBean;
         mLiveChineItems.clear();
         mLiveChineItems.addAll(chinaBean.live);
@@ -319,6 +328,10 @@ public class LchinaItemFragment extends BaseFragment implements OnClickListener,
         videoView.setMediaController(controller);
         videoView.setVideoURI(Uri.parse(usrl));
         videoView.start();
+        history history = dao.queryBuilder().where(historyDao.Properties.Name.eq(liveChineItem.title)).build().unique();
+        if (history == null) {
+            dao.insert(new history(null, liveChineItem.image, usrl, "1", liveChineItem.title));
+        }
 
 
         video_check.setOnClickListener(new OnClickListener() {

@@ -2,6 +2,7 @@ package com.example.ipandaitems.view.announce;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.ipandaitems.R;
 import com.example.ipandaitems.base.BaseActivity;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 
 /**
@@ -34,6 +36,9 @@ public class PanadaVideo extends BaseActivity {
 
     @Override
     protected void loadData() {
+        MediaController controller = new MediaController(this);
+        controller.setVisibility(View.GONE);
+        vitaVideo.setMediaController(controller);
         vitaVideo.setVideoPath(path);
         vitaVideo.start();
     }

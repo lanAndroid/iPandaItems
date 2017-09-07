@@ -176,4 +176,10 @@ public class RetrofitUtils {
         Observable<HomeVideoBean> video = apiServices.getHomevidwbean(url);
         video.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
+    public void GetYanzhengma(String url, Observer<String> observer) {
+        Observable<String> video = apiServices.getYanzhengma(url);
+
+        video.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
 }
